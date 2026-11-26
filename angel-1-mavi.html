@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Κουρείο Angel · Πόρτο Ράφτη</title>
+<meta name="description" content="Κουρείο Angel στο Πόρτο Ράφτη. Κλείσε ώρα online.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='24' fill='%231d4fc4'/%3E%3Ccircle cx='24' cy='29' r='12.5' fill='%23f3cfb1'/%3E%3Cg fill='%23b4572b'%3E%3Ccircle cx='13.5' cy='23.5' r='5'/%3E%3Ccircle cx='17.5' cy='18' r='5.6'/%3E%3Ccircle cx='24' cy='15.8' r='5.8'/%3E%3Ccircle cx='30.5' cy='18' r='5.6'/%3E%3Ccircle cx='34.6' cy='23.5' r='5'/%3E%3C/g%3E%3Ccircle cx='19.8' cy='31' r='1.4' fill='%23121417'/%3E%3Ccircle cx='28.2' cy='31' r='1.4' fill='%23121417'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;800&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: friendly neighbourhood shop, plain spoken, no slogans
+   IDEA: the shop itself: painted sign, blue shopfront, felt letter-board price list, door-sign hours
+   PICTURE: illustrated Porto Rafti shopfront with spinning barber pole and live OPEN/CLOSED sign
+   COLOUR and TYPE: whitewash + Aegean shutter blue, barber-pole red accent; Fira Sans Condensed signage, Fira Sans text
+   LAYOUT: sign-like hero, letter board on a blue band, team, scrolling photo strip, door-sticker hours + map */
+:root{color-scheme:light;
+  --wall:#f5f3ee; --white:#fff; --ink:#121417; --muted:#5b616a; --line:#e2ded5;
+  --blue:#1d4fc4; --blue-d:#163d99; --blue-l:#dce6f8; --red:#d6362b; --board:#151515;
+  --sign:"Fira Sans Condensed", "Arial Narrow", sans-serif; --text:"Fira Sans", system-ui, sans-serif}
+*{box-sizing:border-box;min-width:0;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font:16px/1.55 var(--text);color:var(--ink);background:var(--wall);overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+h1,h2,h3,.sign{font-family:var(--sign);font-weight:800;line-height:1.05}
+h2{font-size:clamp(32px,4.4vw,48px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:8px;font:600 16px var(--text);border:0;cursor:pointer;transition:background .15s,transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-d)}
+.btn-line{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* top strip + nav */
+.strip{background:var(--blue);color:#fff;font-size:14px}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px}
+.strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lang{flex:none}
+.strip a{text-decoration:underline;text-underline-offset:3px}
+.lang{display:flex;gap:2px;flex:none}
+.lang button{background:transparent;color:#fff;border:0;font:600 13px var(--text);padding:6px 8px;border-radius:4px;cursor:pointer;opacity:.7}
+.lang button.on{opacity:1;background:rgba(255,255,255,.18)}
+header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .mark{width:42px;height:42px;border-radius:50%;background:var(--blue);padding:3px}
+.brand b{font-family:var(--sign);font-weight:800;font-size:26px;letter-spacing:.02em}
+.links{display:flex;gap:26px;font-weight:500}
+.links a:hover{color:var(--blue)}
+.nav .btn{min-height:42px;padding:0 18px}
+
+/* hero */
+.hero{padding:clamp(28px,5vw,64px) 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-areas:"title pic" "cta pic";column-gap:48px;align-items:end}
+.hero-title{grid-area:title;align-self:end}
+.hero-title small{display:block;font:600 18px var(--text);color:var(--blue);margin-bottom:10px}
+.hero h1{font-size:clamp(64px,10.5vw,132px);letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 span{display:block;color:var(--blue)}
+.hero-title p{font-size:18px;max-width:30em;margin-top:18px;color:#2c3138}
+.hero-cta{grid-area:cta;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 56px}
+.hero-cta .phone{font-weight:600;border-bottom:2px solid var(--ink);padding-bottom:2px}
+.hero-pic{grid-area:pic;align-self:end}
+.hero-pic svg{display:block;width:100%;height:auto}
+.scene-sign{font-family:var(--sign);font-weight:800}
+.pole{animation:pole 2.6s linear infinite}
+@keyframes pole{to{transform:translateY(-60px)}}
+@media (prefers-reduced-motion:reduce){.pole{animation:none}}
+
+/* letter board */
+.prices{background:var(--blue);color:#fff;padding:clamp(40px,6vw,80px) 0}
+.prices-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center}
+.prices h2{color:#fff}
+.prices p{color:#dbe4f7;margin:12px 0 24px;max-width:24em}
+.prices .btn{background:#fff;color:var(--blue)}
+.prices .btn:hover{background:var(--blue-l)}
+.board{background:repeating-linear-gradient(var(--board) 0 7px,#1d1d1d 7px 8px);border:10px solid #2a2a2a;border-radius:6px;padding:26px clamp(18px,3vw,34px);box-shadow:0 18px 0 -8px rgba(0,0,0,.25);font-family:var(--sign);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.board h3{text-align:center;font-size:26px;font-weight:800;margin-bottom:18px;color:#fff}
+.row{display:flex;align-items:baseline;gap:10px;font-size:clamp(19px,2.2vw,24px);padding:7px 0;color:#f2f2f2}
+.row .dots{flex:1;border-bottom:3px dotted rgba(255,255,255,.35);transform:translateY(-6px)}
+.row .min{font-size:.7em;color:#aaa;letter-spacing:.06em}
+.row .eur{white-space:nowrap}
+
+/* team */
+.team{padding:clamp(48px,7vw,96px) 0}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.member{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.member .face{aspect-ratio:1/1;background:var(--blue);display:grid;place-items:center;color:#fff;font-family:var(--sign);font-weight:800;font-size:96px}
+.member .face svg{width:62%;height:62%}
+.member .face.alt{background:#2c3138}
+.member .info{padding:18px 20px 22px}
+.member h3{font-size:30px}
+.member p{color:var(--muted)}
+.member a{display:inline-block;margin-top:12px;font-weight:600;color:var(--blue);border-bottom:2px solid currentColor}
+
+/* photos */
+.photos{padding:0 0 clamp(48px,7vw,96px)}
+.photos-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.photos-head .ctl{display:flex;gap:8px;align-items:center}
+.photos-head .ctl button{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:#fff;font-size:18px;cursor:pointer}
+.photos-head .ctl a{font-weight:600;margin-right:8px;border-bottom:2px solid var(--ink)}
+.strip-photos{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.ph{flex:0 0 clamp(220px,28vw,300px);aspect-ratio:4/5;border-radius:10px;scroll-snap-align:start;display:flex;align-items:flex-end;padding:14px;color:#fff;font-weight:600;font-size:15px}
+
+/* hours + map */
+.visit{background:var(--white);border-top:1px solid var(--line);padding:clamp(48px,7vw,96px) 0}
+.visit-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;margin-top:28px}
+.door{border:3px solid var(--blue);border-radius:14px;padding:26px 28px;color:var(--blue);background:#fff}
+.door h3{font-size:34px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px}
+.hours{width:100%;border-collapse:collapse;font-size:17px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--blue-l)}
+.hours td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hours tr.today td{font-weight:700;color:var(--red)}
+.hours tr.closed td:last-child{color:#8a95ad}
+.reach{display:grid;gap:10px;margin-top:22px;color:var(--ink)}
+.reach a,.reach span{font-weight:500}
+.reach .tel{font-size:22px;font-weight:600;font-family:var(--sign)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips a{border:2px solid var(--ink);border-radius:8px;padding:8px 14px;font-weight:600;font-size:15px;color:var(--ink)}
+.chips a:hover{background:var(--ink);color:#fff}
+.map{position:relative;border-radius:14px;overflow:hidden;min-height:380px;background:var(--wall)}
+.map svg,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-cap{position:absolute;left:14px;right:14px;bottom:14px;background:#fff;border-radius:10px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.map-cap b{font-family:var(--sign);font-size:22px}
+.map-cap .btn{min-height:44px}
+
+footer{background:var(--board);color:#c9c9c9;padding:30px 0;font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot b{font-family:var(--sign);font-size:20px;color:#fff;letter-spacing:.03em}
+.foot .note{width:100%;color:#8d8d8d;font-size:13px}
+.sticky-book{display:none}
+
+/* booking sheet */
+.bk{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
+.bk[hidden]{display:none}
+.bk-backdrop{position:absolute;inset:0;background:rgba(18,20,23,.6)}
+.bk-sheet{position:relative;background:var(--wall);width:min(560px,100%);max-height:92vh;border-radius:14px;display:flex;flex-direction:column;overflow:hidden}
+.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--blue);color:#fff}
+.bk-head .who{display:flex;align-items:center;gap:8px;font-family:var(--sign);font-weight:800;font-size:22px}
+.bk-head .who svg{width:32px;height:32px;background:#fff;border-radius:50%;padding:2px}
+.bk-progress{display:flex;gap:5px}
+.bk-progress i{width:22px;height:5px;border-radius:3px;background:rgba(255,255,255,.3)}
+.bk-progress i.on{background:#fff}
+.bk-x{border:0;background:rgba(255,255,255,.18);color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
+.bk-body{padding:20px 16px;overflow:auto;flex:1}
+.bk-title{font-size:30px;margin-bottom:14px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer;font:inherit;color:var(--ink);min-height:56px}
+.opt:hover{border-color:#9aa3b2}
+.opt.sel{border-color:var(--blue);background:#f3f6fd}
+.opt small{display:block;color:var(--muted);font-size:14px}
+.opt .r{font-family:var(--sign);font-weight:800;font-size:22px;white-space:nowrap}
+.opt .l{display:flex;align-items:center;gap:12px}
+.opt .av{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;flex:none;font-family:var(--sign);font-weight:800;font-size:20px}
+.dates{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:14px}
+.date{flex:none;width:62px;border:2px solid var(--line);border-radius:10px;background:#fff;padding:8px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.date small{display:block;font-size:13px;color:var(--muted)}
+.date b{display:block;font-size:20px;font-family:var(--sign)}
+.date:disabled{opacity:.35;cursor:not-allowed}
+.date.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.date.sel small{color:#dbe4f7}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.slot{border:2px solid var(--line);background:#fff;border-radius:8px;min-height:46px;cursor:pointer;font:600 16px var(--text);font-variant-numeric:tabular-nums;color:var(--ink)}
+.slot.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
+.empty{color:var(--muted);padding:12px 0}
+.field{display:block;margin-bottom:12px}
+.field span{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
+.field input{width:100%;min-height:48px;padding:0 14px;border:2px solid var(--line);border-radius:8px;font:16px var(--text);background:#fff;color:var(--ink)}
+.consent{display:flex;gap:10px;font-size:15px;align-items:flex-start;margin-top:6px}
+.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--blue)}
+.summary{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:15px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.summary div span:first-child{color:var(--muted)}
+.done{text-align:center}
+.done .check{width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:30px;margin:4px auto 12px}
+.done p{color:var(--muted);margin-bottom:16px}
+.muted-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.bk-foot{display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#fff}
+.bk-foot .btn{flex:1}
+.bk-foot .btn[hidden]{display:none}
+
+@media (max-width:860px){
+  .links,.nav .btn{display:none}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "pic" "cta";}
+  .hero-pic{margin-top:18px}
+  .hero-cta{margin:20px 0 40px}
+  .prices-grid,.visit-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .team-grid{grid-template-columns:minmax(0,1fr)}
+  .member{display:grid;grid-template-columns:120px minmax(0,1fr)}
+  .member .face{aspect-ratio:auto;font-size:56px}
+  .sticky-book{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+  .sticky-book .btn{width:100%;min-height:54px;box-shadow:0 8px 24px rgba(18,20,23,.3)}
+  footer{padding-bottom:90px}
+  .bk{align-items:flex-end}
+  .bk-sheet{border-radius:14px 14px 0 0;max-height:94vh}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 48 48">
+    <ellipse cx="24" cy="6.5" rx="11" ry="3.2" fill="none" stroke="#f2b705" stroke-width="2.2"/>
+    <circle cx="24" cy="29" r="12.5" fill="#f3cfb1"/>
+    <g fill="#b4572b"><circle cx="13.5" cy="23.5" r="5"/><circle cx="17.5" cy="18" r="5.6"/><circle cx="24" cy="15.8" r="5.8"/>
+      <circle cx="30.5" cy="18" r="5.6"/><circle cx="34.6" cy="23.5" r="5"/><circle cx="21" cy="21.5" r="4.2"/><circle cx="28" cy="21.3" r="4.2"/></g>
+    <g fill="none" stroke="#8f3f1c" stroke-width="1.1" stroke-linecap="round"><path d="M15 17.5c1.5-1.6 3.4-1.6 4.6 0"/><path d="M22 14.6c1.4-1.4 3.4-1.4 4.6.2"/><path d="M29 17.4c1.3-1.4 3.2-1.2 4.2.4"/></g>
+    <circle cx="19.8" cy="31" r="1.25" fill="#121417"/><circle cx="28.2" cy="31" r="1.25" fill="#121417"/>
+    <path d="M20.8 35.2q3.2 2.6 6.4 0" fill="none" stroke="#121417" stroke-width="1.3" stroke-linecap="round"/>
+    <g fill="#d08a62"><circle cx="16.8" cy="33.6" r=".7"/><circle cx="18.4" cy="34.8" r=".6"/><circle cx="15.9" cy="35.3" r=".55"/>
+      <circle cx="31.2" cy="33.6" r=".7"/><circle cx="29.6" cy="34.8" r=".6"/><circle cx="32.1" cy="35.3" r=".55"/></g>
+  </symbol>
+</svg>
+
+<script>
+/* ============================================================
+   CONFIG: Her yeni müşteri için sadece bu bloğu değiştir.
+   ============================================================ */
+const CONFIG = {
+  name: "Angel",
+  area: { el: "Πόρτο Ράφτη", en: "Porto Rafti" },
+  bookingMode: "demo",                     // "demo": sayfa içi deneme | "link": bookingUrl'e (Easy!Appointments) git
+  bookingUrl: "/rantevou",
+  phone: "+30 2299 000000",                // ÖRNEK
+  whatsapp: "302299000000",                // ÖRNEK
+  viber: "302299000000",                   // ÖRNEK
+  instagram: "angel.barbershop",           // ÖRNEK
+  mapQuery: "Porto Rafti, Greece",
+  embedMap: true,                          // gerçek sitede true: gömülü Google Maps
+  demoNote: true,                          // altbilgide "örnek içerik" notu
+  services: [                              // ÖRNEK fiyatlar
+    { el: "Κούρεμα", en: "Haircut", min: 30, price: 15 },
+    { el: "Κούρεμα + γένια", en: "Haircut + beard", min: 45, price: 20 },
+    { el: "Γένια", en: "Beard trim", min: 20, price: 8 },
+    { el: "Παιδικό κούρεμα", en: "Kids' cut", min: 30, price: 12 }
+  ],
+  // gün -> [başlangıç, bitiş, [mola]]; 0=Pazar; yoksa izinli. ÖRNEK
+  team: [
+    { name: { el: "Άγγελος", en: "Aggelos" }, acc: { el: "τον Άγγελο", en: "Aggelos" }, role: { el: "Ιδιοκτήτης", en: "Owner" }, mascot: true,
+      hours: { 2: ["10:00","20:00",["14:00","15:00"]], 3: ["10:00","20:00",["14:00","15:00"]], 4: ["10:00","20:00",["14:00","15:00"]],
+               5: ["10:00","20:00",["14:00","15:00"]], 6: ["09:00","17:00",["13:00","13:30"]] } },
+    { name: { el: "Barber 2", en: "Barber 2" }, role: { el: "Barber", en: "Barber" },
+      hours: { 2: ["12:00","20:00",["16:00","16:30"]], 3: ["12:00","20:00",["16:00","16:30"]], 4: ["12:00","20:00",["16:00","16:30"]],
+               5: ["12:00","20:00",["16:00","16:30"]], 6: ["09:00","17:00",["13:00","13:30"]] } },
+    { name: { el: "Barber 3", en: "Barber 3" }, role: { el: "Barber", en: "Barber" }, services: [0, 1, 2],
+      hours: { 3: ["10:00","18:00",["13:00","13:30"]], 4: ["10:00","18:00",["13:00","13:30"]],
+               5: ["10:00","18:00",["13:00","13:30"]], 6: ["09:00","17:00",["13:00","13:30"]] } }
+  ],
+  hours: { 1: null, 2: ["10:00","20:00"], 3: ["10:00","20:00"], 4: ["10:00","20:00"], 5: ["10:00","20:00"], 6: ["09:00","17:00"], 0: null }
+};
+</script>
+
+<div class="strip"><div class="wrap">
+  <span><a class="js-tel"><span class="js-tel-text"></span></a> · <span id="today-line"></span></span>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="el" class="on">ΕΛ</button><button data-lang="en">EN</button></div>
+</div></div>
+
+<header><div class="wrap nav">
+  <a href="#top" class="brand"><svg class="mark" aria-hidden="true"><use href="#mark"/></svg><b data-cfg="name">Angel</b></a>
+  <nav class="links">
+    <a href="#prices" data-el="Τιμές" data-en="Prices">Τιμές</a>
+    <a href="#team" data-el="Η ομάδα" data-en="Team">Η ομάδα</a>
+    <a href="#photos" data-el="Φωτογραφίες" data-en="Photos">Φωτογραφίες</a>
+    <a href="#visit" data-el="Ωράριο" data-en="Hours">Ωράριο</a>
+  </nav>
+  <a class="btn btn-blue js-book" href="#" data-el="Κλείσε ώρα" data-en="Book">Κλείσε ώρα</a>
+</div></header>
+
+<main id="top">
+  <section class="hero"><div class="wrap hero-grid">
+    <div class="hero-title">
+      <small data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</small>
+      <h1><span data-el="Κουρείο" data-en="Barbershop">Κουρείο</span><b data-cfg="name">Angel</b></h1>
+      <p data-el="Ο Άγγελος και η ομάδα του σε περιμένουν για κούρεμα και γένια. Κλείσε την ώρα σου online ή πάρε τηλέφωνο." data-en="Aggelos and his team are ready for your haircut and beard trim. Book your slot online or give us a call.">Ο Άγγελος και η ομάδα του σε περιμένουν για κούρεμα και γένια. Κλείσε την ώρα σου online ή πάρε τηλέφωνο.</p>
+    </div>
+    <div class="hero-pic">
+      <svg viewBox="0 0 520 470" role="img" aria-label="Angel shopfront">
+        <defs>
+          <pattern id="stripes" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="skewY(-35)">
+            <rect width="60" height="60" fill="#fff"/><rect width="60" height="18" fill="#d6362b"/><rect y="30" width="60" height="18" fill="#1d4fc4"/>
+          </pattern>
+          <clipPath id="poleClip"><rect x="464" y="178" width="28" height="176" rx="6"/></clipPath>
+        </defs>
+        <g fill="#3f7d4b"><circle cx="22" cy="40" r="16"/><circle cx="52" cy="24" r="14"/><circle cx="86" cy="30" r="12"/><circle cx="10" cy="74" r="12"/></g>
+        <g fill="#c8326f"><circle cx="28" cy="30" r="7"/><circle cx="46" cy="18" r="6"/><circle cx="66" cy="30" r="6"/><circle cx="92" cy="24" r="5"/><circle cx="16" cy="58" r="6"/><circle cx="36" cy="46" r="5"/></g>
+        <g fill="#e2598f"><circle cx="58" cy="16" r="4"/><circle cx="20" cy="44" r="4"/><circle cx="80" cy="38" r="4"/></g>
+        <rect x="60" y="118" width="380" height="314" fill="#1d4fc4"/>
+        <rect x="60" y="118" width="5" height="314" fill="#5c83df"/>
+        <rect x="48" y="44" width="404" height="74" rx="4" fill="#151515"/>
+        <rect x="56" y="52" width="388" height="58" rx="2" fill="none" stroke="#fff" stroke-opacity=".25"/>
+        <text class="scene-sign" x="250" y="96" text-anchor="middle" font-size="40" fill="#fff" textLength="350" lengthAdjust="spacingAndGlyphs">ΚΟΥΡΕΙΟ · ANGEL</text>
+        <rect x="60" y="118" width="380" height="10" fill="#000" opacity=".22"/>
+        <rect x="86" y="148" width="200" height="220" fill="#dce6f8"/>
+        <polygon points="86,148 140,148 86,214" fill="#fff" opacity=".6"/><polygon points="170,148 196,148 86,290 86,256" fill="#fff" opacity=".45"/>
+        <use href="#mark" x="128" y="188" width="116" height="116"/>
+        <text x="186" y="352" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4fc4" font-family="Fira Sans, sans-serif" letter-spacing="1">BARBERSHOP</text>
+        <rect x="80" y="368" width="212" height="10" fill="#eef2fa"/><rect x="80" y="378" width="212" height="5" fill="#000" opacity=".15"/>
+        <rect x="310" y="148" width="106" height="284" fill="#163d99"/>
+        <rect x="322" y="162" width="82" height="150" fill="#cddbf1"/><polygon points="322,162 352,162 322,206" fill="#fff" opacity=".55"/>
+        <line x1="350" y1="162" x2="342" y2="196" stroke="#555" stroke-width="1.4"/><line x1="376" y1="162" x2="384" y2="196" stroke="#555" stroke-width="1.4"/>
+        <rect x="330" y="196" width="66" height="30" rx="3" fill="#fff"/>
+        <text id="door-text" x="363" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#d6362b" font-family="Fira Sans Condensed, sans-serif" textLength="54" lengthAdjust="spacingAndGlyphs">ΑΝΟΙΧΤΟ</text>
+        <rect x="394" y="324" width="6" height="40" rx="3" fill="#d9dce3"/>
+        <rect x="0" y="432" width="520" height="38" fill="#d8d3c8"/><rect x="300" y="432" width="126" height="9" fill="#c6bfb0"/>
+        <rect x="440" y="206" width="24" height="6" fill="#8d939d"/>
+        <rect x="460" y="168" width="36" height="12" rx="4" fill="#c9ccd3"/><circle cx="478" cy="160" r="9" fill="#c9ccd3"/>
+        <g clip-path="url(#poleClip)"><rect class="pole" x="440" y="150" width="80" height="300" fill="url(#stripes)"/></g>
+        <rect x="464" y="178" width="7" height="176" fill="#fff" opacity=".35"/>
+        <rect x="460" y="352" width="36" height="12" rx="4" fill="#c9ccd3"/>
+        <path d="M14 392h44l-6 40H20Z" fill="#b9643a"/><rect x="10" y="386" width="52" height="8" rx="2" fill="#a5552f"/>
+        <g fill="#3f7d4b"><circle cx="24" cy="372" r="12"/><circle cx="44" cy="366" r="13"/><circle cx="36" cy="352" r="10"/></g>
+        <g fill="#c8326f"><circle cx="30" cy="360" r="4"/><circle cx="48" cy="356" r="4"/><circle cx="22" cy="376" r="3.5"/></g>
+      </svg>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-blue js-book" href="#" data-el="Κλείσε ώρα online" data-en="Book online">Κλείσε ώρα online</a>
+      <a class="phone js-tel"><span class="js-tel-text"></span></a>
+    </div>
+  </div></section>
+
+  <section class="prices" id="prices"><div class="wrap prices-grid">
+    <div>
+      <h2 data-el="Τιμές" data-en="Prices">Τιμές</h2>
+      <p data-el="Όλες οι τιμές περιλαμβάνουν ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση." data-en="All prices include VAT. Durations are approximate.">Όλες οι τιμές περιλαμβάνουν ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση.</p>
+      <a class="btn js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a>
+    </div>
+    <div class="board"><h3 data-el="Τιμοκατάλογος" data-en="Price list">Τιμοκατάλογος</h3><div id="board-rows"></div></div>
+  </div></section>
+
+  <section class="team" id="team"><div class="wrap">
+    <h2 data-el="Η ομάδα" data-en="The team">Η ομάδα</h2>
+    <div class="team-grid" id="team-grid"></div>
+  </div></section>
+
+  <section class="photos" id="photos"><div class="wrap">
+    <div class="photos-head">
+      <h2 data-el="Φωτογραφίες" data-en="Photos">Φωτογραφίες</h2>
+      <div class="ctl"><a class="js-ig" href="#">Instagram ↗</a><button id="ph-prev" aria-label="Previous">←</button><button id="ph-next" aria-label="Next">→</button></div>
+    </div>
+    <div class="strip-photos" id="strip-photos">
+      <div class="ph" style="background:#1d4fc4" data-el="Skin fade" data-en="Skin fade">Skin fade</div>
+      <div class="ph" style="background:#2c3138" data-el="Κλασικό κούρεμα" data-en="Classic cut">Κλασικό κούρεμα</div>
+      <div class="ph" style="background:#b4572b" data-el="Γένια με ξυράφι" data-en="Razor beard trim">Γένια με ξυράφι</div>
+      <div class="ph" style="background:#3f7d4b" data-el="Το μαγαζί" data-en="The shop">Το μαγαζί</div>
+      <div class="ph" style="background:#163d99" data-el="Crop" data-en="Crop">Crop</div>
+      <div class="ph" style="background:#6b4a3a" data-el="Παιδικό" data-en="Kids">Παιδικό</div>
+    </div>
+  </div></section>
+
+  <section class="visit" id="visit"><div class="wrap">
+    <h2 data-el="Ωράριο & πώς θα έρθεις" data-en="Hours & how to find us">Ωράριο & πώς θα έρθεις</h2>
+    <div class="visit-grid">
+      <div class="door">
+        <h3 data-el="Ωράριο" data-en="Opening hours">Ωράριο</h3>
+        <table class="hours" id="hours"></table>
+        <div class="reach">
+          <a class="tel js-tel"><span class="js-tel-text"></span></a>
+          <span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span>
+        </div>
+        <div class="chips"><a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div>
+      </div>
+      <div class="map" id="map-box">
+        <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="400" height="380" fill="#ece8df"/>
+          <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84h308Z" fill="#1d4fc4"/>
+          <path d="M400 0H172c-6 34 26 64 8 104-16 34-64 40-68 84-3 40 40 58 37 96-2 26-24 44-28 96h279Z" fill="#2a5fd6"/>
+          <g fill="none" stroke="#7fa0ea" stroke-width="1.5" opacity=".7"><path d="M230 70q20-8 40 0t40 0"/><path d="M250 150q20-8 40 0t40 0"/><path d="M220 240q20-8 40 0t40 0"/></g>
+          <g fill="#d8cdb8"><ellipse cx="300" cy="120" rx="26" ry="12"/><ellipse cx="330" cy="215" rx="14" ry="8"/></g>
+          <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"><path d="M0 120q60 10 110 60"/><path d="M20 340q40-60 90-90"/></g>
+          <g transform="translate(118 176)"><path d="M0-28c-10 0-18 8-18 17 0 13 18 30 18 30s18-17 18-30c0-9-8-17-18-17Z" fill="#d6362b"/><circle cy="-11" r="6" fill="#fff"/></g>
+        </svg>
+        <div class="map-cap"><b data-cfg="name">Angel</b><a class="btn btn-blue js-dir" href="#" data-el="Οδηγίες στο Google Maps ↗" data-en="Directions in Google Maps ↗">Οδηγίες στο Google Maps ↗</a></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <div><b><span data-el="ΚΟΥΡΕΙΟ" data-en="BARBERSHOP">ΚΟΥΡΕΙΟ</span> <span data-cfg="name">Angel</span></b> · <span data-el="Πόρτο Ράφτη" data-en="Porto Rafti">Πόρτο Ράφτη</span></div>
+  <div><span class="js-year"></span> · <a href="#" data-el="Πολιτική απορρήτου" data-en="Privacy policy">Πολιτική απορρήτου</a></div>
+  <div class="note" id="demo-note" hidden data-el="Δείγμα: τιμές, ωράριο, τηλέφωνο και φωτογραφίες είναι ενδεικτικά." data-en="Sample: prices, hours, phone and photos are placeholders.">Δείγμα: τιμές, ωράριο, τηλέφωνο και φωτογραφίες είναι ενδεικτικά.</div>
+</div></footer>
+
+<div class="sticky-book"><a class="btn btn-blue js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a></div>
+
+<div class="bk" id="bk" hidden>
+  <div class="bk-backdrop" data-close></div>
+  <div class="bk-sheet" role="dialog" aria-modal="true" aria-labelledby="bk-title">
+    <div class="bk-head">
+      <div class="who"><svg aria-hidden="true"><use href="#mark"/></svg><span data-cfg="name">Angel</span></div>
+      <div class="bk-progress" id="bk-progress"></div>
+      <button class="bk-x" data-close aria-label="Close">×</button>
+    </div>
+    <div class="bk-body" id="bk-body"></div>
+    <div class="bk-foot"><button class="btn btn-line" id="bk-back"></button><button class="btn btn-blue" id="bk-next"></button></div>
+  </div>
+</div>
+
+<script>
+{
+  const C = CONFIG;
+  const DAY = { el: ["Κυριακή","Δευτέρα","Τρίτη","Τετάρτη","Πέμπτη","Παρασκευή","Σάββατο"],
+                en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] };
+  const T = {
+    el: { closed: "Κλειστά", todayOpen: "Σήμερα ανοιχτά", todayClosed: "Σήμερα κλειστά", open: "ΑΝΟΙΧΤΟ", shut: "ΚΛΕΙΣΤΟ", with: "Ραντεβού με",
+          photo: "Φωτογραφία", svc: "Τι θα κάνουμε;", barber: "Με ποιον;", any: "Όποιος είναι διαθέσιμος", anySub: "Η πρώτη ελεύθερη ώρα",
+          when: "Πότε;", details: "Τα στοιχεία σου", next: "Συνέχεια", back: "Πίσω", confirm: "Κλείσε το ραντεβού",
+          close: "Εντάξει", name: "Ονοματεπώνυμο", phone: "Κινητό", email: "Email (προαιρετικό)",
+          consent: "Συμφωνώ με την Πολιτική απορρήτου.", noSlots: "Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.",
+          done: "Σε περιμένουμε!", doneSub: "Θα λάβεις επιβεβαίωση και υπενθύμιση πριν το ραντεβού.",
+          ics: "Προσθήκη στο ημερολόγιο", sSvc: "Υπηρεσία", sBarber: "Barber", sWhen: "Πότε", sPrice: "Τιμή",
+          demo: "Demo: το ραντεβού δεν στέλνεται στο κατάστημα.", taken: "Η ώρα μόλις κλείστηκε, διάλεξε άλλη." },
+    en: { closed: "Closed", todayOpen: "Open today", todayClosed: "Closed today", open: "OPEN", shut: "CLOSED", with: "Book with",
+          photo: "Photo", svc: "What are we doing?", barber: "With whom?", any: "Whoever is free", anySub: "First free slot",
+          when: "When?", details: "Your details", next: "Continue", back: "Back", confirm: "Book it",
+          close: "Done", name: "Full name", phone: "Mobile", email: "Email (optional)",
+          consent: "I agree to the Privacy policy.", noSlots: "No free slots on this day.",
+          done: "See you soon!", doneSub: "You'll get a confirmation and a reminder before your appointment.",
+          ics: "Add to calendar", sSvc: "Service", sBarber: "Barber", sWhen: "When", sPrice: "Price",
+          demo: "Demo: this booking is not sent to the shop.", taken: "That slot was just taken, pick another." }
+  };
+  let LANG = "el";
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pad = n => String(n).padStart(2, "0");
+  const toMin = s => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
+  const fmt = m => pad(Math.floor(m / 60)) + ":" + pad(m % 60);
+  const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const overlap = (a1, a2, b1, b2) => a1 < b2 && b1 < a2;
+  const offers = (bi, si) => !C.team[bi].services || C.team[bi].services.includes(si);
+  const bk = document.getElementById("bk"), body = document.getElementById("bk-body");
+  const btnBack = document.getElementById("bk-back"), btnNext = document.getElementById("bk-next");
+
+  /* ---------- page ---------- */
+  function render(lang) {
+    LANG = lang; const t = T[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-" + lang + "]").forEach(el => { el.textContent = el.getAttribute("data-" + lang); });
+    document.querySelectorAll('[data-cfg="name"]').forEach(el => el.textContent = C.name);
+
+    document.getElementById("board-rows").innerHTML = C.services.map(s =>
+      `<div class="row"><span>${esc(s[lang])} <span class="min">${s.min}′</span></span><span class="dots"></span><span class="eur">€${s.price}</span></div>`).join("");
+
+    document.getElementById("team-grid").innerHTML = C.team.map((m, i) => `
+      <div class="member">
+        <div class="face ${i % 2 ? "alt" : ""}">${m.mascot ? '<svg aria-hidden="true"><use href="#mark"/></svg>' : esc(m.name[lang][0])}</div>
+        <div class="info"><h3>${esc(m.name[lang])}</h3><p>${esc(m.role[lang])}</p>
+          <a class="js-book" data-barber="${i}" href="#">${t.with} ${esc((m.acc || m.name)[lang])} →</a></div>
+      </div>`).join("");
+
+    const now = new Date(), today = now.getDay();
+    document.getElementById("hours").innerHTML = [1,2,3,4,5,6,0].map(d => {
+      const h = C.hours[d];
+      return `<tr class="${d === today ? "today" : ""} ${h ? "" : "closed"}"><td>${DAY[lang][d]}</td><td>${h ? h[0] + "–" + h[1] : t.closed}</td></tr>`;
+    }).join("");
+    const th = C.hours[today], nowMin = now.getHours() * 60 + now.getMinutes();
+    document.getElementById("today-line").textContent = th ? `${t.todayOpen} ${th[0]}–${th[1]}` : t.todayClosed;
+    const isOpen = th && nowMin >= toMin(th[0]) && nowMin < toMin(th[1]);
+    document.getElementById("door-text").textContent = isOpen ? t.open : t.shut;
+
+    document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+    document.title = `${lang === "el" ? "Κουρείο" : "Barbershop"} ${C.name} · ${C.area[lang]}`;
+    bindLinks();
+    if (!bk.hidden) drawBk();
+  }
+
+  function bindLinks() {
+    document.querySelectorAll(".js-book").forEach(a => a.href = C.bookingMode === "demo" ? "#book" : C.bookingUrl);
+    document.querySelectorAll(".js-tel").forEach(a => a.href = "tel:" + C.phone.replace(/\s/g, ""));
+    document.querySelectorAll(".js-tel-text").forEach(s => s.textContent = C.phone);
+    document.querySelectorAll(".js-wa").forEach(a => { a.href = "https://wa.me/" + C.whatsapp; a.target = "_blank"; a.rel = "noopener"; });
+    document.querySelectorAll(".js-viber").forEach(a => a.href = "viber://chat?number=%2B" + C.viber);
+    document.querySelectorAll(".js-ig").forEach(a => { a.href = "https://instagram.com/" + C.instagram; a.target = "_blank"; a.rel = "noopener"; });
+    document.querySelectorAll(".js-dir").forEach(a => { a.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(C.mapQuery); a.target = "_blank"; a.rel = "noopener"; });
+  }
+
+  /* ---------- booking logic ---------- */
+  function hashStr(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
+  let booked = [];
+  try { booked = JSON.parse(localStorage.getItem("angel_demo_bookings") || "[]"); } catch (e) {}
+  const saveBooked = () => { try { localStorage.setItem("angel_demo_bookings", JSON.stringify(booked)); } catch (e) {} };
+
+  function seededBusy(bi, dateStr) {
+    const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
+    const r = rng(hashStr(bi + "|" + dateStr)); const out = [];
+    for (let t = toMin(h[0]); t < toMin(h[1]); t += 30) if (r() < 0.36) out.push([t, t + (r() < 0.5 ? 30 : 45)]);
+    return out;
+  }
+  function slotsFor(bi, dateStr, dur) {
+    const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
+    const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null;
+    const busy = seededBusy(bi, dateStr).concat(booked.filter(b => b.bi === bi && b.date === dateStr).map(b => [b.start, b.end]));
+    const now = new Date(), isToday = ymd(now) === dateStr, nowMin = now.getHours() * 60 + now.getMinutes() + 30;
+    const out = [];
+    for (let t = toMin(h[0]); t + dur <= toMin(h[1]); t += 15) {
+      if (br && overlap(t, t + dur, br[0], br[1])) continue;
+      if (busy.some(b => overlap(t, t + dur, b[0], b[1]))) continue;
+      if (isToday && t < nowMin) continue;
+      out.push(t);
+    }
+    return out;
+  }
+
+  const S = {};
+  const reset = pre => Object.assign(S, { step: 0, svc: null, barber: pre ?? null, preset: pre != null, date: null, time: null,
+                                         name: "", phone: "", email: "", consent: false, assigned: null, error: "" });
+  const candidates = () => (S.barber != null && S.barber >= 0) ? [S.barber] : C.team.map((_, i) => i).filter(i => offers(i, S.svc));
+  function slotsForChoice(dateStr) {
+    const dur = C.services[S.svc].min, set = new Set();
+    candidates().forEach(bi => slotsFor(bi, dateStr, dur).forEach(t => set.add(t)));
+    return [...set].sort((a, b) => a - b);
+  }
+  const days = () => Array.from({ length: 21 }, (_, i) => { const x = new Date(); x.setDate(x.getDate() + i); return x; });
+
+  function openBk(pre) { reset(pre); bk.hidden = false; document.body.style.overflow = "hidden"; drawBk(); }
+  function closeBk() { bk.hidden = true; document.body.style.overflow = ""; }
+
+  function summary() {
+    const t = T[LANG], s = C.services[S.svc];
+    const bi = S.assigned ?? (S.barber >= 0 ? S.barber : null);
+    const when = S.date ? new Intl.DateTimeFormat(LANG === "el" ? "el-GR" : "en-GB", { weekday: "long", day: "numeric", month: "long" })
+                   .format(new Date(S.date + "T12:00:00")) + " · " + fmt(S.time) : "";
+    return `<div class="summary">
+      <div><span>${t.sSvc}</span><span>${esc(s[LANG])} (${s.min}′)</span></div>
+      <div><span>${t.sBarber}</span><span>${bi != null ? esc(C.team[bi].name[LANG]) : t.any}</span></div>
+      <div><span>${t.sWhen}</span><span>${when}</span></div>
+      <div><span>${t.sPrice}</span><span>€${s.price}</span></div></div>`;
+  }
+  const validDetails = () => S.name.trim().length >= 3 && /^\+?[0-9 ]{10,15}$/.test(S.phone.trim()) &&
+                             (!S.email || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)) && S.consent;
+
+  function drawBk() {
+    const t = T[LANG];
+    document.getElementById("bk-progress").innerHTML = [0,1,2,3].map(i => `<i class="${i <= Math.min(S.step, 3) ? "on" : ""}"></i>`).join("");
+    btnBack.textContent = t.back; btnBack.hidden = S.step === 0 || S.step === 4;
+    btnNext.hidden = S.step < 2;
+    let html = "";
+    if (S.step === 0) {
+      html = `<h2 class="bk-title" id="bk-title">${t.svc}</h2>` + C.services.map((s, i) =>
+        (S.barber != null && S.barber >= 0 && !offers(S.barber, i)) ? "" :
+        `<button class="opt ${S.svc === i ? "sel" : ""}" data-svc="${i}"><span>${esc(s[LANG])}<small>${s.min}′</small></span><span class="r">€${s.price}</span></button>`).join("");
+    }
+    if (S.step === 1) {
+      html = `<h2 class="bk-title" id="bk-title">${t.barber}</h2>
+        <button class="opt ${S.barber === -1 ? "sel" : ""}" data-barber="-1"><span class="l"><span class="av">?</span><span>${t.any}<small>${t.anySub}</small></span></span></button>` +
+        C.team.map((m, i) => !offers(i, S.svc) ? "" :
+        `<button class="opt ${S.barber === i ? "sel" : ""}" data-barber="${i}"><span class="l"><span class="av">${esc(m.name[LANG][0])}</span><span>${esc(m.name[LANG])}<small>${esc(m.role[LANG])}</small></span></span></button>`).join("");
+    }
+    if (S.step === 2) {
+      const loc = LANG === "el" ? "el-GR" : "en-GB";
+      const wd = new Intl.DateTimeFormat(loc, { weekday: "short" }), mo = new Intl.DateTimeFormat(loc, { month: "short" });
+      if (!S.date) S.date = days().map(ymd).find(k => slotsForChoice(k).length) || null;
+      const ds = days().map(d => { const k = ymd(d), has = slotsForChoice(k).length > 0;
+        return `<button class="date ${S.date === k ? "sel" : ""}" data-date="${k}" ${has ? "" : "disabled"}><small>${wd.format(d)}</small><b>${d.getDate()}</b><small>${mo.format(d)}</small></button>`; }).join("");
+      const sl = S.date ? slotsForChoice(S.date) : [];
+      html = `<h2 class="bk-title" id="bk-title">${t.when}</h2><div class="dates">${ds}</div>` +
+        (S.error ? `<p class="empty" style="color:var(--red)">${S.error}</p>` : "") +
+        (sl.length ? `<div class="slots">${sl.map(m => `<button class="slot ${S.time === m ? "sel" : ""}" data-time="${m}">${fmt(m)}</button>`).join("")}</div>`
+                   : `<p class="empty">${t.noSlots}</p>`);
+      btnNext.textContent = t.next; btnNext.disabled = S.time == null;
+    }
+    if (S.step === 3) {
+      html = `<h2 class="bk-title" id="bk-title">${t.details}</h2>${summary()}
+        <label class="field"><span>${t.name}</span><input id="f-name" autocomplete="name" value="${esc(S.name)}"></label>
+        <label class="field"><span>${t.phone}</span><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="69xxxxxxxx" value="${esc(S.phone)}"></label>
+        <label class="field"><span>${t.email}</span><input id="f-email" type="email" autocomplete="email" value="${esc(S.email)}"></label>
+        <label class="consent"><input type="checkbox" id="f-consent" ${S.consent ? "checked" : ""}><span>${t.consent}</span></label>`;
+      btnNext.textContent = t.confirm; btnNext.disabled = !validDetails();
+    }
+    if (S.step === 4) {
+      html = `<div class="done"><div class="check">✓</div><h2 class="bk-title" id="bk-title">${t.done}</h2><p>${t.doneSub}</p></div>${summary()}` +
+        (C.bookingMode === "demo" ? `<p class="muted-note">${t.demo}</p>` : `<a class="btn btn-line" style="width:100%" id="ics" download="angel-rantevou.ics">${t.ics}</a>`);
+      btnNext.hidden = false; btnNext.disabled = false; btnNext.textContent = t.close;
+    }
+    body.innerHTML = html;
+    if (S.step === 3) {
+      const upd = () => { S.name = body.querySelector("#f-name").value; S.phone = body.querySelector("#f-phone").value;
+        S.email = body.querySelector("#f-email").value; S.consent = body.querySelector("#f-consent").checked; btnNext.disabled = !validDetails(); };
+      body.querySelectorAll("input").forEach(i => { i.addEventListener("input", upd); i.addEventListener("change", upd); });
+    }
+    if (S.step === 4 && document.getElementById("ics")) wireIcs();
+    if (S.step === 2) { const sel = body.querySelector(".date.sel"); if (sel) sel.scrollIntoView({ inline: "center", block: "nearest" }); }
+  }
+
+  function wireIcs() {
+    const a = document.getElementById("ics"), s = C.services[S.svc], d = S.date.replace(/-/g, "");
+    const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Angel//Booking//EL", "BEGIN:VEVENT", "UID:" + Date.now() + "@angel",
+      "DTSTART;TZID=Europe/Athens:" + d + "T" + fmt(S.time).replace(":", "") + "00",
+      "DTEND;TZID=Europe/Athens:" + d + "T" + fmt(S.time + s.min).replace(":", "") + "00",
+      "SUMMARY:" + C.name + " · " + s[LANG], "LOCATION:" + C.area[LANG], "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+    try { a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" })); } catch (e) { a.hidden = true; }
+  }
+
+  function confirmBooking() {
+    const dur = C.services[S.svc].min;
+    const bi = candidates().find(i => slotsFor(i, S.date, dur).includes(S.time)); // son kontrol: hâlâ boş mu?
+    if (bi == null) { S.step = 2; S.time = null; S.error = T[LANG].taken; drawBk(); return; }
+    S.assigned = bi; booked.push({ bi, date: S.date, start: S.time, end: S.time + dur }); saveBooked();
+    S.step = 4; drawBk();
+  }
+
+  body.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.svc != null) { S.svc = +b.dataset.svc; S.step = S.preset ? 2 : 1; S.date = null; S.time = null; drawBk(); }
+    else if (b.dataset.barber != null) { S.barber = +b.dataset.barber; S.step = 2; S.date = null; S.time = null; drawBk(); }
+    else if (b.dataset.date) { S.date = b.dataset.date; S.time = null; S.error = ""; drawBk(); }
+    else if (b.dataset.time) { S.time = +b.dataset.time; S.error = ""; drawBk(); }
+  });
+  btnBack.addEventListener("click", () => { S.step = S.step === 2 ? (S.preset ? 0 : 1) : Math.max(0, S.step - 1); S.error = ""; drawBk(); });
+  btnNext.addEventListener("click", () => {
+    if (S.step === 2 && S.time != null) { S.step = 3; drawBk(); }
+    else if (S.step === 3 && validDetails()) confirmBooking();
+    else if (S.step === 4) closeBk();
+  });
+  bk.querySelectorAll("[data-close]").forEach(x => x.addEventListener("click", closeBk));
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !bk.hidden) closeBk(); });
+  document.addEventListener("click", e => {
+    const a = e.target.closest(".js-book"); if (!a || C.bookingMode !== "demo") return;
+    e.preventDefault(); openBk(a.dataset.barber != null ? +a.dataset.barber : undefined);
+  });
+
+  /* photo strip controls */
+  const strip = document.getElementById("strip-photos");
+  const step = dir => strip.scrollBy({ left: dir * (strip.querySelector(".ph").offsetWidth + 14), behavior: "smooth" });
+  document.getElementById("ph-prev").addEventListener("click", () => step(-1));
+  document.getElementById("ph-next").addEventListener("click", () => step(1));
+  strip.tabIndex = 0;
+  strip.addEventListener("keydown", e => { if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
+
+  /* start */
+  if (C.embedMap) document.getElementById("map-box").innerHTML = '<iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=' + encodeURIComponent(C.mapQuery) + '&output=embed"></iframe>';
+  document.getElementById("demo-note").hidden = !C.demoNote;
+  document.querySelector(".js-year").textContent = "© " + new Date().getFullYear();
+  let lang = "el";
+  try { lang = localStorage.getItem("lang") || "el"; } catch (e) {}
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+    try { localStorage.setItem("lang", b.dataset.lang); } catch (e) {}
+    render(b.dataset.lang);
+  }));
+  render(lang);
+}
+</script>
+</body>
+</html>
