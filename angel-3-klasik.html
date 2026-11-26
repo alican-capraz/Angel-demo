@@ -248,7 +248,7 @@ const CONFIG = {
   phone: "+30 690 940 2688",                // Aggelos (cep)
   whatsapp: "306909402688",
   viber: "306909402688",
-  instagram: "",                           // Aggelos'un gerçek hesabı (boşsa Instagram linkleri gizlenir)
+  instagram: "",                           // Aggelos'un hesabı; boşsa linkler instagram.com ana sayfasına gider
   mapQuery: "Porto Rafti, Greece",
   embedMap: true,                          // gerçek sitede true: gömülü Google Maps
   demoNote: true,                          // altbilgide "örnek içerik" notu
@@ -500,8 +500,8 @@ const CONFIG = {
     document.querySelectorAll(".js-tel-text").forEach(s => s.textContent = C.phone);
     document.querySelectorAll(".js-wa").forEach(a => { a.href = "https://wa.me/" + C.whatsapp; a.target = "_blank"; a.rel = "noopener"; });
     document.querySelectorAll(".js-viber").forEach(a => a.href = "viber://chat?number=%2B" + C.viber);
-    document.querySelectorAll(".js-ig").forEach(a => { a.hidden = !C.instagram; a.style.display = C.instagram ? "" : "none";
-      if (C.instagram) { a.href = "https://instagram.com/" + C.instagram; a.target = "_blank"; a.rel = "noopener"; } });
+    document.querySelectorAll(".js-ig").forEach(a => { a.href = "https://www.instagram.com/" + (C.instagram ? C.instagram + "/" : "");
+      a.target = "_blank"; a.rel = "noopener"; });
     document.querySelectorAll(".js-dir").forEach(a => { a.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(C.mapQuery); a.target = "_blank"; a.rel = "noopener"; });
   }
 
