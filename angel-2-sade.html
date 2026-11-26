@@ -39,6 +39,7 @@ h2{font-size:clamp(32px,4.4vw,48px)}
 .strip{background:var(--blue);color:#fff;font-size:14px}
 .strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px}
 .strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:600px){.strip-tel,.strip-sep{display:none}.strip{font-size:13px}}
 .lang{flex:none}
 .strip a{text-decoration:underline;text-underline-offset:3px}
 .lang{display:flex;gap:2px;flex:none}
@@ -275,7 +276,7 @@ const CONFIG = {
 </script>
 
 <div class="strip"><div class="wrap">
-  <span><a class="js-tel"><span class="js-tel-text"></span></a> · <span id="today-line"></span></span>
+  <span><a class="js-tel strip-tel"><span class="js-tel-text"></span></a><span class="strip-sep"> · </span><span id="today-line"></span></span>
   <div class="lang" role="group" aria-label="Language"><button data-lang="el" class="on">ΕΛ</button><button data-lang="en">EN</button></div>
 </div></div>
 
@@ -426,7 +427,7 @@ const CONFIG = {
   const DAY = { el: ["Κυριακή","Δευτέρα","Τρίτη","Τετάρτη","Πέμπτη","Παρασκευή","Σάββατο"],
                 en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] };
   const T = {
-    el: { closed: "Κλειστά", todayOpen: "Σήμερα ανοιχτά", todayClosed: "Σήμερα κλειστά", open: "ΑΝΟΙΧΤΟ", shut: "ΚΛΕΙΣΤΟ", with: "Ραντεβού με",
+    el: { closed: "Κλειστά", openNow: "Ανοιχτά τώρα", until: "έως", opensToday: "Ανοίγει σήμερα στις", closedNow: "Κλειστά", opens: "ανοίγει", tomorrow: "αύριο", at: "στις", open: "ΑΝΟΙΧΤΟ", shut: "ΚΛΕΙΣΤΟ", with: "Ραντεβού με",
           photo: "Φωτογραφία", svc: "Τι θα κάνουμε;", barber: "Με ποιον;", any: "Όποιος είναι διαθέσιμος", anySub: "Η πρώτη ελεύθερη ώρα",
           when: "Πότε;", details: "Τα στοιχεία σου", next: "Συνέχεια", back: "Πίσω", confirm: "Κλείσε το ραντεβού",
           close: "Εντάξει", name: "Ονοματεπώνυμο", phone: "Κινητό", email: "Email (προαιρετικό)",
@@ -434,7 +435,7 @@ const CONFIG = {
           done: "Σε περιμένουμε!", doneSub: "Θα λάβεις επιβεβαίωση και υπενθύμιση πριν το ραντεβού.",
           ics: "Προσθήκη στο ημερολόγιο", sSvc: "Υπηρεσία", sBarber: "Barber", sWhen: "Πότε", sPrice: "Τιμή",
           demo: "Demo: το ραντεβού δεν στέλνεται στο κατάστημα.", taken: "Η ώρα μόλις κλείστηκε, διάλεξε άλλη." },
-    en: { closed: "Closed", todayOpen: "Open today", todayClosed: "Closed today", open: "OPEN", shut: "CLOSED", with: "Book with",
+    en: { closed: "Closed", openNow: "Open now", until: "until", opensToday: "Opens today at", closedNow: "Closed", opens: "opens", tomorrow: "tomorrow", at: "at", open: "OPEN", shut: "CLOSED", with: "Book with",
           photo: "Photo", svc: "What are we doing?", barber: "With whom?", any: "Whoever is free", anySub: "First free slot",
           when: "When?", details: "Your details", next: "Continue", back: "Back", confirm: "Book it",
           close: "Done", name: "Full name", phone: "Mobile", email: "Email (optional)",
@@ -477,7 +478,14 @@ const CONFIG = {
       return `<tr class="${d === today ? "today" : ""} ${h ? "" : "closed"}"><td>${DAY[lang][d]}</td><td>${h ? h[0] + "–" + h[1] : t.closed}</td></tr>`;
     }).join("");
     const th = C.hours[today], nowMin = now.getHours() * 60 + now.getMinutes();
-    document.getElementById("today-line").textContent = th ? `${t.todayOpen} ${th[0]}–${th[1]}` : t.todayClosed;
+    let status = "";
+    if (th && nowMin < toMin(th[0])) status = `${t.opensToday} ${th[0]}`;
+    else if (th && nowMin < toMin(th[1])) status = `${t.openNow} · ${t.until} ${th[1]}`;
+    else for (let k = 1; k <= 7; k++) {
+      const d = (today + k) % 7, h = C.hours[d];
+      if (h) { status = `${t.closedNow} · ${t.opens} ${k === 1 ? t.tomorrow : DAY[lang][d]} ${t.at} ${h[0]}`; break; }
+    }
+    document.getElementById("today-line").textContent = status;
     const isOpen = th && nowMin >= toMin(th[0]) && nowMin < toMin(th[1]);
     document.getElementById("door-text").textContent = isOpen ? t.open : t.shut;
 
