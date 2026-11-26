@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Angel · Κουρείο στο Πόρτο Ράφτη</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%235b3a21'/%3E%3Ccircle cx='20' cy='20' r='8' fill='%23e8a835'/%3E%3Cg stroke='%23d65f2a' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M20 5v5M20 30v5M5 20h5M30 20h5M9.4 9.4l3.5 3.5M27.1 27.1l3.5 3.5M9.4 30.6l3.5-3.5M27.1 12.9l3.5-3.5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..900,0..100,0..100&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, laid-back 70s neighbourhood barber; first-name terms
+   IDEA: a 1970s record sleeve / surf-shop poster: rainbow arcs, arched photo window, polaroids on the wall
+   PICTURE: the shop photo in a tall arch with 70s rainbow arcs rising behind it
+   COLOUR and TYPE: sand cream, chocolate brown, burnt orange, mustard, olive; Commissioner with full flair + volume (groovy Greek too)
+   LAYOUT: poster hero, stripe band, menu card on brown, arched team portraits, polaroid wall, mustard hours card */
+:root{color-scheme:light;--cream:#f3e6cc;--paper:#fbf3e2;--ink:#3b2616;--brown:#5b3a21;--orange:#d65f2a;--orange-d:#b84d1f;
+  --mustard:#e8a835;--olive:#6d7b34;--teal:#3f7f86;--muted:#7a634e;--line:#e3d2b4}
+*{box-sizing:border-box;min-width:0;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font:17px/1.6 "Commissioner",system-ui,sans-serif;font-variation-settings:"FLAR" 30,"VOLM" 0;color:var(--ink);background:var(--cream);overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.groovy,h1,h2,h3{font-family:"Commissioner",sans-serif;font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(34px,5vw,52px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
+  font:700 17px "Commissioner",sans-serif;font-variation-settings:"FLAR" 100,"VOLM" 60;transition:background .15s,transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn-main{background:var(--orange);color:var(--paper)}.btn-main:hover{background:var(--orange-d)}
+.btn-ghost{background:transparent;color:var(--ink);border:2.5px solid var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+.strip{background:var(--brown);color:var(--cream);font-size:14px}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px}
+.strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lang{display:flex;gap:2px;flex:none}
+.lang button{background:none;border:0;color:var(--cream);font:700 13px "Commissioner";padding:5px 9px;border-radius:999px;cursor:pointer;opacity:.7}
+.lang button.on{opacity:1;background:rgba(251,243,226,.18)}
+header{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:2px solid var(--brown)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:66px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:44px;height:44px}
+.brand b{font-size:30px}
+.links{display:flex;gap:24px;font-weight:600}
+.links a:hover{color:var(--orange)}
+.nav .btn{min-height:44px;padding:0 20px}
+
+.hero{padding:clamp(28px,5vw,60px) 0 clamp(36px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"t p" "c p";column-gap:52px;align-items:end}
+.hero-t{grid-area:t}.hero-c{grid-area:c}.hero-p{grid-area:p}
+.kick{font-weight:700;color:var(--orange);font-size:18px}
+.hero h1{font-size:clamp(84px,15vw,190px);color:var(--brown);margin:6px 0 10px;font-weight:900}
+.hero-t p{font-size:19px;max-width:28em}
+.hero-c{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
+.hero-c .tel{font-weight:700;border-bottom:2.5px solid var(--ink);padding-bottom:1px}
+.hero-p{position:relative;padding-top:34px;overflow:hidden;padding-inline:6%;margin-inline:-6%}
+.rainbow{position:absolute;left:0;top:0;width:100%;height:auto}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 22px 22px;overflow:hidden;border:10px solid var(--paper);
+  box-shadow:0 18px 0 -6px rgba(59,38,22,.18);background:repeating-conic-gradient(from -90deg at 50% 105%,#e8a835 0 7deg,#efb955 7deg 14deg)}
+.empty-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--brown);font-weight:600;font-size:15px}
+.stripes{height:40px;background:linear-gradient(var(--brown) 0 25%,var(--orange) 25% 50%,var(--mustard) 50% 75%,var(--olive) 75%)}
+
+.prices{background:var(--brown);color:var(--cream);padding:clamp(44px,6vw,84px) 0}
+.prices-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:44px;align-items:center}
+.prices h2{color:var(--mustard)}
+.prices p{margin:12px 0 24px;color:#ecdcc0;max-width:24em}
+.menu{background:var(--paper);color:var(--ink);border-radius:30px;padding:30px clamp(20px,3.5vw,40px) 26px;border:4px solid var(--mustard)}
+.menu h3{font-size:30px;color:var(--orange);text-align:center;margin-bottom:14px}
+.row{display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1.5px dashed var(--line);font-size:19px}
+.row:last-child{border-bottom:0}
+.row .nm{font-weight:700}.row .min{color:var(--muted);font-size:14px}.row .dots{flex:1}
+.row .eur{font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;font-size:24px;color:var(--orange)}
+
+.team{padding:clamp(48px,7vw,96px) 0}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
+.member{background:var(--paper);border-radius:26px;padding:14px 14px 22px;border:2px solid var(--line)}
+.member .face{aspect-ratio:1/1;border-radius:999px 999px 18px 18px;display:grid;place-items:center;background:var(--olive);color:var(--paper);
+  font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:900;font-size:96px}
+.member:nth-child(3n+2) .face{background:var(--orange)}.member:nth-child(3n) .face{background:var(--mustard);color:var(--brown)}
+.member .info{padding:16px 8px 0}
+.member h3{font-size:30px;color:var(--brown)}
+.member p{color:var(--muted)}
+.member a{display:inline-block;margin-top:10px;font-weight:700;color:var(--orange);border-bottom:2px solid currentColor}
+
+.photos{background:var(--paper);padding:clamp(48px,7vw,96px) 0;border-top:2px solid var(--line)}
+.photos-head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.photos-head p{color:var(--muted);margin-top:6px}
+.photos-head a{font-weight:700;border-bottom:2.5px solid var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px;margin-top:32px}
+.g-item{background:#fff;border:0;padding:12px 12px 14px;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(59,38,22,.16);transition:transform .2s;font:inherit;color:var(--ink)}
+.g-item:nth-child(odd){transform:rotate(-1.6deg)}.g-item:nth-child(even){transform:rotate(1.3deg)}
+.g-item:hover{transform:rotate(0) scale(1.02)}
+.g-media{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:repeating-conic-gradient(from -90deg at 50% 110%,#e8c58a 0 7deg,#efd3a0 7deg 14deg)}
+.g-media .empty-ph{color:#8a6a45}
+.g-cap{display:block;margin-top:10px;font-style:italic;font-weight:600;font-size:17px}
+
+.visit{padding:clamp(48px,7vw,96px) 0}
+.visit-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;margin-top:28px}
+.hours-card{background:var(--mustard);border-radius:30px;padding:28px 30px}
+.hours-card h3{font-size:34px;color:var(--brown);margin-bottom:10px}
+.hours{width:100%;border-collapse:collapse;font-size:17px}
+.hours td{padding:8px 0;border-bottom:1.5px dashed rgba(59,38,22,.25)}
+.hours td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.hours tr.today td{font-weight:800;color:var(--brown)}
+.hours tr.closed td:last-child{opacity:.6}
+.reach{margin-top:20px;display:grid;gap:6px}
+.reach .tel{font-size:24px;font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips a{border:2.5px solid var(--brown);border-radius:999px;padding:7px 15px;font-weight:700;font-size:15px}
+.chips a:hover{background:var(--brown);color:var(--mustard)}
+.map{position:relative;border-radius:30px;overflow:hidden;min-height:380px;background:var(--paper);border:4px solid var(--brown)}
+.map svg,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-cap{position:absolute;left:14px;right:14px;bottom:14px;background:var(--paper);border-radius:999px;padding:8px 8px 8px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.map-cap b{font-size:24px}
+.map-cap .btn{min-height:44px}
+
+footer{background:var(--brown);color:var(--cream);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:28px 0}
+.foot b{font-size:22px;color:var(--mustard)}
+.foot .note{width:100%;opacity:.7;font-size:13px}
+.sticky-book{display:none}
+
+/* booking */
+.bk,.lb{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
+.bk[hidden],.lb[hidden]{display:none}
+.bk-backdrop{position:absolute;inset:0;background:rgba(59,38,22,.6)}
+.bk-sheet{position:relative;background:var(--paper);width:min(560px,100%);max-height:92vh;border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
+.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--brown);color:var(--cream)}
+.bk-head b{font-size:24px;color:var(--mustard)}
+.bk-progress{display:flex;gap:5px}.bk-progress i{width:22px;height:6px;border-radius:3px;background:rgba(243,230,204,.3)}.bk-progress i.on{background:var(--mustard)}
+.bk-x{border:0;background:rgba(243,230,204,.18);color:var(--cream);width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
+.bk-body{padding:20px 16px;overflow:auto;flex:1}
+.bk-title{font-size:32px;color:var(--brown);margin-bottom:14px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:10px;cursor:pointer;font:inherit;color:var(--ink);min-height:58px}
+.opt.sel{border-color:var(--orange);background:#fff4ea}
+.opt small{display:block;color:var(--muted);font-size:14px}
+.opt .r{font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;font-size:22px;color:var(--orange)}
+.opt .l{display:flex;align-items:center;gap:12px}
+.opt .av{width:42px;height:42px;border-radius:50%;background:var(--olive);color:var(--paper);display:grid;place-items:center;flex:none;font-weight:900;font-size:20px}
+.dates{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:14px}
+.date{flex:none;width:62px;border:2px solid var(--line);border-radius:18px;background:#fff;padding:8px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.date small{display:block;font-size:13px;color:var(--muted)}.date b{display:block;font-size:21px}
+.date:disabled{opacity:.35;cursor:not-allowed}
+.date.sel{background:var(--orange);border-color:var(--orange);color:var(--paper)}.date.sel small{color:#ffe3cc}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.slot{border:2px solid var(--line);background:#fff;border-radius:999px;min-height:46px;cursor:pointer;font:700 16px "Commissioner";font-variant-numeric:tabular-nums;color:var(--ink)}
+.slot.sel{background:var(--orange);border-color:var(--orange);color:var(--paper)}
+.empty{color:var(--muted);padding:12px 0}.empty.err{color:var(--orange-d)}
+.field{display:block;margin-bottom:12px}.field span{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
+.field input{width:100%;min-height:50px;padding:0 16px;border:2px solid var(--line);border-radius:16px;font:16px "Commissioner";background:#fff;color:var(--ink)}
+.consent{display:flex;gap:10px;font-size:15px;align-items:flex-start}.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--orange)}
+.summary{background:#fff;border:2px solid var(--line);border-radius:18px;padding:10px 14px;margin-bottom:16px;font-size:15px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.summary div span:first-child{color:var(--muted)}
+.done{text-align:center}.done .check{width:66px;height:66px;border-radius:50%;background:var(--olive);color:var(--paper);display:grid;place-items:center;font-size:30px;margin:4px auto 12px}
+.done p{color:var(--muted);margin-bottom:16px}
+.muted-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.bk-foot{display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:2px solid var(--line);background:var(--paper)}
+.bk-foot .btn{flex:1}.bk-foot .btn[hidden]{display:none}
+
+/* lightbox */
+.lb{background:rgba(43,27,16,.94);color:var(--cream);flex-direction:column;padding:56px 12px 24px;z-index:110}
+.lb-fig{width:min(92vw,760px);text-align:center}
+#lb-media img{max-height:72vh;width:auto;max-width:100%;margin:0 auto;border:10px solid #fff;object-fit:contain}
+.lb-empty{position:relative;margin:0 auto;width:min(84vw,460px);aspect-ratio:1/1;background:repeating-conic-gradient(from -90deg at 50% 110%,#e8a835 0 7deg,#efb955 7deg 14deg);
+  border:10px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--brown);padding:24px;font-weight:600}
+#lb-cap{margin-top:14px;font-style:italic;font-weight:700;font-size:20px}
+.lb-count{opacity:.7;font-size:14px;margin-top:4px}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:var(--mustard);color:var(--brown);width:48px;height:48px;border-radius:50%;font-size:26px;font-weight:800;cursor:pointer}
+.lb-x{top:12px;right:12px}.lb-prev{left:12px;top:50%}.lb-next{right:12px;top:50%}
+
+@media (max-width:860px){
+  .links,.nav .btn{display:none}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "p" "c"}
+  .hero-p{margin-top:12px;width:min(100%,420px);justify-self:center}
+  .prices-grid,.visit-grid{grid-template-columns:minmax(0,1fr);gap:26px}
+  .team-grid{grid-template-columns:minmax(0,1fr)}
+  .member{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:center;padding:12px}
+  .member .face{font-size:52px}.member .info{padding:0}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+  .g-item{padding:8px 8px 10px}.g-cap{font-size:15px}
+  .sticky-book{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+  .sticky-book .btn{width:100%;min-height:56px;box-shadow:0 10px 26px rgba(59,38,22,.35)}
+  footer{padding-bottom:84px}
+  .bk{align-items:flex-end}.bk-sheet{border-radius:26px 26px 0 0;max-height:94vh}
+  .lb-prev,.lb-next{top:auto;bottom:18px}
+}
+@media (max-width:600px){.strip-tel,.strip-sep{display:none}.strip{font-size:13px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sun" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#5b3a21"/><circle cx="20" cy="20" r="8" fill="#e8a835"/>
+    <g stroke="#d65f2a" stroke-width="3" stroke-linecap="round"><path d="M20 5v5M20 30v5M5 20h5M30 20h5M9.4 9.4l3.5 3.5M27.1 27.1l3.5 3.5M9.4 30.6l3.5-3.5M27.1 12.9l3.5-3.5"/></g></symbol>
+</svg>
+<script>
+const CONFIG = {
+  name: "Angel",
+  area: { el: "Πόρτο Ράφτη", en: "Porto Rafti" },
+  bookingMode: "demo",                     // "demo": sayfa içi deneme | "link": bookingUrl'e (Easy!Appointments) git
+  bookingUrl: "/rantevou",
+  phone: "+30 690 940 2688",                // Aggelos (cep)
+  whatsapp: "306909402688",
+  viber: "306909402688",
+  instagram: "",                           // Aggelos'un hesabı; boşsa linkler instagram.com ana sayfasına gider
+  mapQuery: "Porto Rafti, Greece",
+  embedMap: true,                          // gerçek sitede true: gömülü Google Maps
+  demoNote: true,                          // altbilgide "örnek içerik" notu
+  services: [                              // ÖRNEK fiyatlar
+    { el: "Κούρεμα", en: "Haircut", min: 30, price: 15 },
+    { el: "Κούρεμα + γένια", en: "Haircut + beard", min: 45, price: 20 },
+    { el: "Γένια", en: "Beard trim", min: 20, price: 8 },
+    { el: "Παιδικό κούρεμα", en: "Kids' cut", min: 30, price: 12 }
+  ],
+  // gün -> [başlangıç, bitiş, [mola]]; 0=Pazar; yoksa izinli. ÖRNEK
+  team: [
+    { name: { el: "Άγγελος", en: "Aggelos" }, acc: { el: "τον Άγγελο", en: "Aggelos" }, role: { el: "Ιδιοκτήτης", en: "Owner" }, mascot: true,
+      hours: { 1: ["10:00","20:00",["14:00","15:00"]], 2: ["10:00","20:00",["14:00","15:00"]], 3: ["10:00","20:00",["14:00","15:00"]], 4: ["10:00","20:00",["14:00","15:00"]],
+               5: ["10:00","20:00",["14:00","15:00"]], 6: ["09:00","17:00",["13:00","13:30"]] } },
+    { name: { el: "Barber 2", en: "Barber 2" }, role: { el: "Barber", en: "Barber" },
+      hours: { 1: ["12:00","20:00",["16:00","16:30"]], 2: ["12:00","20:00",["16:00","16:30"]], 3: ["12:00","20:00",["16:00","16:30"]], 4: ["12:00","20:00",["16:00","16:30"]],
+               5: ["12:00","20:00",["16:00","16:30"]], 6: ["09:00","17:00",["13:00","13:30"]] } },
+    { name: { el: "Barber 3", en: "Barber 3" }, role: { el: "Barber", en: "Barber" }, services: [0, 1, 2],
+      hours: { 1: ["10:00","18:00",["13:00","13:30"]], 3: ["10:00","18:00",["13:00","13:30"]], 4: ["10:00","18:00",["13:00","13:30"]],
+               5: ["10:00","18:00",["13:00","13:30"]], 6: ["09:00","17:00",["13:00","13:30"]] } }
+  ],
+  // Fotoğraflar: src boşsa yer tutucu görünür. Gerçek fotoğrafları photos/ klasörüne koyup yolunu yaz (örn. "photos/dukkan.jpg")
+  heroPhoto: "",
+  photos: [
+    { src: "", el: "Το μαγαζί", en: "The shop" },
+    { src: "", el: "Η καρέκλα", en: "The chair" },
+    { src: "", el: "Skin fade", en: "Skin fade" },
+    { src: "", el: "Γένια με ξυράφι", en: "Razor beard trim" },
+    { src: "", el: "Λεπτομέρειες", en: "Details" },
+    { src: "", el: "Η ομάδα στη δουλειά", en: "The team at work" }
+  ],
+  hours: { 1: ["10:00","20:00"], 2: ["10:00","20:00"], 3: ["10:00","20:00"], 4: ["10:00","20:00"], 5: ["10:00","20:00"], 6: ["09:00","17:00"], 0: null }
+};
+</script>
+
+<div class="strip"><div class="wrap">
+  <span><a class="js-tel strip-tel"><span class="js-tel-text"></span></a><span class="strip-sep"> · </span><span id="today-line"></span></span>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="el" class="on">ΕΛ</button><button data-lang="en">EN</button></div>
+</div></div>
+
+<header><div class="wrap nav">
+  <a href="#top" class="brand"><svg aria-hidden="true"><use href="#sun"/></svg><b class="groovy" data-cfg="name">Angel</b></a>
+  <nav class="links">
+    <a href="#prices" data-el="Τιμές" data-en="Prices">Τιμές</a><a href="#team" data-el="Η ομάδα" data-en="Team">Η ομάδα</a>
+    <a href="#photos" data-el="Το μαγαζί" data-en="The shop">Το μαγαζί</a><a href="#visit" data-el="Ωράριο" data-en="Hours">Ωράριο</a>
+  </nav>
+  <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book">Κλείσε ώρα</a>
+</div></header>
+
+<main id="top">
+  <section class="hero"><div class="wrap hero-grid">
+    <div class="hero-t">
+      <div class="kick" data-el="Κουρείο · Πόρτο Ράφτη" data-en="Barbershop · Porto Rafti">Κουρείο · Πόρτο Ράφτη</div>
+      <h1 data-cfg="name">Angel</h1>
+      <p data-el="Κούρεμα, γένια και καλή κουβέντα με τον Άγγελο και την παρέα του. Κλείσε ώρα online ή πάρε τηλέφωνο." data-en="Haircuts, beards and good conversation with Aggelos and the crew. Book online or give us a call.">Κούρεμα, γένια και καλή κουβέντα με τον Άγγελο και την παρέα του. Κλείσε ώρα online ή πάρε τηλέφωνο.</p>
+    </div>
+    <div class="hero-p">
+      <svg class="rainbow" viewBox="0 0 400 210" aria-hidden="true">
+        <g fill="none" stroke-width="22">
+          <path d="M22 210a178 178 0 0 1 356 0" stroke="#5b3a21"/><path d="M46 210a154 154 0 0 1 308 0" stroke="#d65f2a"/>
+          <path d="M70 210a130 130 0 0 1 260 0" stroke="#e8a835"/><path d="M94 210a106 106 0 0 1 212 0" stroke="#6d7b34"/>
+        </g>
+      </svg>
+      <div class="arch" id="hero-photo"></div>
+    </div>
+    <div class="hero-c">
+      <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα online" data-en="Book online">Κλείσε ώρα online</a>
+      <a class="tel js-tel"><span class="js-tel-text"></span></a>
+    </div>
+  </div></section>
+  <div class="stripes" aria-hidden="true"></div>
+
+  <section class="prices" id="prices"><div class="wrap prices-grid">
+    <div>
+      <h2 data-el="Τιμές" data-en="Prices">Τιμές</h2>
+      <p data-el="Όλες οι τιμές με ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση." data-en="All prices include VAT. Durations are approximate.">Όλες οι τιμές με ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση.</p>
+      <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a>
+    </div>
+    <div class="menu"><h3 data-el="Τιμοκατάλογος" data-en="Price list">Τιμοκατάλογος</h3><div id="board-rows"></div></div>
+  </div></section>
+
+  <section class="team" id="team"><div class="wrap">
+    <h2 data-el="Η παρέα" data-en="The crew">Η παρέα</h2>
+    <div class="team-grid" id="team-grid"></div>
+  </div></section>
+
+  <section class="photos" id="photos"><div class="wrap">
+    <div class="photos-head">
+      <div><h2 data-el="Το μαγαζί" data-en="The shop">Το μαγαζί</h2>
+        <p data-el="Πάτησε μια φωτογραφία για να τη δεις σε πλήρη οθόνη." data-en="Tap a photo to see it full screen.">Πάτησε μια φωτογραφία για να τη δεις σε πλήρη οθόνη.</p></div>
+      <a class="js-ig" href="#">Instagram ↗</a>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div></section>
+
+  <section class="visit" id="visit"><div class="wrap">
+    <h2 data-el="Πότε & πού" data-en="When & where">Πότε & πού</h2>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3 data-el="Ωράριο" data-en="Opening hours">Ωράριο</h3>
+        <table class="hours" id="hours"></table>
+        <div class="reach"><a class="tel js-tel"><span class="js-tel-text"></span></a><span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span></div>
+        <div class="chips"><a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div>
+      </div>
+      <div class="map" id="map-box">
+        <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="380" fill="#f3e6cc"/>
+          <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84h308Z" fill="#3f7f86"/>
+          <g transform="translate(118 176)"><path d="M0-28c-10 0-18 8-18 17 0 13 18 30 18 30s18-17 18-30c0-9-8-17-18-17Z" fill="#d65f2a"/><circle cy="-11" r="6" fill="#fbf3e2"/></g></svg>
+        <div class="map-cap"><b class="groovy" data-cfg="name">Angel</b><a class="btn btn-main js-dir" href="#" data-el="Οδηγίες ↗" data-en="Directions ↗">Οδηγίες ↗</a></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="stripes" aria-hidden="true"></div><div class="wrap foot">
+  <div><b class="groovy" data-cfg="name">Angel</b> · <span data-el="Κουρείο, Πόρτο Ράφτη" data-en="Barbershop, Porto Rafti">Κουρείο, Πόρτο Ράφτη</span></div>
+  <div><span class="js-year"></span> · <a href="#" data-el="Πολιτική απορρήτου" data-en="Privacy policy">Πολιτική απορρήτου</a></div>
+  <div class="note" id="demo-note" hidden data-el="Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά." data-en="Sample: prices, hours and photos are placeholders.">Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά.</div>
+</div></footer>
+
+<div class="sticky-book"><a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a></div>
+
+<div class="bk" id="bk" hidden>
+  <div class="bk-backdrop" data-close></div>
+  <div class="bk-sheet" role="dialog" aria-modal="true" aria-labelledby="bk-title">
+    <div class="bk-head"><b class="groovy" data-cfg="name">Angel</b><div class="bk-progress" id="bk-progress"></div><button class="bk-x" data-close aria-label="Close">×</button></div>
+    <div class="bk-body" id="bk-body"></div>
+    <div class="bk-foot"><button class="btn btn-ghost" id="bk-back"></button><button class="btn btn-main" id="bk-next"></button></div>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photos">
+  <button class="lb-x" aria-label="Close">×</button><button class="lb-prev" aria-label="Previous">‹</button>
+  <figure class="lb-fig"><div id="lb-media"></div><figcaption id="lb-cap"></figcaption><div class="lb-count" id="lb-count"></div></figure>
+  <button class="lb-next" aria-label="Next">›</button>
+</div>
+
+<script>
+{
+  const C = CONFIG;
+  const DAY = { el: ["Κυριακή","Δευτέρα","Τρίτη","Τετάρτη","Πέμπτη","Παρασκευή","Σάββατο"],
+                en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] };
+  const BASE_T = {
+    el: { closed: "Κλειστά", openNow: "Ανοιχτά τώρα", until: "έως", opensToday: "Ανοίγει σήμερα στις", closedNow: "Κλειστά",
+          opens: "ανοίγει", tomorrow: "αύριο", at: "στις", with: "Ραντεβού με", photo: "Φωτογραφία",
+          lbEmpty: "Εδώ θα εμφανίζεται η φωτογραφία σε πλήρη οθόνη.",
+          svc: "Τι θα κάνουμε;", barber: "Με ποιον;", any: "Όποιος είναι διαθέσιμος", anySub: "Η πρώτη ελεύθερη ώρα",
+          when: "Πότε;", details: "Τα στοιχεία σου", next: "Συνέχεια", back: "Πίσω", confirm: "Κλείσε το ραντεβού",
+          close: "Εντάξει", name: "Ονοματεπώνυμο", phone: "Κινητό", email: "Email (προαιρετικό)",
+          consent: "Συμφωνώ με την Πολιτική απορρήτου.", noSlots: "Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.",
+          done: "Σε περιμένουμε!", doneSub: "Θα λάβεις επιβεβαίωση και υπενθύμιση πριν το ραντεβού.",
+          sSvc: "Υπηρεσία", sBarber: "Barber", sWhen: "Πότε", sPrice: "Τιμή",
+          demo: "Demo: το ραντεβού δεν στέλνεται στο κατάστημα.", taken: "Η ώρα μόλις κλείστηκε, διάλεξε άλλη." },
+    en: { closed: "Closed", openNow: "Open now", until: "until", opensToday: "Opens today at", closedNow: "Closed",
+          opens: "opens", tomorrow: "tomorrow", at: "at", with: "Book with", photo: "Photo",
+          lbEmpty: "The photo will appear here, full screen.",
+          svc: "What are we doing?", barber: "With whom?", any: "Whoever is free", anySub: "First free slot",
+          when: "When?", details: "Your details", next: "Continue", back: "Back", confirm: "Book it",
+          close: "Done", name: "Full name", phone: "Mobile", email: "Email (optional)",
+          consent: "I agree to the Privacy policy.", noSlots: "No free slots on this day.",
+          done: "See you soon!", doneSub: "You'll get a confirmation and a reminder before your appointment.",
+          sSvc: "Service", sBarber: "Barber", sWhen: "When", sPrice: "Price",
+          demo: "Demo: this booking is not sent to the shop.", taken: "That slot was just taken, pick another." }
+  };
+  const OV = (typeof T_OVERRIDE !== "undefined") ? T_OVERRIDE : {};
+  const T = { el: Object.assign({}, BASE_T.el, OV.el || {}), en: Object.assign({}, BASE_T.en, OV.en || {}) };
+  const CAM = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg>';
+  let LANG = "el";
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pad = n => String(n).padStart(2, "0");
+  const toMin = s => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
+  const fmt = m => pad(Math.floor(m / 60)) + ":" + pad(m % 60);
+  const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const overlap = (a1, a2, b1, b2) => a1 < b2 && b1 < a2;
+  const offers = (bi, si) => !C.team[bi].services || C.team[bi].services.includes(si);
+  const bk = $("bk"), body = $("bk-body"), btnBack = $("bk-back"), btnNext = $("bk-next");
+
+  /* ---------- page ---------- */
+  function render(lang) {
+    LANG = lang; const t = T[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-" + lang + "]").forEach(el => { el.textContent = el.getAttribute("data-" + lang); });
+    document.querySelectorAll('[data-cfg="name"]').forEach(el => el.textContent = C.name);
+
+    $("board-rows").innerHTML = C.services.map(s =>
+      `<div class="row"><span class="nm">${esc(s[lang])}</span><span class="min">${s.min}′</span><span class="dots"></span><span class="eur">€${s.price}</span></div>`).join("");
+
+    $("team-grid").innerHTML = C.team.map((m, i) => `
+      <div class="member">
+        <div class="face"><span>${esc(m.name[lang][0])}</span></div>
+        <div class="info"><h3>${esc(m.name[lang])}</h3><p>${esc(m.role[lang])}</p>
+          <a class="js-book" data-barber="${i}" href="#">${t.with} ${esc((m.acc || m.name)[lang])} →</a></div>
+      </div>`).join("");
+
+    const now = new Date(), today = now.getDay(), nowMin = now.getHours() * 60 + now.getMinutes();
+    $("hours").innerHTML = [1,2,3,4,5,6,0].map(d => {
+      const h = C.hours[d];
+      return `<tr class="${d === today ? "today" : ""} ${h ? "" : "closed"}"><td>${DAY[lang][d]}</td><td>${h ? h[0] + "–" + h[1] : t.closed}</td></tr>`;
+    }).join("");
+    const th = C.hours[today]; let status = "";
+    if (th && nowMin < toMin(th[0])) status = `${t.opensToday} ${th[0]}`;
+    else if (th && nowMin < toMin(th[1])) status = `${t.openNow} · ${t.until} ${th[1]}`;
+    else for (let k = 1; k <= 7; k++) {
+      const d = (today + k) % 7, h = C.hours[d];
+      if (h) { status = `${t.closedNow} · ${t.opens} ${k === 1 ? t.tomorrow : DAY[lang][d]} ${t.at} ${h[0]}`; break; }
+    }
+    $("today-line").textContent = status;
+
+    const hp = $("hero-photo");
+    if (hp) hp.innerHTML = C.heroPhoto ? `<img src="${esc(C.heroPhoto)}" alt="${esc(C.name)}">`
+                                       : `<span class="empty-ph">${CAM}<span>${t.photo}</span></span>`;
+    $("gallery").innerHTML = C.photos.map((ph, i) => `
+      <button class="g-item" data-i="${i}" aria-label="${esc(ph[lang])}">
+        <span class="g-media">${ph.src ? `<img src="${esc(ph.src)}" alt="${esc(ph[lang])}" loading="lazy">` : `<span class="empty-ph">${CAM}</span>`}</span>
+        <span class="g-cap">${esc(ph[lang])}</span>
+      </button>`).join("");
+    if (!lb.hidden) drawLb();
+
+    document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+    bindLinks();
+    if (!bk.hidden) drawBk();
+  }
+
+  function bindLinks() {
+    document.querySelectorAll(".js-book").forEach(a => a.href = C.bookingMode === "demo" ? "#book" : C.bookingUrl);
+    document.querySelectorAll(".js-tel").forEach(a => a.href = "tel:" + C.phone.replace(/\s/g, ""));
+    document.querySelectorAll(".js-tel-text").forEach(s => s.textContent = C.phone);
+    document.querySelectorAll(".js-wa").forEach(a => { a.href = "https://wa.me/" + C.whatsapp; a.target = "_blank"; a.rel = "noopener"; });
+    document.querySelectorAll(".js-viber").forEach(a => a.href = "viber://chat?number=%2B" + C.viber);
+    document.querySelectorAll(".js-ig").forEach(a => { a.href = "https://www.instagram.com/" + (C.instagram ? C.instagram + "/" : ""); a.target = "_blank"; a.rel = "noopener"; });
+    document.querySelectorAll(".js-dir").forEach(a => { a.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(C.mapQuery); a.target = "_blank"; a.rel = "noopener"; });
+  }
+
+  /* ---------- lightbox ---------- */
+  const lb = $("lb"); let lbI = 0, touchX = null;
+  function openLb(i) { lbI = i; lb.hidden = false; document.body.style.overflow = "hidden"; drawLb(); lb.querySelector(".lb-x").focus(); }
+  function closeLb() { lb.hidden = true; document.body.style.overflow = ""; }
+  function moveLb(d) { lbI = (lbI + d + C.photos.length) % C.photos.length; drawLb(); }
+  function drawLb() {
+    const ph = C.photos[lbI];
+    $("lb-media").innerHTML = ph.src ? `<img src="${esc(ph.src)}" alt="${esc(ph[LANG])}">`
+                                     : `<div class="lb-empty">${CAM}<p>${T[LANG].lbEmpty}</p></div>`;
+    $("lb-cap").textContent = ph[LANG];
+    $("lb-count").textContent = (lbI + 1) + " / " + C.photos.length;
+  }
+  $("gallery").addEventListener("click", e => { const b = e.target.closest(".g-item"); if (b) openLb(+b.dataset.i); });
+  lb.querySelector(".lb-x").addEventListener("click", closeLb);
+  lb.querySelector(".lb-prev").addEventListener("click", () => moveLb(-1));
+  lb.querySelector(".lb-next").addEventListener("click", () => moveLb(1));
+  lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+  lb.addEventListener("touchstart", e => { touchX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", e => { if (touchX == null) return; const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) moveLb(dx < 0 ? 1 : -1); touchX = null; });
+
+  /* ---------- booking ---------- */
+  function hashStr(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
+  let booked = [];
+  try { booked = JSON.parse(localStorage.getItem("angel_demo_bookings") || "[]"); } catch (e) {}
+  const saveBooked = () => { try { localStorage.setItem("angel_demo_bookings", JSON.stringify(booked)); } catch (e) {} };
+  function seededBusy(bi, dateStr) {
+    const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
+    const r = rng(hashStr(bi + "|" + dateStr)); const out = [];
+    for (let t = toMin(h[0]); t < toMin(h[1]); t += 30) if (r() < 0.36) out.push([t, t + (r() < 0.5 ? 30 : 45)]);
+    return out;
+  }
+  function slotsFor(bi, dateStr, dur) {
+    const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
+    const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null;
+    const busy = seededBusy(bi, dateStr).concat(booked.filter(b => b.bi === bi && b.date === dateStr).map(b => [b.start, b.end]));
+    const now = new Date(), isToday = ymd(now) === dateStr, nowMin = now.getHours() * 60 + now.getMinutes() + 30;
+    const out = [];
+    for (let t = toMin(h[0]); t + dur <= toMin(h[1]); t += 15) {
+      if (br && overlap(t, t + dur, br[0], br[1])) continue;
+      if (busy.some(b => overlap(t, t + dur, b[0], b[1]))) continue;
+      if (isToday && t < nowMin) continue;
+      out.push(t);
+    }
+    return out;
+  }
+  const S = {};
+  const reset = pre => Object.assign(S, { step: 0, svc: null, barber: pre ?? null, preset: pre != null, date: null, time: null,
+                                         name: "", phone: "", email: "", consent: false, assigned: null, error: "" });
+  const candidates = () => (S.barber != null && S.barber >= 0) ? [S.barber] : C.team.map((_, i) => i).filter(i => offers(i, S.svc));
+  function slotsForChoice(dateStr) {
+    const dur = C.services[S.svc].min, set = new Set();
+    candidates().forEach(bi => slotsFor(bi, dateStr, dur).forEach(t => set.add(t)));
+    return [...set].sort((a, b) => a - b);
+  }
+  const days = () => Array.from({ length: 21 }, (_, i) => { const x = new Date(); x.setDate(x.getDate() + i); return x; });
+  function openBk(pre) { reset(pre); bk.hidden = false; document.body.style.overflow = "hidden"; drawBk(); }
+  function closeBk() { bk.hidden = true; document.body.style.overflow = ""; }
+  function summary() {
+    const t = T[LANG], s = C.services[S.svc];
+    const bi = S.assigned ?? (S.barber >= 0 ? S.barber : null);
+    const when = S.date ? new Intl.DateTimeFormat(LANG === "el" ? "el-GR" : "en-GB", { weekday: "long", day: "numeric", month: "long" })
+                   .format(new Date(S.date + "T12:00:00")) + " · " + fmt(S.time) : "";
+    return `<div class="summary">
+      <div><span>${t.sSvc}</span><span>${esc(s[LANG])} (${s.min}′)</span></div>
+      <div><span>${t.sBarber}</span><span>${bi != null ? esc(C.team[bi].name[LANG]) : t.any}</span></div>
+      <div><span>${t.sWhen}</span><span>${when}</span></div>
+      <div><span>${t.sPrice}</span><span>€${s.price}</span></div></div>`;
+  }
+  const validDetails = () => S.name.trim().length >= 3 && /^\+?[0-9 ]{10,15}$/.test(S.phone.trim()) &&
+                             (!S.email || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email)) && S.consent;
+  function drawBk() {
+    const t = T[LANG];
+    $("bk-progress").innerHTML = [0,1,2,3].map(i => `<i class="${i <= Math.min(S.step, 3) ? "on" : ""}"></i>`).join("");
+    btnBack.textContent = t.back; btnBack.hidden = S.step === 0 || S.step === 4;
+    btnNext.hidden = S.step < 2;
+    let html = "";
+    if (S.step === 0) {
+      html = `<h2 class="bk-title" id="bk-title">${t.svc}</h2>` + C.services.map((s, i) =>
+        (S.barber != null && S.barber >= 0 && !offers(S.barber, i)) ? "" :
+        `<button class="opt ${S.svc === i ? "sel" : ""}" data-svc="${i}"><span>${esc(s[LANG])}<small>${s.min}′</small></span><span class="r">€${s.price}</span></button>`).join("");
+    }
+    if (S.step === 1) {
+      html = `<h2 class="bk-title" id="bk-title">${t.barber}</h2>
+        <button class="opt ${S.barber === -1 ? "sel" : ""}" data-barber="-1"><span class="l"><span class="av">·</span><span>${t.any}<small>${t.anySub}</small></span></span></button>` +
+        C.team.map((m, i) => !offers(i, S.svc) ? "" :
+        `<button class="opt ${S.barber === i ? "sel" : ""}" data-barber="${i}"><span class="l"><span class="av">${esc(m.name[LANG][0])}</span><span>${esc(m.name[LANG])}<small>${esc(m.role[LANG])}</small></span></span></button>`).join("");
+    }
+    if (S.step === 2) {
+      const loc = LANG === "el" ? "el-GR" : "en-GB";
+      const wd = new Intl.DateTimeFormat(loc, { weekday: "short" }), mo = new Intl.DateTimeFormat(loc, { month: "short" });
+      if (!S.date) S.date = days().map(ymd).find(k => slotsForChoice(k).length) || null;
+      const ds = days().map(d => { const k = ymd(d), has = slotsForChoice(k).length > 0;
+        return `<button class="date ${S.date === k ? "sel" : ""}" data-date="${k}" ${has ? "" : "disabled"}><small>${wd.format(d)}</small><b>${d.getDate()}</b><small>${mo.format(d)}</small></button>`; }).join("");
+      const sl = S.date ? slotsForChoice(S.date) : [];
+      html = `<h2 class="bk-title" id="bk-title">${t.when}</h2><div class="dates">${ds}</div>` +
+        (S.error ? `<p class="empty err">${S.error}</p>` : "") +
+        (sl.length ? `<div class="slots">${sl.map(m => `<button class="slot ${S.time === m ? "sel" : ""}" data-time="${m}">${fmt(m)}</button>`).join("")}</div>`
+                   : `<p class="empty">${t.noSlots}</p>`);
+      btnNext.textContent = t.next; btnNext.disabled = S.time == null;
+    }
+    if (S.step === 3) {
+      html = `<h2 class="bk-title" id="bk-title">${t.details}</h2>${summary()}
+        <label class="field"><span>${t.name}</span><input id="f-name" autocomplete="name" value="${esc(S.name)}"></label>
+        <label class="field"><span>${t.phone}</span><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="69xxxxxxxx" value="${esc(S.phone)}"></label>
+        <label class="field"><span>${t.email}</span><input id="f-email" type="email" autocomplete="email" value="${esc(S.email)}"></label>
+        <label class="consent"><input type="checkbox" id="f-consent" ${S.consent ? "checked" : ""}><span>${t.consent}</span></label>`;
+      btnNext.textContent = t.confirm; btnNext.disabled = !validDetails();
+    }
+    if (S.step === 4) {
+      html = `<div class="done"><div class="check">✓</div><h2 class="bk-title" id="bk-title">${t.done}</h2><p>${t.doneSub}</p></div>${summary()}` +
+        (C.bookingMode === "demo" ? `<p class="muted-note">${t.demo}</p>` : "");
+      btnNext.hidden = false; btnNext.disabled = false; btnNext.textContent = t.close;
+    }
+    body.innerHTML = html;
+    if (S.step === 3) {
+      const upd = () => { S.name = body.querySelector("#f-name").value; S.phone = body.querySelector("#f-phone").value;
+        S.email = body.querySelector("#f-email").value; S.consent = body.querySelector("#f-consent").checked; btnNext.disabled = !validDetails(); };
+      body.querySelectorAll("input").forEach(i => { i.addEventListener("input", upd); i.addEventListener("change", upd); });
+    }
+    if (S.step === 2) { const sel = body.querySelector(".date.sel"); if (sel) sel.scrollIntoView({ inline: "center", block: "nearest" }); }
+  }
+  function confirmBooking() {
+    const dur = C.services[S.svc].min;
+    const bi = candidates().find(i => slotsFor(i, S.date, dur).includes(S.time));
+    if (bi == null) { S.step = 2; S.time = null; S.error = T[LANG].taken; drawBk(); return; }
+    S.assigned = bi; booked.push({ bi, date: S.date, start: S.time, end: S.time + dur }); saveBooked();
+    S.step = 4; drawBk();
+  }
+  body.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.svc != null) { S.svc = +b.dataset.svc; S.step = S.preset ? 2 : 1; S.date = null; S.time = null; drawBk(); }
+    else if (b.dataset.barber != null) { S.barber = +b.dataset.barber; S.step = 2; S.date = null; S.time = null; drawBk(); }
+    else if (b.dataset.date) { S.date = b.dataset.date; S.time = null; S.error = ""; drawBk(); }
+    else if (b.dataset.time) { S.time = +b.dataset.time; S.error = ""; drawBk(); }
+  });
+  btnBack.addEventListener("click", () => { S.step = S.step === 2 ? (S.preset ? 0 : 1) : Math.max(0, S.step - 1); S.error = ""; drawBk(); });
+  btnNext.addEventListener("click", () => {
+    if (S.step === 2 && S.time != null) { S.step = 3; drawBk(); }
+    else if (S.step === 3 && validDetails()) confirmBooking();
+    else if (S.step === 4) closeBk();
+  });
+  bk.querySelectorAll("[data-close]").forEach(x => x.addEventListener("click", closeBk));
+  document.addEventListener("keydown", e => {
+    if (!lb.hidden) { if (e.key === "Escape") closeLb(); if (e.key === "ArrowRight") moveLb(1); if (e.key === "ArrowLeft") moveLb(-1); return; }
+    if (e.key === "Escape" && !bk.hidden) closeBk();
+  });
+  document.addEventListener("click", e => {
+    const a = e.target.closest(".js-book"); if (!a || C.bookingMode !== "demo") return;
+    e.preventDefault(); openBk(a.dataset.barber != null ? +a.dataset.barber : undefined);
+  });
+
+  /* ---------- start ---------- */
+  if (C.embedMap) $("map-box").innerHTML = '<iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=' + encodeURIComponent(C.mapQuery) + '&output=embed"></iframe>';
+  $("demo-note").hidden = !C.demoNote;
+  document.querySelectorAll(".js-year").forEach(y => y.textContent = "© " + new Date().getFullYear());
+  let lang = "el";
+  try { lang = localStorage.getItem("lang") || "el"; } catch (e) {}
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+    try { localStorage.setItem("lang", b.dataset.lang); } catch (e) {}
+    render(b.dataset.lang);
+  }));
+  render(lang);
+}
+
+</script>
+</body>
+</html>
