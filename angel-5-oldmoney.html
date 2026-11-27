@@ -599,6 +599,7 @@ const CONFIG = {
 
 </script>
 
+
 <!--ADMIN--><style>:root{--adm-accent:#141414}</style>
 <script>
 /* Angel demo yönetim paneli: site içinde açılan pencere. Müşteri tarafıyla aynı demo verisini kullanır. */
@@ -940,12 +941,12 @@ const CONFIG = {
   }
 
   /* ---------- giriş noktası: altbilgide link + #admin ---------- */
-  const foot = document.querySelector("footer .foot, footer .wrap, footer");
+  const foot = document.querySelector("footer");
   if (foot) {
     const a = document.createElement("a"); a.href = "#admin"; a.className = "adm-link";
     const setTxt = () => { a.textContent = L() === "en" ? "Admin" : "Διαχείριση"; };
     setTxt(); new MutationObserver(setTxt).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-    const wrapEl = document.createElement("div"); wrapEl.style.cssText = "margin-top:8px;font-size:13px"; wrapEl.appendChild(a); foot.appendChild(wrapEl);
+    const wrapEl = document.createElement("div"); wrapEl.style.cssText = "display:block;width:100%;text-align:center;margin-top:14px;font-size:13px"; wrapEl.appendChild(a); foot.appendChild(wrapEl);
     a.addEventListener("click", e => { e.preventDefault(); open(); });
   }
   if (location.hash === "#admin") open();
