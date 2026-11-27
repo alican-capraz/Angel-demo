@@ -4,214 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Κουρείο Angel · Πόρτο Ράφτη</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%231d3a2e'/%3E%3Ccircle cx='20' cy='20' r='16' fill='none' stroke='%23a88758' stroke-width='1'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-family='Didot,Georgia,serif' font-size='20' fill='%23f4f0e6'%3EA%3C/text%3E%3C/svg%3E">
+<title>Angel · Κουρείο · Πόρτο Ράφτη</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23111'/%3E%3Ctext x='20' y='28' text-anchor='middle' font-family='Garamond,Georgia,serif' font-size='24' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Commissioner:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <style>
-/* VOICE: quiet, formal, unhurried; addresses the guest as "εσείς"
-   IDEA: a gentleman's club menu card and a tailor's label: monogram crest, hairline rules, engraved Didot
-   PICTURE: one full-width photograph of the shop, nothing drawn on top except the name
-   COLOUR and TYPE: bottle green, ivory, brass hairlines, near-black; GFS Didot (the Greek printers' Didot) + light Commissioner
-   LAYOUT: centred crest header, full-bleed photo hero, centred menu card, portrait row, editorial photo grid, hours + map */
-:root{color-scheme:light;--ivory:#f4f0e6;--paper:#fbf9f3;--green:#1d3a2e;--green-d:#13281f;--brass:#a88758;--ink:#1c1b19;--muted:#6c675e;--line:#dcd4c3}
+/* VOICE: understated and formal ("εσείς"), says only what is needed: by appointment
+   IDEA: a well-set book page / private tailor's card: one typeface, black on white, generous margins, photographs in black and white
+   PICTURE: a single black-and-white photograph of the room beside the name, like a frontispiece
+   COLOUR and TYPE: white, black, one grey; EB Garamond only (Greek and Latin), sizes do the work
+   LAYOUT: frontispiece intro, priced list without currency signs, captioned photo plates, barbers as names, three-column visiting card */
+:root{color-scheme:light;--paper:#fcfcfa;--ink:#141414;--muted:#6f6f6b;--line:#e2e1dc}
 *{box-sizing:border-box;min-width:0;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font:300 17px/1.7 "Commissioner",system-ui,sans-serif;color:var(--ink);background:var(--paper);overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font:19px/1.6 "EB Garamond",Garamond,Georgia,serif;color:var(--ink);background:var(--paper);overflow-x:clip;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%;height:100%;object-fit:cover}
-.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
-h1,h2,h3,.didot{font-family:"GFS Didot",Didot,"Bodoni 72",Georgia,serif;font-weight:400;line-height:1.08}
-h2{font-size:clamp(34px,4.6vw,50px)}
-.rule{width:56px;height:1px;background:var(--brass);margin:18px auto 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 28px;border-radius:2px;border:1px solid transparent;cursor:pointer;
-  font:400 15px "Commissioner",sans-serif;letter-spacing:.06em;transition:background .2s,color .2s}
-.btn-main{background:var(--green);color:var(--ivory)}.btn-main:hover{background:var(--green-d)}
-.btn-ivory{background:var(--ivory);color:var(--green)}.btn-ivory:hover{background:#fff}
-.btn-line{background:transparent;color:var(--ink);border-color:var(--ink)}.btn-line:hover{background:var(--ink);color:var(--ivory)}
-.btn:disabled{opacity:.4;cursor:not-allowed}
-:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-weight:400;line-height:1.1}
+h2{font-size:clamp(30px,3.6vw,40px)}
+.label{font-style:italic;color:var(--muted);font-size:17px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid var(--ink);cursor:pointer;font:500 17px "EB Garamond",Georgia,serif;letter-spacing:.02em;transition:background .2s,color .2s}
+.btn-ink{background:var(--ink);color:var(--paper)}.btn-ink:hover{background:#000}
+.btn-line{background:transparent;color:var(--ink)}.btn-line:hover{background:var(--ink);color:var(--paper)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.u{border-bottom:1px solid currentColor;padding-bottom:1px}
+:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
 
-.strip{background:var(--green);color:#d9d3c4;font-size:13px;letter-spacing:.02em}
+.strip{border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
 .strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:36px}
-.strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lang{display:flex;gap:4px;flex:none}
-.lang button{background:none;border:0;color:#d9d3c4;font:400 12px "Commissioner";letter-spacing:.08em;padding:5px 6px;cursor:pointer;opacity:.6;border-bottom:1px solid transparent}
-.lang button.on{opacity:1;border-bottom-color:var(--brass)}
-header{position:sticky;top:0;z-index:50;background:rgba(251,249,243,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:76px;gap:16px}
-.links{display:flex;gap:26px;font-size:14px;letter-spacing:.04em}
-.links.r{justify-content:flex-end}
-.links a:hover{color:var(--brass)}
-.brand{display:flex;align-items:center;gap:12px}
-.crest{width:46px;height:46px}
-.brand b{font-family:"GFS Didot",Georgia,serif;font-weight:400;font-size:26px;letter-spacing:.18em}
+.strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic}
+.lang{display:flex;gap:10px;flex:none}
+.lang button{background:none;border:0;font:15px "EB Garamond";color:var(--muted);cursor:pointer;padding:4px 0}
+.lang button.on{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+header{position:sticky;top:0;z-index:50;background:rgba(252,252,250,.97);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px}
+.mark{display:flex;align-items:baseline;gap:14px}
+.mark b{font-weight:500;font-size:24px;letter-spacing:.32em}
+.mark span{font-style:italic;color:var(--muted);font-size:16px}
+.links{display:flex;gap:28px;font-size:17px}
+.links a:hover{color:var(--muted)}
 
-.hero{position:relative;height:min(84vh,780px);min-height:520px;color:var(--ivory)}
-.hero-media{position:absolute;inset:0;background:
-  repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px),radial-gradient(120% 90% at 70% 30%,#2a4c3d,#13281f)}
-.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,40,31,0) 35%,rgba(19,40,31,.78))}
-.hero-media .empty-ph{position:absolute;top:18%;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(244,240,230,.55);font-size:13px;letter-spacing:.06em}
-.hero-txt{position:absolute;left:0;right:0;bottom:clamp(36px,7vh,72px)}
-.hero-txt small{display:block;color:#cdb58e;font-size:14px;letter-spacing:.12em}
-.hero h1{font-size:clamp(54px,8.6vw,112px);margin:10px 0 14px}
-.hero p{max-width:32em;color:#e4ddcd;font-size:18px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.hero-cta .btn-line{color:var(--ivory);border-color:rgba(244,240,230,.6)}.hero-cta .btn-line:hover{background:var(--ivory);color:var(--green)}
+.intro{padding:clamp(40px,6vw,80px) 0 clamp(56px,8vw,110px)}
+.intro-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,6vw,80px);align-items:end}
+.intro h1{font-size:clamp(46px,6.4vw,80px);letter-spacing:-.01em}
+.intro .lead{font-size:22px;margin-top:18px;max-width:22em}
+.intro .meta{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:grid;gap:4px;color:var(--muted);font-size:17px}
+.intro .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.plate{position:relative;aspect-ratio:4/5;background:#e9e8e3;overflow:hidden}
+.plate img,.g-media img,#lb-media img{filter:grayscale(1) contrast(1.06)}
+.empty-ph{position:absolute;inset:0;display:grid;place-items:center;color:#a5a49e}
 
-.prices{padding:clamp(64px,9vw,120px) 0;text-align:center}
-.menu{width:min(640px,100%);margin:36px auto 0;text-align:left;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);padding:10px 0}
-.row{display:flex;align-items:baseline;gap:12px;padding:16px 4px;border-bottom:1px solid var(--line)}
-.row:last-child{border-bottom:0}
-.row .nm{font-family:"GFS Didot",Georgia,serif;font-size:23px}
-.row .min{font-size:13px;color:var(--muted);font-style:italic}
-.row .dots{flex:1}
-.row .eur{font-family:"GFS Didot",Georgia,serif;font-size:23px}
-.prices .note{color:var(--muted);font-size:14px;margin-top:18px}
-.prices .btn{margin-top:30px}
+.services{border-top:1px solid var(--line);padding:clamp(56px,8vw,100px) 0}
+.two{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,6vw,80px)}
+.two .side p{margin-top:12px}
+#board-rows{border-top:1px solid var(--ink)}
+.row{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row .nm{font-size:23px}
+.row .min{font-style:italic;color:var(--muted);font-size:16px}
+.row .dots{flex:1;border-bottom:1px dotted #b9b8b2;transform:translateY(-6px)}
+.row .eur{font-size:23px;min-width:2ch;text-align:right}
+.row .cur{display:none}
+.services .cta{margin-top:30px}
 
-.team{background:var(--ivory);padding:clamp(64px,9vw,120px) 0;text-align:center}
-.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:44px;text-align:left}
-.member .face{aspect-ratio:4/5;background:var(--green);display:grid;place-items:center;position:relative}
-.member .face::before{content:"";position:absolute;inset:12px;border:1px solid rgba(168,135,88,.55)}
-.member .face span{font-family:"GFS Didot",Georgia,serif;font-size:110px;color:var(--brass)}
-.member .info{padding:18px 2px 0}
-.member h3{font-size:30px}
-.member p{color:var(--muted);font-size:15px}
-.member a{display:inline-block;margin-top:10px;font-size:14px;letter-spacing:.04em;border-bottom:1px solid var(--brass);padding-bottom:2px}
+.plates{background:#f4f3ef;padding:clamp(56px,8vw,100px) 0}
+.plates-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,36px);margin-top:34px}
+.g-item{border:0;background:none;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.g-media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#e4e3de}
+.g-media img{transition:transform .6s}
+.g-item:hover .g-media img{transform:scale(1.03)}
+.g-cap{display:block;margin-top:10px;font-style:italic;color:var(--muted);font-size:16px}
 
-.photos{padding:clamp(64px,9vw,120px) 0}
-.photos-head{text-align:center}
-.photos-head p{color:var(--muted);margin-top:14px;font-size:15px}
-.photos-head a{display:inline-block;margin-top:8px;font-size:14px;border-bottom:1px solid var(--brass)}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(160px,22vw);gap:8px;margin-top:40px}
-.g-item{position:relative;border:0;padding:0;cursor:pointer;overflow:hidden;background:var(--green);font:inherit;text-align:left}
-.g-item:first-child{grid-column:span 2;grid-row:span 2}
-.g-item:nth-child(6n){grid-column:1/-1}
-.g-media{position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 9px),#244536;transition:transform .5s}
-.g-item:nth-child(3n) .g-media{background-color:#2f4f40}.g-item:nth-child(4n) .g-media{background-color:#1a3328}
-.g-item:hover .g-media{transform:scale(1.03)}
-.g-media .empty-ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(244,240,230,.4)}
-.g-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;color:var(--ivory);font-family:"GFS Didot",Georgia,serif;font-size:19px;background:linear-gradient(transparent,rgba(19,40,31,.7))}
+.barbers{padding:clamp(56px,8vw,100px) 0;border-bottom:1px solid var(--line)}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--ink)}
+.member{padding-top:22px}
+.member .face{aspect-ratio:4/5;margin-bottom:14px}
+.member h3{font-size:34px}
+.member p{font-style:italic;color:var(--muted)}
+.member a{display:inline-block;margin-top:10px;font-size:16px;border-bottom:1px solid var(--ink)}
 
-.visit{background:var(--ivory);padding:clamp(64px,9vw,120px) 0}
-.visit h2{text-align:center}
-.visit-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;margin-top:44px;align-items:start}
-.hours{width:100%;border-collapse:collapse;font-size:16px}
-.hours td{padding:12px 0;border-bottom:1px solid var(--line)}
-.hours td:first-child{font-family:"GFS Didot",Georgia,serif;font-size:19px}
-.hours td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.hours tr.today td{color:var(--green);font-weight:500}
-.hours tr.today td:first-child::after{content:" ·";color:var(--brass)}
-.hours tr.closed td:last-child{color:var(--muted);font-style:italic}
-.reach{margin-top:28px;display:grid;gap:4px}
-.reach .tel{font-family:"GFS Didot",Georgia,serif;font-size:26px}
-.reach span{color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:14px;letter-spacing:.04em}
-.chips a{border-bottom:1px solid var(--brass);padding-bottom:2px}
-.map{position:relative;min-height:420px;background:var(--paper);border:1px solid var(--line)}
-.map svg,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.map-cap{position:absolute;left:16px;bottom:16px;right:16px;background:var(--paper);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--line)}
-.map-cap b{font-family:"GFS Didot",Georgia,serif;font-weight:400;font-size:22px;letter-spacing:.12em}
+.visit{padding:clamp(56px,8vw,100px) 0}
+.card3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:30px;border-top:1px solid var(--ink);padding-top:24px}
+.card3 h3{font-size:19px;font-style:italic;color:var(--muted);margin-bottom:10px}
+.hours{width:100%;border-collapse:collapse;font-size:18px}
+.hours td{padding:5px 0}
+.hours td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.hours tr.today td{text-decoration:underline;text-underline-offset:4px}
+.hours tr.closed td:last-child{font-style:italic;color:var(--muted)}
+.card3 .lines{display:grid;gap:6px}
+.card3 .lines a{width:max-content;border-bottom:1px solid var(--line)}
+.card3 .lines a:hover{border-color:var(--ink)}
+.tel{font-size:24px}
+.map{position:relative;margin-top:44px;height:380px;background:#eceae4;border:1px solid var(--line)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(.95)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
 
-footer{background:var(--green);color:#cfc8b7;font-size:13px;padding:44px 0;text-align:center}
-footer .crest{width:54px;height:54px;margin:0 auto 12px;display:block}
-footer b{display:block;font-family:"GFS Didot",Georgia,serif;font-weight:400;font-size:22px;letter-spacing:.2em;color:var(--ivory)}
-footer .meta{margin-top:10px}
-footer .note{margin-top:14px;opacity:.65}
+footer{padding:34px 0 40px;font-size:15px;color:var(--muted);text-align:center}
+footer b{display:block;color:var(--ink);font-weight:500;letter-spacing:.32em;font-size:20px;margin-bottom:6px}
+footer .note{margin-top:10px;font-style:italic;font-size:14px}
 .sticky-book{display:none}
 
 /* booking */
 .bk,.lb{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
 .bk[hidden],.lb[hidden]{display:none}
-.bk-backdrop{position:absolute;inset:0;background:rgba(19,40,31,.62)}
-.bk-sheet{position:relative;background:var(--paper);width:min(560px,100%);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;border-radius:4px}
-.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--green);color:var(--ivory)}
-.bk-head b{font-family:"GFS Didot",Georgia,serif;font-weight:400;font-size:20px;letter-spacing:.18em}
-.bk-progress{display:flex;gap:6px}.bk-progress i{width:22px;height:2px;background:rgba(244,240,230,.3)}.bk-progress i.on{background:var(--brass)}
-.bk-x{border:0;background:none;color:var(--ivory);width:40px;height:40px;font-size:24px;cursor:pointer}
+.bk-backdrop{position:absolute;inset:0;background:rgba(20,20,20,.45)}
+.bk-sheet{position:relative;background:var(--paper);width:min(540px,100%);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--ink)}
+.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.bk-head b{font-weight:500;letter-spacing:.32em;font-size:18px}
+.bk-progress{display:flex;gap:8px}.bk-progress i{width:7px;height:7px;border-radius:50%;background:var(--line)}.bk-progress i.on{background:var(--ink)}
+.bk-x{border:0;background:none;width:40px;height:40px;font-size:24px;cursor:pointer;color:var(--ink)}
 .bk-body{padding:24px 18px;overflow:auto;flex:1}
 .bk-title{font-size:32px;margin-bottom:18px}
-.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;padding:15px 16px;margin-bottom:8px;cursor:pointer;font:inherit;color:var(--ink);min-height:58px}
-.opt:hover{border-color:var(--brass)}
-.opt.sel{border-color:var(--green);box-shadow:inset 3px 0 0 var(--green)}
-.opt small{display:block;color:var(--muted);font-size:13px;font-style:italic}
-.opt .r{font-family:"GFS Didot",Georgia,serif;font-size:22px}
+.opt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:14px 4px;cursor:pointer;font:inherit;color:var(--ink);min-height:56px}
+.opt:hover{background:#f4f3ef}
+.opt.sel{background:var(--ink);color:var(--paper)}.opt.sel small{color:#c9c8c2}
+.opt small{display:block;color:var(--muted);font-size:15px;font-style:italic}
+.opt .r{font-size:22px}
 .opt .l{display:flex;align-items:center;gap:14px}
-.opt .av{width:42px;height:42px;border-radius:50%;border:1px solid var(--brass);color:var(--green);display:grid;place-items:center;flex:none;font-family:"GFS Didot",Georgia,serif;font-size:20px}
-.dates{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:16px}
-.date{flex:none;width:62px;border:1px solid var(--line);background:#fff;padding:8px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
-.date small{display:block;font-size:12px;color:var(--muted)}.date b{display:block;font-family:"GFS Didot",Georgia,serif;font-weight:400;font-size:22px}
-.date:disabled{opacity:.35;cursor:not-allowed}
-.date.sel{background:var(--green);border-color:var(--green);color:var(--ivory)}.date.sel small{color:#cfc8b7}
+.opt .av{display:none}
+.dates{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:14px}
+.date{flex:none;width:60px;border:1px solid var(--line);background:none;padding:6px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.date small{display:block;font-size:14px;color:var(--muted);font-style:italic}.date b{display:block;font-weight:400;font-size:24px}
+.date:disabled{opacity:.3;cursor:not-allowed}
+.date.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}.date.sel small{color:#c9c8c2}
 .slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-.slot{border:1px solid var(--line);background:#fff;min-height:46px;cursor:pointer;font:400 16px "Commissioner";font-variant-numeric:tabular-nums;color:var(--ink)}
-.slot.sel{background:var(--green);border-color:var(--green);color:var(--ivory)}
-.empty{color:var(--muted);padding:12px 0;font-style:italic}.empty.err{color:#8a3b2b}
-.field{display:block;margin-bottom:14px}.field span{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;letter-spacing:.02em}
-.field input{width:100%;min-height:50px;padding:0 14px;border:1px solid var(--line);font:400 16px "Commissioner";background:#fff;color:var(--ink);border-radius:2px}
-.consent{display:flex;gap:10px;font-size:14px;align-items:flex-start}.consent input{width:18px;height:18px;margin-top:3px;accent-color:var(--green)}
-.summary{border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);padding:10px 2px;margin-bottom:18px;font-size:15px}
-.summary div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.summary div span:first-child{color:var(--muted)}
-.done{text-align:center}.done .check{width:62px;height:62px;border-radius:50%;border:1px solid var(--brass);color:var(--green);display:grid;place-items:center;font-size:26px;margin:4px auto 14px}
-.done p{color:var(--muted);margin-bottom:18px}
-.muted-note{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
-.bk-foot{display:flex;gap:10px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--paper)}
+.slot{border:1px solid var(--line);background:none;min-height:46px;cursor:pointer;font:18px "EB Garamond";font-variant-numeric:lining-nums;color:var(--ink)}
+.slot.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.empty{color:var(--muted);padding:12px 0;font-style:italic}.empty.err{color:#7a2318}
+.field{display:block;margin-bottom:14px}.field span{display:block;font-size:16px;font-style:italic;color:var(--muted);margin-bottom:2px}
+.field input{width:100%;min-height:48px;padding:0 2px;border:0;border-bottom:1px solid var(--ink);font:18px "EB Garamond";background:none;color:var(--ink);border-radius:0}
+.consent{display:flex;gap:10px;font-size:16px;align-items:flex-start}.consent input{width:18px;height:18px;margin-top:4px;accent-color:#141414}
+.summary{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 0;margin-bottom:18px;font-size:17px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:3px 0}.summary div span:first-child{color:var(--muted);font-style:italic}
+.done{text-align:center}.done .check{display:none}
+.done p{color:var(--muted);margin-bottom:18px;font-style:italic}
+.muted-note{font-size:14px;color:var(--muted);margin-top:12px;text-align:center;font-style:italic}
+.bk-foot{display:flex;gap:10px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
 .bk-foot .btn{flex:1}.bk-foot .btn[hidden]{display:none}
 
 /* lightbox */
-.lb{background:rgba(13,26,20,.96);color:var(--ivory);flex-direction:column;padding:60px 12px 28px;z-index:110}
+.lb{background:rgba(252,252,250,.98);color:var(--ink);flex-direction:column;padding:60px 12px 26px;z-index:110}
 .lb-fig{width:min(92vw,820px);text-align:center}
 #lb-media img{max-height:74vh;width:auto;max-width:100%;margin:0 auto;object-fit:contain}
-.lb-empty{position:relative;margin:0 auto;width:min(86vw,520px);aspect-ratio:4/3;border:1px solid rgba(168,135,88,.6);
-  background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 9px),#244536;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#cfc8b7;padding:24px;font-size:15px}
-#lb-cap{margin-top:16px;font-family:"GFS Didot",Georgia,serif;font-size:24px}
-.lb-count{color:#a9a291;font-size:13px;letter-spacing:.08em;margin-top:2px}
-.lb-x,.lb-prev,.lb-next{position:absolute;border:1px solid rgba(244,240,230,.4);background:transparent;color:var(--ivory);width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
-.lb-x{top:12px;right:12px}.lb-prev{left:14px;top:50%}.lb-next{right:14px;top:50%}
+.lb-empty{margin:0 auto;width:min(84vw,460px);aspect-ratio:4/5;background:#e9e8e3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);padding:24px;font-style:italic}
+#lb-cap{margin-top:14px;font-style:italic;font-size:20px}
+.lb-count{color:var(--muted);font-size:15px}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:1px solid var(--ink);background:var(--paper);color:var(--ink);width:46px;height:46px;font-size:22px;cursor:pointer}
+.lb-x{top:12px;right:12px}.lb-prev{left:12px;top:50%}.lb-next{right:12px;top:50%}
 
 @media (max-width:860px){
-  .nav{grid-template-columns:auto 1fr;min-height:64px}
+  body{font-size:18px}
   .links{display:none}
-  .brand{justify-self:start}.crest{width:40px;height:40px}.brand b{font-size:22px}
-  .hero{height:auto;min-height:0;display:flex;flex-direction:column}
-  .hero-media{position:relative;inset:auto;aspect-ratio:4/5}
-  .hero-media::after{background:linear-gradient(180deg,rgba(19,40,31,0) 55%,rgba(19,40,31,.85))}
-  .hero-txt{position:relative;bottom:auto;background:var(--green);padding:6px 0 40px;margin-top:-1px}
-  .hero-txt .wrap{margin-top:-110px;position:relative;z-index:1}
-  .team-grid{grid-template-columns:minmax(0,1fr);gap:22px}
-  .member{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
-  .member .face span{font-size:60px}.member .info{padding:0}
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:44vw;gap:6px}
-  .visit-grid{grid-template-columns:minmax(0,1fr);gap:30px}
-  .sticky-book{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--green)}
-  .sticky-book .btn{width:100%;background:var(--ivory);color:var(--green)}
-  footer{padding-bottom:110px}
-  .bk{align-items:flex-end}.bk-sheet{max-height:94vh}
-  .lb-prev,.lb-next{top:auto;bottom:20px}
+  .mark span{display:none}
+  .intro-grid,.two{grid-template-columns:minmax(0,1fr)}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .team-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .member{padding:18px 0;border-bottom:1px solid var(--line)}
+  .card3{grid-template-columns:minmax(0,1fr);gap:28px}
+  .map{height:300px}
+  .sticky-book{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(252,252,250,.97);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+  .sticky-book .btn{width:100%}
+  footer{padding-bottom:100px}
+  .bk{align-items:flex-end}.bk-sheet{max-height:94vh;border-width:1px 0 0}
+  .lb-prev,.lb-next{top:auto;bottom:18px}
 }
 @media (max-width:600px){.strip-tel,.strip-sep{display:none}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="crest" viewBox="0 0 60 60">
-    <circle cx="30" cy="30" r="29" fill="#1d3a2e"/><circle cx="30" cy="30" r="25" fill="none" stroke="#a88758" stroke-width=".8"/>
-    <circle cx="30" cy="30" r="22.5" fill="none" stroke="#a88758" stroke-width=".4"/>
-    <text x="30" y="39.5" text-anchor="middle" font-family="GFS Didot, Didot, Georgia, serif" font-size="27" fill="#f4f0e6">A</text>
-  </symbol>
-</svg>
 <script>
 const T_OVERRIDE = {
-  el: { svc: "Τι θα θέλατε;", barber: "Με ποιον barber;", any: "Οποιοσδήποτε διαθέσιμος", anySub: "Η πρώτη διαθέσιμη ώρα",
-        when: "Πότε σας εξυπηρετεί;", details: "Τα στοιχεία σας", confirm: "Επιβεβαίωση ραντεβού", close: "Κλείσιμο",
-        done: "Σας περιμένουμε.", doneSub: "Θα λάβετε επιβεβαίωση και υπενθύμιση πριν από το ραντεβού σας.",
+  el: { svc: "Τι θα θέλατε;", barber: "Με ποιον κουρέα;", any: "Οποιοσδήποτε διαθέσιμος", anySub: "Η πρώτη διαθέσιμη ώρα",
+        when: "Πότε σας εξυπηρετεί;", details: "Τα στοιχεία σας", confirm: "Επιβεβαίωση", close: "Κλείσιμο",
+        done: "Σας ευχαριστούμε.", doneSub: "Θα λάβετε επιβεβαίωση και υπενθύμιση πριν από το ραντεβού σας.",
         noSlots: "Δεν υπάρχουν διαθέσιμες ώρες αυτή την ημέρα.", taken: "Η ώρα μόλις κλείστηκε. Παρακαλούμε επιλέξτε άλλη.",
         demo: "Demo: το ραντεβού δεν αποστέλλεται στο κατάστημα." },
   en: { svc: "What would you like?", barber: "With which barber?", any: "Any available barber", anySub: "The first available time",
-        when: "When suits you?", details: "Your details", confirm: "Confirm appointment", close: "Close",
-        done: "We look forward to seeing you.", doneSub: "You will receive a confirmation and a reminder before your appointment.",
+        when: "When suits you?", details: "Your details", confirm: "Confirm", close: "Close",
+        done: "Thank you.", doneSub: "You will receive a confirmation and a reminder before your appointment.",
         noSlots: "No times available on this day.", taken: "That time has just been taken. Please choose another." }
 };
 const CONFIG = {
@@ -256,92 +228,99 @@ const CONFIG = {
   ],
   hours: { 1: ["10:00","20:00"], 2: ["10:00","20:00"], 3: ["10:00","20:00"], 4: ["10:00","20:00"], 5: ["10:00","20:00"], 6: ["09:00","17:00"], 0: null }
 };
+/* Demo fotoğrafları (Unsplash License). Gerçek fotoğraflar gelince bu blok silinir, CONFIG.photos doldurulur. */
+{
+  const U = (id, w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w || 1100}&q=70`;
+  CONFIG.heroPhoto = U("photo-1611313151697-d626e818dddf", 1600);
+  CONFIG.photos = [
+    { src: U("photo-1702865272115-5afdbae975af"), el: "Η καρέκλα", en: "The chair" },
+    { src: U("photo-1634480257305-7f4ca3582e6a"), el: "Κούρεμα", en: "A haircut" },
+    { src: U("photo-1634484144058-fbe30f770ca1"), el: "Ξύρισμα με ξυράφι", en: "The razor" },
+    { src: U("photo-1731655257703-99d690707781"), el: "Τα εργαλεία", en: "The tools" },
+    { src: U("photo-1621645582931-d1d3e6564943"), el: "Η δεύτερη καρέκλα", en: "The second chair" },
+    { src: U("photo-1675599193990-33d71150902b"), el: "Το κατάστημα", en: "The room" }
+  ];
+}
 </script>
 
 <div class="strip"><div class="wrap">
   <span><a class="js-tel strip-tel"><span class="js-tel-text"></span></a><span class="strip-sep"> · </span><span id="today-line"></span></span>
-  <div class="lang" role="group" aria-label="Language"><button data-lang="el" class="on">ΕΛ</button><button data-lang="en">EN</button></div>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="el" class="on">Ελληνικά</button><button data-lang="en">English</button></div>
 </div></div>
 
 <header><div class="wrap nav">
+  <a href="#top" class="mark"><b>ANGEL</b><span data-el="Κουρείο, Πόρτο Ράφτη" data-en="Barbershop, Porto Rafti">Κουρείο, Πόρτο Ράφτη</span></a>
   <nav class="links">
-    <a href="#prices" data-el="Τιμοκατάλογος" data-en="Prices">Τιμοκατάλογος</a><a href="#team" data-el="Η ομάδα" data-en="Team">Η ομάδα</a>
-  </nav>
-  <a href="#top" class="brand"><svg class="crest" aria-hidden="true"><use href="#crest"/></svg><b>ANGEL</b></a>
-  <nav class="links r">
-    <a href="#photos" data-el="Το κατάστημα" data-en="The shop">Το κατάστημα</a><a href="#visit" data-el="Ωράριο" data-en="Hours">Ωράριο</a>
+    <a href="#prices" data-el="Υπηρεσίες" data-en="Services">Υπηρεσίες</a><a href="#photos" data-el="Το κατάστημα" data-en="The shop">Το κατάστημα</a>
+    <a href="#visit" data-el="Επίσκεψη" data-en="Visit">Επίσκεψη</a><a href="#" class="js-book u" data-el="Ραντεβού" data-en="Book">Ραντεβού</a>
   </nav>
 </div></header>
 
 <main id="top">
-  <section class="hero">
-    <div class="hero-media" id="hero-photo"></div>
-    <div class="hero-txt"><div class="wrap">
-      <small data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</small>
-      <h1><span data-el="Κουρείο" data-en="Barbershop">Κουρείο</span> <span data-cfg="name">Angel</span></h1>
-      <p data-el="Ο Άγγελος και η ομάδα του σας περιμένουν για κούρεμα και ξύρισμα. Κλείστε το ραντεβού σας online ή τηλεφωνικά." data-en="Aggelos and his team look forward to welcoming you for a haircut and shave. Book online or by telephone.">Ο Άγγελος και η ομάδα του σας περιμένουν για κούρεμα και ξύρισμα. Κλείστε το ραντεβού σας online ή τηλεφωνικά.</p>
-      <div class="hero-cta">
-        <a class="btn btn-ivory js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a>
-        <a class="btn btn-line js-tel"><span class="js-tel-text"></span></a>
+  <section class="intro"><div class="wrap intro-grid">
+    <div>
+      <h1><span data-el="Κουρείο" data-en="Barbershop">Κουρείο</span><br><span data-cfg="name">Angel</span></h1>
+      <p class="lead" data-el="Κούρεμα και ξύρισμα, κατόπιν ραντεβού." data-en="Haircuts and shaves, by appointment.">Κούρεμα και ξύρισμα, κατόπιν ραντεβού.</p>
+      <div class="meta">
+        <span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span>
+        <a class="js-tel"><span class="js-tel-text"></span></a>
       </div>
-    </div></div>
-  </section>
-
-  <section class="prices" id="prices"><div class="wrap">
-    <h2 data-el="Τιμοκατάλογος" data-en="Price list">Τιμοκατάλογος</h2><div class="rule"></div>
-    <div class="menu" id="board-rows"></div>
-    <p class="note" data-el="Οι τιμές περιλαμβάνουν ΦΠΑ. Η διάρκεια είναι ενδεικτική." data-en="Prices include VAT. Durations are approximate.">Οι τιμές περιλαμβάνουν ΦΠΑ. Η διάρκεια είναι ενδεικτική.</p>
-    <a class="btn btn-main js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a>
-  </div></section>
-
-  <section class="team" id="team"><div class="wrap">
-    <h2 data-el="Η ομάδα" data-en="The team">Η ομάδα</h2><div class="rule"></div>
-    <div class="team-grid" id="team-grid"></div>
-  </div></section>
-
-  <section class="photos" id="photos"><div class="wrap">
-    <div class="photos-head">
-      <h2 data-el="Το κατάστημα" data-en="The shop">Το κατάστημα</h2><div class="rule"></div>
-      <p data-el="Πατήστε μια φωτογραφία για να τη δείτε σε πλήρη οθόνη." data-en="Select a photograph to view it full screen.">Πατήστε μια φωτογραφία για να τη δείτε σε πλήρη οθόνη.</p>
-      <a class="js-ig" href="#">Instagram</a>
+      <div class="cta"><a class="btn btn-ink js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a></div>
     </div>
+    <div class="plate" id="hero-photo"></div>
+  </div></section>
+
+  <section class="services" id="prices"><div class="wrap two">
+    <div class="side">
+      <h2 data-el="Υπηρεσίες" data-en="Services">Υπηρεσίες</h2>
+      <p class="label" data-el="Τιμές σε ευρώ, συμπεριλαμβανομένου ΦΠΑ." data-en="Prices in euro, including VAT.">Τιμές σε ευρώ, συμπεριλαμβανομένου ΦΠΑ.</p>
+    </div>
+    <div>
+      <div id="board-rows"></div>
+      <div class="cta"><a class="btn btn-line js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a></div>
+    </div>
+  </div></section>
+
+  <section class="plates" id="photos"><div class="wrap">
+    <div class="plates-head"><h2 data-el="Το κατάστημα" data-en="The shop">Το κατάστημα</h2><a class="js-ig u" href="#">Instagram</a></div>
     <div class="gallery" id="gallery"></div>
   </div></section>
 
+  <section class="barbers" id="team"><div class="wrap two">
+    <div class="side"><h2 data-el="Οι κουρείς" data-en="The barbers">Οι κουρείς</h2></div>
+    <div class="team-grid" id="team-grid"></div>
+  </div></section>
+
   <section class="visit" id="visit"><div class="wrap">
-    <h2 data-el="Ωράριο & τοποθεσία" data-en="Hours & location">Ωράριο & τοποθεσία</h2><div class="rule"></div>
-    <div class="visit-grid">
-      <div>
-        <table class="hours" id="hours"></table>
-        <div class="reach"><a class="tel js-tel"><span class="js-tel-text"></span></a><span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span></div>
-        <div class="chips"><a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div>
-      </div>
-      <div class="map" id="map-box">
-        <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="380" fill="#f4f0e6"/>
-          <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84h308Z" fill="#c9d3cc"/>
-          <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84" fill="none" stroke="#a88758" stroke-width="1"/>
-          <g transform="translate(118 176)"><circle r="9" fill="#1d3a2e"/><circle r="15" fill="none" stroke="#1d3a2e" stroke-width="1"/></g></svg>
-        <div class="map-cap"><b>ANGEL</b><a class="btn btn-main js-dir" href="#" data-el="Οδηγίες στο Google Maps" data-en="Directions in Google Maps">Οδηγίες στο Google Maps</a></div>
-      </div>
+    <h2 data-el="Επίσκεψη" data-en="Visit">Επίσκεψη</h2>
+    <div class="card3">
+      <div><h3 data-el="Διεύθυνση" data-en="Address">Διεύθυνση</h3>
+        <div class="lines"><span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span>
+          <a class="js-dir" href="#" data-el="Οδηγίες στο Google Maps" data-en="Directions in Google Maps">Οδηγίες στο Google Maps</a></div></div>
+      <div><h3 data-el="Ωράριο" data-en="Hours">Ωράριο</h3><table class="hours" id="hours"></table></div>
+      <div><h3 data-el="Επικοινωνία" data-en="Contact">Επικοινωνία</h3>
+        <div class="lines"><a class="tel js-tel"><span class="js-tel-text"></span></a>
+          <a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div></div>
     </div>
+    <div class="map" id="map-box"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#eceae4"/>
+      <path d="M400 0H170c-10 34 26 60 8 96-16 30-64 34-68 74-3 38 40 52 36 86-2 20-20 30-24 44h278Z" fill="#d9d8d2"/><circle cx="128" cy="150" r="5" fill="#141414"/></svg></div>
   </div></section>
 </main>
 
 <footer><div class="wrap">
-  <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
   <b>ANGEL</b>
-  <div class="meta"><span data-el="Κουρείο · Πόρτο Ράφτη" data-en="Barbershop · Porto Rafti">Κουρείο · Πόρτο Ράφτη</span> · <span class="js-year"></span> · <a href="#" data-el="Πολιτική απορρήτου" data-en="Privacy policy">Πολιτική απορρήτου</a></div>
-  <div class="note" id="demo-note" hidden data-el="Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά." data-en="Sample: prices, hours and photos are placeholders.">Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά.</div>
+  <div><span data-el="Κουρείο · Πόρτο Ράφτη" data-en="Barbershop · Porto Rafti">Κουρείο · Πόρτο Ράφτη</span> · <span class="js-year"></span> · <a href="#" class="u" data-el="Απόρρητο" data-en="Privacy">Απόρρητο</a></div>
+  <div class="note" id="demo-note" hidden data-el="Δείγμα: φωτογραφίες από το Unsplash, τιμές και ωράριο ενδεικτικά." data-en="Sample: photos from Unsplash, prices and hours are placeholders.">Δείγμα: φωτογραφίες από το Unsplash, τιμές και ωράριο ενδεικτικά.</div>
 </div></footer>
 
-<div class="sticky-book"><a class="btn js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a></div>
+<div class="sticky-book"><a class="btn btn-ink js-book" href="#" data-el="Κλείστε ραντεβού" data-en="Book an appointment">Κλείστε ραντεβού</a></div>
 
 <div class="bk" id="bk" hidden>
   <div class="bk-backdrop" data-close></div>
   <div class="bk-sheet" role="dialog" aria-modal="true" aria-labelledby="bk-title">
     <div class="bk-head"><b>ANGEL</b><div class="bk-progress" id="bk-progress"></div><button class="bk-x" data-close aria-label="Close">×</button></div>
     <div class="bk-body" id="bk-body"></div>
-    <div class="bk-foot"><button class="btn btn-line" id="bk-back"></button><button class="btn btn-main" id="bk-next"></button></div>
+    <div class="bk-foot"><button class="btn btn-line" id="bk-back"></button><button class="btn btn-ink" id="bk-next"></button></div>
   </div>
 </div>
 
@@ -400,11 +379,11 @@ const CONFIG = {
     document.querySelectorAll('[data-cfg="name"]').forEach(el => el.textContent = C.name);
 
     $("board-rows").innerHTML = C.services.map(s =>
-      `<div class="row"><span class="nm">${esc(s[lang])}</span><span class="min">${s.min}′</span><span class="dots"></span><span class="eur">€${s.price}</span></div>`).join("");
+      `<div class="row"><span class="nm">${esc(s[lang])}</span><span class="min">${s.min}′</span><span class="dots"></span><span class="eur"><span class="cur">€</span>${s.price}</span></div>`).join("");
 
     $("team-grid").innerHTML = C.team.map((m, i) => `
-      <div class="member">
-        <div class="face"><span>${esc(m.name[lang][0])}</span></div>
+      <div class="member" data-n="${i + 1}">
+        ${m.photo ? `<div class="face"><img src="${esc(m.photo)}" alt="${esc(m.name[lang])}"></div>` : ""}
         <div class="info"><h3>${esc(m.name[lang])}</h3><p>${esc(m.role[lang])}</p>
           <a class="js-book" data-barber="${i}" href="#">${t.with} ${esc((m.acc || m.name)[lang])} →</a></div>
       </div>`).join("");

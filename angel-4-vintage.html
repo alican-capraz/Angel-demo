@@ -4,197 +4,194 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Angel · Κουρείο στο Πόρτο Ράφτη</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%235b3a21'/%3E%3Ccircle cx='20' cy='20' r='8' fill='%23e8a835'/%3E%3Cg stroke='%23d65f2a' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M20 5v5M20 30v5M5 20h5M30 20h5M9.4 9.4l3.5 3.5M27.1 27.1l3.5 3.5M9.4 30.6l3.5-3.5M27.1 12.9l3.5-3.5'/%3E%3C/g%3E%3C/svg%3E">
+<title>Angel · Κουρείο · Πόρτο Ράφτη</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='6' fill='%231b1a17'/%3E%3Cpath d='M20 7l3.6 8.2 8.9.8-6.7 5.9 2 8.7L20 26l-7.8 4.6 2-8.7-6.7-5.9 8.9-.8z' fill='%23b3261e'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..900,0..100,0..100&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wdth,wght@0,62.5..100,300..900;1,62.5..100,300..900&family=Pirata+One&display=swap" rel="stylesheet">
 <style>
-/* VOICE: warm, laid-back 70s neighbourhood barber; first-name terms
-   IDEA: a 1970s record sleeve / surf-shop poster: rainbow arcs, arched photo window, polaroids on the wall
-   PICTURE: the shop photo in a tall arch with 70s rainbow arcs rising behind it
-   COLOUR and TYPE: sand cream, chocolate brown, burnt orange, mustard, olive; Commissioner with full flair + volume (groovy Greek too)
-   LAYOUT: poster hero, stripe band, menu card on brown, arched team portraits, polaroid wall, mustard hours card */
-:root{color-scheme:light;--cream:#f3e6cc;--paper:#fbf3e2;--ink:#3b2616;--brown:#5b3a21;--orange:#d65f2a;--orange-d:#b84d1f;
-  --mustard:#e8a835;--olive:#6d7b34;--teal:#3f7f86;--muted:#7a634e;--line:#e3d2b4}
+/* VOICE: old-school neighbourhood barber with tattoo-parlour manners; few words, first-name terms
+   IDEA: a tattoo flash sheet pinned in a barbershop window: blackletter name, scroll banner, numbered price tags, painted window hours
+   PICTURE: the shop photo, darkened and warmed, behind a hand-painted sign
+   COLOUR and TYPE: aged paper, ink black, tattoo red, deep teal, a little gold; Pirata One for the Latin name only, Noto Serif condensed black for Greek
+   LAYOUT: sign hero, flash-sheet price grid, dark photo wall, chair roster, painted-glass hours with map */
+:root{color-scheme:light;--paper:#efe6d2;--paper2:#f6efe0;--ink:#1b1a17;--ink2:#2a2824;--red:#b3261e;--red-d:#8f1e18;--teal:#1f4a47;--gold:#d4a73a;--muted:#6e665a;--line:#cfc3a8}
 *{box-sizing:border-box;min-width:0;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{font:17px/1.6 "Commissioner",system-ui,sans-serif;font-variation-settings:"FLAR" 30,"VOLM" 0;color:var(--ink);background:var(--cream);overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font:17px/1.6 "Noto Serif",Georgia,serif;color:var(--ink);background:var(--paper);overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%;height:100%;object-fit:cover}
-.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
-.groovy,h1,h2,h3{font-family:"Commissioner",sans-serif;font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;line-height:1.02;letter-spacing:-.01em}
-h2{font-size:clamp(34px,5vw,52px)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;border:0;cursor:pointer;
-  font:700 17px "Commissioner",sans-serif;font-variation-settings:"FLAR" 100,"VOLM" 60;transition:background .15s,transform .1s}
-.btn:active{transform:translateY(1px)}
-.btn-main{background:var(--orange);color:var(--paper)}.btn-main:hover{background:var(--orange-d)}
-.btn-ghost{background:transparent;color:var(--ink);border:2.5px solid var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.cond,h2,h3{font-family:"Noto Serif",Georgia,serif;font-stretch:62.5%;font-weight:900;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+h2{font-size:clamp(40px,6.5vw,72px)}
+.script{font-family:"Pirata One","UnifrakturCook",Georgia,serif;font-weight:400;text-transform:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px;border:3px solid var(--ink);cursor:pointer;
+  font:900 18px "Noto Serif",Georgia,serif;font-stretch:62.5%;text-transform:uppercase;letter-spacing:.04em;box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn-red{background:var(--red);color:var(--paper2)}
+.btn-paper{background:var(--paper2);color:var(--ink)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
-.strip{background:var(--brown);color:var(--cream);font-size:14px}
-.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:38px}
+.strip{background:var(--ink);color:#cfc3a8;font-size:14px}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:36px}
 .strip .wrap>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lang{display:flex;gap:2px;flex:none}
-.lang button{background:none;border:0;color:var(--cream);font:700 13px "Commissioner";padding:5px 9px;border-radius:999px;cursor:pointer;opacity:.7}
-.lang button.on{opacity:1;background:rgba(251,243,226,.18)}
-header{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:2px solid var(--brown)}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:66px}
-.brand{display:flex;align-items:center;gap:10px}
-.brand svg{width:44px;height:44px}
-.brand b{font-size:30px}
-.links{display:flex;gap:24px;font-weight:600}
-.links a:hover{color:var(--orange)}
-.nav .btn{min-height:44px;padding:0 20px}
+.lang button{background:none;border:0;color:#cfc3a8;font:700 13px "Noto Serif";padding:4px 8px;cursor:pointer;opacity:.6}
+.lang button.on{opacity:1;color:var(--gold)}
+header{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper);border-bottom:3px solid var(--red)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:58px}
+.nav .logo{font-size:34px;line-height:1;color:var(--paper2)}
+.links{display:flex;gap:22px;font-size:16px;font-stretch:75%;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{color:var(--gold)}
+.nav .btn{min-height:40px;padding:0 16px;font-size:16px;box-shadow:3px 3px 0 #000;border-color:#000}
 
-.hero{padding:clamp(28px,5vw,60px) 0 clamp(36px,6vw,72px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"t p" "c p";column-gap:52px;align-items:end}
-.hero-t{grid-area:t}.hero-c{grid-area:c}.hero-p{grid-area:p}
-.kick{font-weight:700;color:var(--orange);font-size:18px}
-.hero h1{font-size:clamp(84px,15vw,190px);color:var(--brown);margin:6px 0 10px;font-weight:900}
-.hero-t p{font-size:19px;max-width:28em}
-.hero-c{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
-.hero-c .tel{font-weight:700;border-bottom:2.5px solid var(--ink);padding-bottom:1px}
-.hero-p{position:relative;padding-top:34px;overflow:hidden;padding-inline:6%;margin-inline:-6%}
-.rainbow{position:absolute;left:0;top:0;width:100%;height:auto}
-.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 22px 22px;overflow:hidden;border:10px solid var(--paper);
-  box-shadow:0 18px 0 -6px rgba(59,38,22,.18);background:repeating-conic-gradient(from -90deg at 50% 105%,#e8a835 0 7deg,#efb955 7deg 14deg)}
-.empty-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--brown);font-weight:600;font-size:15px}
-.stripes{height:40px;background:linear-gradient(var(--brown) 0 25%,var(--orange) 25% 50%,var(--mustard) 50% 75%,var(--olive) 75%)}
+/* sign hero */
+.hero{position:relative;background:var(--ink);color:var(--paper2);text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{filter:sepia(.45) contrast(1.1) brightness(.5)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 45%,rgba(27,26,23,.15),rgba(27,26,23,.8))}
+.hero-in{position:relative;padding:clamp(56px,10vw,120px) 0 clamp(52px,9vw,110px)}
+.stars{color:var(--gold);letter-spacing:.5em;font-size:15px;font-stretch:75%;font-weight:700}
+.hero .logo{font-size:clamp(110px,22vw,230px);line-height:.9;margin:6px 0 0;text-shadow:4px 4px 0 var(--red)}
+.ribbon{display:block;width:min(520px,92%);margin:-6px auto 0;height:auto}
+.ribbon text{font-family:"Noto Serif",Georgia,serif;font-stretch:62.5%;font-weight:900}
+.hero .what{margin-top:18px;font-size:clamp(19px,2.4vw,24px);font-style:italic;color:#e9dfc8}
+.hero-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px}
+.hero-cta .btn-paper{border-color:var(--paper2);box-shadow:4px 4px 0 var(--red)}
 
-.prices{background:var(--brown);color:var(--cream);padding:clamp(44px,6vw,84px) 0}
-.prices-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:44px;align-items:center}
-.prices h2{color:var(--mustard)}
-.prices p{margin:12px 0 24px;color:#ecdcc0;max-width:24em}
-.menu{background:var(--paper);color:var(--ink);border-radius:30px;padding:30px clamp(20px,3.5vw,40px) 26px;border:4px solid var(--mustard)}
-.menu h3{font-size:30px;color:var(--orange);text-align:center;margin-bottom:14px}
-.row{display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1.5px dashed var(--line);font-size:19px}
-.row:last-child{border-bottom:0}
-.row .nm{font-weight:700}.row .min{color:var(--muted);font-size:14px}.row .dots{flex:1}
-.row .eur{font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;font-size:24px;color:var(--orange)}
+/* flash sheet */
+.flash{padding:clamp(56px,8vw,104px) 0}
+.sheet{background:var(--paper2);border:3px solid var(--ink);outline:3px solid var(--ink);outline-offset:6px;padding:clamp(22px,4vw,44px);margin:6px}
+.sheet-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:16px}
+.sheet-head h2{color:var(--red);font-size:clamp(28px,8vw,72px)}
+.sheet-head p{color:var(--muted);font-style:italic;max-width:22em}
+#board-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px;counter-reset:n}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"nm eur" "min eur";align-items:center;gap:2px 16px;border:3px solid var(--ink);padding:18px 18px 16px;background:#fff8ea;counter-increment:n}
+.row::before{content:"Νο " counter(n);position:absolute;top:-13px;left:14px;background:var(--ink);color:var(--paper2);font:900 14px "Noto Serif";font-stretch:75%;padding:2px 9px;letter-spacing:.06em}
+.row .nm{grid-area:nm;font-stretch:62.5%;font-weight:900;font-size:clamp(24px,3vw,32px);text-transform:uppercase;line-height:1.05}
+.row .min{grid-area:min;color:var(--muted);font-style:italic;font-size:15px}
+.row .dots{display:none}
+.row .eur{grid-area:eur;width:78px;height:78px;border-radius:50%;background:var(--red);color:var(--paper2);display:grid;place-items:center;font-stretch:62.5%;font-weight:900;font-size:30px;transform:rotate(-8deg);box-shadow:3px 3px 0 var(--ink)}
+.flash .after{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:28px}
+.flash .after small{color:var(--muted);font-style:italic}
 
-.team{padding:clamp(48px,7vw,96px) 0}
-.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
-.member{background:var(--paper);border-radius:26px;padding:14px 14px 22px;border:2px solid var(--line)}
-.member .face{aspect-ratio:1/1;border-radius:999px 999px 18px 18px;display:grid;place-items:center;background:var(--olive);color:var(--paper);
-  font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:900;font-size:96px}
-.member:nth-child(3n+2) .face{background:var(--orange)}.member:nth-child(3n) .face{background:var(--mustard);color:var(--brown)}
-.member .info{padding:16px 8px 0}
-.member h3{font-size:30px;color:var(--brown)}
-.member p{color:var(--muted)}
-.member a{display:inline-block;margin-top:10px;font-weight:700;color:var(--orange);border-bottom:2px solid currentColor}
+/* photo wall */
+.wall{background:var(--ink);color:var(--paper2);padding:clamp(56px,8vw,104px) 0}
+.wall-head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.wall-head a{color:var(--gold);font-weight:700;border-bottom:2px solid var(--gold)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(180px,24vw,300px);gap:14px;margin-top:30px}
+.g-item:nth-child(1){grid-row:span 2}.g-item:nth-child(6){grid-column:1/-1}
+.g-item{position:relative;border:6px solid var(--paper2);padding:0;cursor:pointer;background:var(--ink2);overflow:hidden;font:inherit}
+.g-media{position:absolute;inset:0}
+.g-media img{filter:sepia(.35) contrast(1.08);transition:transform .4s}
+.g-item:hover .g-media img{transform:scale(1.04)}
+.g-cap{position:absolute;left:0;bottom:0;background:var(--paper2);color:var(--ink);font:900 15px "Noto Serif";font-stretch:62.5%;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px 3px 4px}
+.empty-ph{position:absolute;inset:0;display:grid;place-items:center;color:#8d8370}
 
-.photos{background:var(--paper);padding:clamp(48px,7vw,96px) 0;border-top:2px solid var(--line)}
-.photos-head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
-.photos-head p{color:var(--muted);margin-top:6px}
-.photos-head a{font-weight:700;border-bottom:2.5px solid var(--ink)}
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px;margin-top:32px}
-.g-item{background:#fff;border:0;padding:12px 12px 14px;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(59,38,22,.16);transition:transform .2s;font:inherit;color:var(--ink)}
-.g-item:nth-child(odd){transform:rotate(-1.6deg)}.g-item:nth-child(even){transform:rotate(1.3deg)}
-.g-item:hover{transform:rotate(0) scale(1.02)}
-.g-media{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:repeating-conic-gradient(from -90deg at 50% 110%,#e8c58a 0 7deg,#efd3a0 7deg 14deg)}
-.g-media .empty-ph{color:#8a6a45}
-.g-cap{display:block;margin-top:10px;font-style:italic;font-weight:600;font-size:17px}
+/* chairs */
+.chairs{padding:clamp(56px,8vw,104px) 0}
+.team-grid{margin-top:26px;border-top:3px solid var(--ink)}
+.member{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:18px;padding:20px 0;border-bottom:1.5px dashed var(--ink)}
+.member::before{content:"Καρέκλα " attr(data-n);font:900 16px "Noto Serif";font-stretch:62.5%;text-transform:uppercase;letter-spacing:.08em;color:var(--red)}
+html[lang="en"] .member::before{content:"Chair " attr(data-n)}
+.member .face{display:none}
+.member .info{display:flex;align-items:baseline;gap:8px 22px;flex-wrap:wrap}
+.member h3{font-size:clamp(34px,4.6vw,48px);text-transform:none;font-stretch:62.5%}
+.member p{color:var(--muted);font-style:italic}
+.member a{margin-left:auto;font-weight:700;border-bottom:2px solid var(--red);color:var(--red)}
 
-.visit{padding:clamp(48px,7vw,96px) 0}
-.visit-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;margin-top:28px}
-.hours-card{background:var(--mustard);border-radius:30px;padding:28px 30px}
-.hours-card h3{font-size:34px;color:var(--brown);margin-bottom:10px}
-.hours{width:100%;border-collapse:collapse;font-size:17px}
-.hours td{padding:8px 0;border-bottom:1.5px dashed rgba(59,38,22,.25)}
+/* painted window */
+.visit{background:var(--teal);color:var(--paper2);padding:clamp(56px,8vw,104px) 0}
+.visit-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:30px;align-items:stretch}
+.glass h2{color:var(--gold);text-shadow:3px 3px 0 rgba(0,0,0,.35)}
+.hours{width:100%;border-collapse:collapse;margin-top:18px;font-size:18px}
+.hours td{padding:9px 0;border-bottom:1px solid rgba(246,239,224,.25)}
+.hours td:first-child{font-stretch:75%;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
 .hours td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.hours tr.today td{font-weight:800;color:var(--brown)}
-.hours tr.closed td:last-child{opacity:.6}
-.reach{margin-top:20px;display:grid;gap:6px}
-.reach .tel{font-size:24px;font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chips a{border:2.5px solid var(--brown);border-radius:999px;padding:7px 15px;font-weight:700;font-size:15px}
-.chips a:hover{background:var(--brown);color:var(--mustard)}
-.map{position:relative;border-radius:30px;overflow:hidden;min-height:380px;background:var(--paper);border:4px solid var(--brown)}
+.hours tr.today td{color:var(--gold)}
+.hours tr.closed td:last-child{opacity:.55;font-style:italic}
+.reach{margin-top:22px;display:grid;gap:2px}
+.reach .tel{font-size:28px;font-weight:900;font-stretch:62.5%}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chips a{border:2px solid var(--paper2);padding:6px 14px;font-weight:700;font-size:15px}
+.chips a:hover{background:var(--paper2);color:var(--teal)}
+.map{position:relative;min-height:400px;border:6px solid var(--paper2);background:#2a5c58}
 .map svg,.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.map-cap{position:absolute;left:14px;right:14px;bottom:14px;background:var(--paper);border-radius:999px;padding:8px 8px 8px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.map-cap b{font-size:24px}
-.map-cap .btn{min-height:44px}
+.map-cap{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:flex-end}
 
-footer{background:var(--brown);color:var(--cream);font-size:14px}
-.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:28px 0}
-.foot b{font-size:22px;color:var(--mustard)}
-.foot .note{width:100%;opacity:.7;font-size:13px}
+footer{background:var(--ink);color:#bfb39a;padding:34px 0;font-size:14px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.foot .logo{font-size:38px;color:var(--paper2);line-height:1}
+.foot .note{width:100%;opacity:.7;font-size:13px;font-style:italic}
 .sticky-book{display:none}
 
 /* booking */
 .bk,.lb{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
 .bk[hidden],.lb[hidden]{display:none}
-.bk-backdrop{position:absolute;inset:0;background:rgba(59,38,22,.6)}
-.bk-sheet{position:relative;background:var(--paper);width:min(560px,100%);max-height:92vh;border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
-.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--brown);color:var(--cream)}
-.bk-head b{font-size:24px;color:var(--mustard)}
-.bk-progress{display:flex;gap:5px}.bk-progress i{width:22px;height:6px;border-radius:3px;background:rgba(243,230,204,.3)}.bk-progress i.on{background:var(--mustard)}
-.bk-x{border:0;background:rgba(243,230,204,.18);color:var(--cream);width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer}
+.bk-backdrop{position:absolute;inset:0;background:rgba(27,26,23,.7)}
+.bk-sheet{position:relative;background:var(--paper2);width:min(560px,100%);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;border:3px solid var(--ink)}
+.bk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 14px;background:var(--ink);color:var(--paper2)}
+.bk-head .logo{font-size:32px;line-height:1}
+.bk-progress{display:flex;gap:6px}.bk-progress i{width:18px;height:18px;border-radius:50%;border:2px solid #6e665a}.bk-progress i.on{background:var(--red);border-color:var(--red)}
+.bk-x{border:0;background:none;color:var(--paper2);width:40px;height:40px;font-size:26px;cursor:pointer}
 .bk-body{padding:20px 16px;overflow:auto;flex:1}
-.bk-title{font-size:32px;color:var(--brown);margin-bottom:14px}
-.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:10px;cursor:pointer;font:inherit;color:var(--ink);min-height:58px}
-.opt.sel{border-color:var(--orange);background:#fff4ea}
-.opt small{display:block;color:var(--muted);font-size:14px}
-.opt .r{font-family:"Commissioner";font-variation-settings:"FLAR" 100,"VOLM" 100;font-weight:800;font-size:22px;color:var(--orange)}
+.bk-title{font-size:38px;color:var(--red);margin-bottom:16px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;border:3px solid var(--ink);background:#fff8ea;padding:12px 14px;margin-bottom:10px;cursor:pointer;font:inherit;color:var(--ink);min-height:58px}
+.opt.sel{background:var(--ink);color:var(--paper2)}.opt.sel small{color:#cfc3a8}
+.opt small{display:block;color:var(--muted);font-size:14px;font-style:italic}
+.opt .r{font-stretch:62.5%;font-weight:900;font-size:26px;color:var(--red)}.opt.sel .r{color:var(--gold)}
 .opt .l{display:flex;align-items:center;gap:12px}
-.opt .av{width:42px;height:42px;border-radius:50%;background:var(--olive);color:var(--paper);display:grid;place-items:center;flex:none;font-weight:900;font-size:20px}
-.dates{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:14px}
-.date{flex:none;width:62px;border:2px solid var(--line);border-radius:18px;background:#fff;padding:8px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
-.date small{display:block;font-size:13px;color:var(--muted)}.date b{display:block;font-size:21px}
-.date:disabled{opacity:.35;cursor:not-allowed}
-.date.sel{background:var(--orange);border-color:var(--orange);color:var(--paper)}.date.sel small{color:#ffe3cc}
+.opt .av{width:40px;height:40px;border-radius:50%;background:var(--red);color:var(--paper2);display:grid;place-items:center;flex:none;font-weight:900;font-size:18px}
+.dates{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:12px}
+.date{flex:none;width:60px;border:3px solid var(--ink);background:#fff8ea;padding:6px 0;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.date small{display:block;font-size:12px;color:var(--muted);text-transform:uppercase}.date b{display:block;font-size:22px;font-stretch:62.5%;font-weight:900}
+.date:disabled{opacity:.3;cursor:not-allowed}
+.date.sel{background:var(--red);color:var(--paper2)}.date.sel small{color:#f3d2cf}
 .slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.slot{border:2px solid var(--line);background:#fff;border-radius:999px;min-height:46px;cursor:pointer;font:700 16px "Commissioner";font-variant-numeric:tabular-nums;color:var(--ink)}
-.slot.sel{background:var(--orange);border-color:var(--orange);color:var(--paper)}
-.empty{color:var(--muted);padding:12px 0}.empty.err{color:var(--orange-d)}
+.slot{border:2px solid var(--ink);background:#fff8ea;min-height:46px;cursor:pointer;font:700 16px "Noto Serif";font-variant-numeric:tabular-nums;color:var(--ink)}
+.slot.sel{background:var(--ink);color:var(--paper2)}
+.empty{color:var(--muted);padding:12px 0;font-style:italic}.empty.err{color:var(--red)}
 .field{display:block;margin-bottom:12px}.field span{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
-.field input{width:100%;min-height:50px;padding:0 16px;border:2px solid var(--line);border-radius:16px;font:16px "Commissioner";background:#fff;color:var(--ink)}
-.consent{display:flex;gap:10px;font-size:15px;align-items:flex-start}.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--orange)}
-.summary{background:#fff;border:2px solid var(--line);border-radius:18px;padding:10px 14px;margin-bottom:16px;font-size:15px}
-.summary div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}.summary div span:first-child{color:var(--muted)}
-.done{text-align:center}.done .check{width:66px;height:66px;border-radius:50%;background:var(--olive);color:var(--paper);display:grid;place-items:center;font-size:30px;margin:4px auto 12px}
-.done p{color:var(--muted);margin-bottom:16px}
-.muted-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
-.bk-foot{display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:2px solid var(--line);background:var(--paper)}
+.field input{width:100%;min-height:50px;padding:0 14px;border:3px solid var(--ink);font:16px "Noto Serif";background:#fff;color:var(--ink)}
+.consent{display:flex;gap:10px;font-size:15px;align-items:flex-start}.consent input{width:20px;height:20px;margin-top:3px;accent-color:var(--red)}
+.summary{border:3px solid var(--ink);background:#fff8ea;padding:10px 14px;margin-bottom:16px;font-size:15px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:3px 0}.summary div span:first-child{color:var(--muted)}
+.done{text-align:center}.done .check{width:70px;height:70px;border-radius:50%;background:var(--red);color:var(--paper2);display:grid;place-items:center;font-size:32px;margin:4px auto 12px;transform:rotate(-8deg);box-shadow:3px 3px 0 var(--ink)}
+.done p{color:var(--muted);margin-bottom:16px;font-style:italic}
+.muted-note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center;font-style:italic}
+.bk-foot{display:flex;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:3px solid var(--ink);background:var(--paper)}
 .bk-foot .btn{flex:1}.bk-foot .btn[hidden]{display:none}
 
 /* lightbox */
-.lb{background:rgba(43,27,16,.94);color:var(--cream);flex-direction:column;padding:56px 12px 24px;z-index:110}
-.lb-fig{width:min(92vw,760px);text-align:center}
-#lb-media img{max-height:72vh;width:auto;max-width:100%;margin:0 auto;border:10px solid #fff;object-fit:contain}
-.lb-empty{position:relative;margin:0 auto;width:min(84vw,460px);aspect-ratio:1/1;background:repeating-conic-gradient(from -90deg at 50% 110%,#e8a835 0 7deg,#efb955 7deg 14deg);
-  border:10px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--brown);padding:24px;font-weight:600}
-#lb-cap{margin-top:14px;font-style:italic;font-weight:700;font-size:20px}
-.lb-count{opacity:.7;font-size:14px;margin-top:4px}
-.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:var(--mustard);color:var(--brown);width:48px;height:48px;border-radius:50%;font-size:26px;font-weight:800;cursor:pointer}
+.lb{background:rgba(20,19,17,.96);color:var(--paper2);flex-direction:column;padding:60px 12px 26px;z-index:110}
+.lb-fig{width:min(92vw,860px);text-align:center}
+#lb-media img{max-height:72vh;width:auto;max-width:100%;margin:0 auto;border:8px solid var(--paper2);object-fit:contain;filter:sepia(.25)}
+.lb-empty{margin:0 auto;width:min(86vw,520px);aspect-ratio:4/3;border:8px solid var(--paper2);background:var(--ink2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;color:#bfb39a}
+#lb-cap{margin-top:14px;font:900 24px "Noto Serif";font-stretch:62.5%;text-transform:uppercase;letter-spacing:.04em}
+.lb-count{color:#8d8370;font-size:14px}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:3px solid var(--paper2);background:var(--ink);color:var(--paper2);width:48px;height:48px;font-size:26px;cursor:pointer}
 .lb-x{top:12px;right:12px}.lb-prev{left:12px;top:50%}.lb-next{right:12px;top:50%}
 
 @media (max-width:860px){
   .links,.nav .btn{display:none}
-  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "p" "c"}
-  .hero-p{margin-top:12px;width:min(100%,420px);justify-self:center}
-  .prices-grid,.visit-grid{grid-template-columns:minmax(0,1fr);gap:26px}
-  .team-grid{grid-template-columns:minmax(0,1fr)}
-  .member{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:center;padding:12px}
-  .member .face{font-size:52px}.member .info{padding:0}
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
-  .g-item{padding:8px 8px 10px}.g-cap{font-size:15px}
-  .sticky-book{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
-  .sticky-book .btn{width:100%;min-height:56px;box-shadow:0 10px 26px rgba(59,38,22,.35)}
-  footer{padding-bottom:84px}
-  .bk{align-items:flex-end}.bk-sheet{border-radius:26px 26px 0 0;max-height:94vh}
+  #board-rows{grid-template-columns:minmax(0,1fr)}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:42vw;gap:10px}
+  .g-item:nth-child(1){grid-row:span 2}.g-item:nth-child(6){grid-column:1/-1}
+  .g-item{border-width:4px}
+  .member{grid-template-columns:minmax(0,1fr);gap:4px}
+  .member a{margin-left:0}
+  .visit-grid{grid-template-columns:minmax(0,1fr)}
+  .sticky-book{display:block;position:fixed;left:12px;right:12px;bottom:14px;z-index:60}
+  .sticky-book .btn{width:100%;min-height:54px}
+  footer{padding-bottom:96px}
+  .bk{align-items:flex-end}.bk-sheet{max-height:94vh;border-width:3px 0 0}
   .lb-prev,.lb-next{top:auto;bottom:18px}
 }
 @media (max-width:600px){.strip-tel,.strip-sep{display:none}.strip{font-size:13px}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="sun" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#5b3a21"/><circle cx="20" cy="20" r="8" fill="#e8a835"/>
-    <g stroke="#d65f2a" stroke-width="3" stroke-linecap="round"><path d="M20 5v5M20 30v5M5 20h5M30 20h5M9.4 9.4l3.5 3.5M27.1 27.1l3.5 3.5M9.4 30.6l3.5-3.5M27.1 12.9l3.5-3.5"/></g></symbol>
-</svg>
 <script>
 const CONFIG = {
   name: "Angel",
@@ -238,6 +235,19 @@ const CONFIG = {
   ],
   hours: { 1: ["10:00","20:00"], 2: ["10:00","20:00"], 3: ["10:00","20:00"], 4: ["10:00","20:00"], 5: ["10:00","20:00"], 6: ["09:00","17:00"], 0: null }
 };
+/* Demo fotoğrafları (Unsplash License). Gerçek fotoğraflar gelince bu blok silinir, CONFIG.photos doldurulur. */
+{
+  const U = (id, w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w || 1200}&q=70`;
+  CONFIG.heroPhoto = U("photo-1675599193990-33d71150902b", 2000);
+  CONFIG.photos = [
+    { src: U("photo-1494873446894-adbfecfc407a"), el: "Γένια", en: "Beard trim" },
+    { src: U("photo-1634480257305-7f4ca3582e6a"), el: "Fade", en: "Fade" },
+    { src: U("photo-1634484144058-fbe30f770ca1"), el: "Ξυράφι", en: "Straight razor" },
+    { src: U("photo-1731655257703-99d690707781"), el: "Ψαλίδι", en: "Scissors" },
+    { src: U("photo-1702865272115-5afdbae975af"), el: "Η καρέκλα", en: "The chair" },
+    { src: U("photo-1621645582931-d1d3e6564943"), el: "Η άλλη καρέκλα", en: "The other chair" }
+  ];
+}
 </script>
 
 <div class="strip"><div class="wrap">
@@ -246,93 +256,89 @@ const CONFIG = {
 </div></div>
 
 <header><div class="wrap nav">
-  <a href="#top" class="brand"><svg aria-hidden="true"><use href="#sun"/></svg><b class="groovy" data-cfg="name">Angel</b></a>
+  <a href="#top" class="logo script" data-cfg="name">Angel</a>
   <nav class="links">
-    <a href="#prices" data-el="Τιμές" data-en="Prices">Τιμές</a><a href="#team" data-el="Η ομάδα" data-en="Team">Η ομάδα</a>
-    <a href="#photos" data-el="Το μαγαζί" data-en="The shop">Το μαγαζί</a><a href="#visit" data-el="Ωράριο" data-en="Hours">Ωράριο</a>
+    <a href="#prices" data-el="Τιμές" data-en="Prices">Τιμές</a><a href="#photos" data-el="Φωτογραφίες" data-en="Photos">Φωτογραφίες</a>
+    <a href="#team" data-el="Καρέκλες" data-en="Chairs">Καρέκλες</a><a href="#visit" data-el="Ωράριο" data-en="Hours">Ωράριο</a>
   </nav>
-  <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book">Κλείσε ώρα</a>
+  <a class="btn btn-red js-book" href="#" data-el="Ραντεβού" data-en="Book">Ραντεβού</a>
 </div></header>
 
 <main id="top">
-  <section class="hero"><div class="wrap hero-grid">
-    <div class="hero-t">
-      <div class="kick" data-el="Κουρείο · Πόρτο Ράφτη" data-en="Barbershop · Porto Rafti">Κουρείο · Πόρτο Ράφτη</div>
-      <h1 data-cfg="name">Angel</h1>
-      <p data-el="Κούρεμα, γένια και καλή κουβέντα με τον Άγγελο και την παρέα του. Κλείσε ώρα online ή πάρε τηλέφωνο." data-en="Haircuts, beards and good conversation with Aggelos and the crew. Book online or give us a call.">Κούρεμα, γένια και καλή κουβέντα με τον Άγγελο και την παρέα του. Κλείσε ώρα online ή πάρε τηλέφωνο.</p>
-    </div>
-    <div class="hero-p">
-      <svg class="rainbow" viewBox="0 0 400 210" aria-hidden="true">
-        <g fill="none" stroke-width="22">
-          <path d="M22 210a178 178 0 0 1 356 0" stroke="#5b3a21"/><path d="M46 210a154 154 0 0 1 308 0" stroke="#d65f2a"/>
-          <path d="M70 210a130 130 0 0 1 260 0" stroke="#e8a835"/><path d="M94 210a106 106 0 0 1 212 0" stroke="#6d7b34"/>
-        </g>
+  <section class="hero">
+    <div class="hero-bg" id="hero-photo"></div>
+    <div class="wrap hero-in">
+      <div class="stars">★ ★ ★</div>
+      <div class="logo script" data-cfg="name">Angel</div>
+      <svg class="ribbon" viewBox="0 0 520 90" role="img" aria-label="Κουρείο · Πόρτο Ράφτη">
+        <path d="M4 30h56v44H4l16-22z" fill="#8f1e18"/><path d="M516 30h-56v44h56l-16-22z" fill="#8f1e18"/>
+        <path d="M60 74l-0 0 22 12V74z" fill="#5e1410"/><path d="M460 74l0 0-22 12V74z" fill="#5e1410"/>
+        <rect x="60" y="14" width="400" height="60" fill="#b3261e"/>
+        <rect x="60" y="14" width="400" height="60" fill="none" stroke="#f6efe0" stroke-width="2" stroke-dasharray="1 0" opacity=".5"/>
+        <text id="ribbon-text" x="260" y="58" text-anchor="middle" font-size="34" fill="#f6efe0" letter-spacing="2" textLength="360" lengthAdjust="spacingAndGlyphs">ΚΟΥΡΕΙΟ · ΠΟΡΤΟ ΡΑΦΤΗ</text>
       </svg>
-      <div class="arch" id="hero-photo"></div>
+      <p class="what" data-el="Κούρεμα, ξύρισμα, γένια." data-en="Haircuts, shaves, beards.">Κούρεμα, ξύρισμα, γένια.</p>
+      <div class="hero-cta">
+        <a class="btn btn-red js-book" href="#" data-el="Κλείσε ραντεβού" data-en="Book a chair">Κλείσε ραντεβού</a>
+        <a class="btn btn-paper js-tel"><span class="js-tel-text"></span></a>
+      </div>
     </div>
-    <div class="hero-c">
-      <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα online" data-en="Book online">Κλείσε ώρα online</a>
-      <a class="tel js-tel"><span class="js-tel-text"></span></a>
+  </section>
+
+  <section class="flash" id="prices"><div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head">
+        <h2 data-el="Τιμοκατάλογος" data-en="Price list">Τιμοκατάλογος</h2>
+        <p data-el="Η διάρκεια είναι κατά προσέγγιση." data-en="Times are approximate.">Η διάρκεια είναι κατά προσέγγιση.</p>
+      </div>
+      <div id="board-rows"></div>
+      <div class="after">
+        <small data-el="Τιμές σε ευρώ, με ΦΠΑ." data-en="Prices in euro, VAT included.">Τιμές σε ευρώ, με ΦΠΑ.</small>
+        <a class="btn btn-red js-book" href="#" data-el="Κλείσε ραντεβού" data-en="Book a chair">Κλείσε ραντεβού</a>
+      </div>
     </div>
   </div></section>
-  <div class="stripes" aria-hidden="true"></div>
 
-  <section class="prices" id="prices"><div class="wrap prices-grid">
-    <div>
-      <h2 data-el="Τιμές" data-en="Prices">Τιμές</h2>
-      <p data-el="Όλες οι τιμές με ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση." data-en="All prices include VAT. Durations are approximate.">Όλες οι τιμές με ΦΠΑ. Η διάρκεια είναι κατά προσέγγιση.</p>
-      <a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a>
-    </div>
-    <div class="menu"><h3 data-el="Τιμοκατάλογος" data-en="Price list">Τιμοκατάλογος</h3><div id="board-rows"></div></div>
-  </div></section>
-
-  <section class="team" id="team"><div class="wrap">
-    <h2 data-el="Η παρέα" data-en="The crew">Η παρέα</h2>
-    <div class="team-grid" id="team-grid"></div>
-  </div></section>
-
-  <section class="photos" id="photos"><div class="wrap">
-    <div class="photos-head">
-      <div><h2 data-el="Το μαγαζί" data-en="The shop">Το μαγαζί</h2>
-        <p data-el="Πάτησε μια φωτογραφία για να τη δεις σε πλήρη οθόνη." data-en="Tap a photo to see it full screen.">Πάτησε μια φωτογραφία για να τη δεις σε πλήρη οθόνη.</p></div>
-      <a class="js-ig" href="#">Instagram ↗</a>
-    </div>
+  <section class="wall" id="photos"><div class="wrap">
+    <div class="wall-head"><h2 data-el="Από το μαγαζί" data-en="From the shop">Από το μαγαζί</h2><a class="js-ig" href="#">Instagram ↗</a></div>
     <div class="gallery" id="gallery"></div>
   </div></section>
 
-  <section class="visit" id="visit"><div class="wrap">
-    <h2 data-el="Πότε & πού" data-en="When & where">Πότε & πού</h2>
-    <div class="visit-grid">
-      <div class="hours-card">
-        <h3 data-el="Ωράριο" data-en="Opening hours">Ωράριο</h3>
-        <table class="hours" id="hours"></table>
-        <div class="reach"><a class="tel js-tel"><span class="js-tel-text"></span></a><span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span></div>
-        <div class="chips"><a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div>
-      </div>
-      <div class="map" id="map-box">
-        <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="380" fill="#f3e6cc"/>
-          <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84h308Z" fill="#3f7f86"/>
-          <g transform="translate(118 176)"><path d="M0-28c-10 0-18 8-18 17 0 13 18 30 18 30s18-17 18-30c0-9-8-17-18-17Z" fill="#d65f2a"/><circle cy="-11" r="6" fill="#fbf3e2"/></g></svg>
-        <div class="map-cap"><b class="groovy" data-cfg="name">Angel</b><a class="btn btn-main js-dir" href="#" data-el="Οδηγίες ↗" data-en="Directions ↗">Οδηγίες ↗</a></div>
-      </div>
+  <section class="chairs" id="team"><div class="wrap">
+    <h2 data-el="Στις καρέκλες" data-en="In the chairs">Στις καρέκλες</h2>
+    <div class="team-grid" id="team-grid"></div>
+  </div></section>
+
+  <section class="visit" id="visit"><div class="wrap visit-grid">
+    <div class="glass">
+      <h2 data-el="Ωράριο" data-en="Hours">Ωράριο</h2>
+      <table class="hours" id="hours"></table>
+      <div class="reach"><a class="tel js-tel"><span class="js-tel-text"></span></a><span data-el="Πόρτο Ράφτη, Αττική" data-en="Porto Rafti, Attica">Πόρτο Ράφτη, Αττική</span></div>
+      <div class="chips"><a class="js-wa" href="#">WhatsApp</a><a class="js-viber" href="#">Viber</a><a class="js-ig" href="#">Instagram</a></div>
+    </div>
+    <div class="map" id="map-box">
+      <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="380" fill="#e8dcc0"/>
+        <path d="M400 0H150c-10 40 30 70 10 110-18 36-70 40-74 86-4 44 44 60 40 100-3 28-30 44-34 84h308Z" fill="#1f4a47"/>
+        <path d="M118 150l6 13 14 1-11 9 4 14-13-8-13 8 4-14-11-9 14-1z" fill="#b3261e"/></svg>
+      <div class="map-cap"><a class="btn btn-paper js-dir" href="#" data-el="Οδηγίες ↗" data-en="Directions ↗">Οδηγίες ↗</a></div>
     </div>
   </div></section>
 </main>
 
-<footer><div class="stripes" aria-hidden="true"></div><div class="wrap foot">
-  <div><b class="groovy" data-cfg="name">Angel</b> · <span data-el="Κουρείο, Πόρτο Ράφτη" data-en="Barbershop, Porto Rafti">Κουρείο, Πόρτο Ράφτη</span></div>
-  <div><span class="js-year"></span> · <a href="#" data-el="Πολιτική απορρήτου" data-en="Privacy policy">Πολιτική απορρήτου</a></div>
-  <div class="note" id="demo-note" hidden data-el="Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά." data-en="Sample: prices, hours and photos are placeholders.">Δείγμα: τιμές, ωράριο και φωτογραφίες είναι ενδεικτικά.</div>
+<footer><div class="wrap foot">
+  <span class="logo script" data-cfg="name">Angel</span>
+  <div><span data-el="Κουρείο · Πόρτο Ράφτη" data-en="Barbershop · Porto Rafti">Κουρείο · Πόρτο Ράφτη</span> · <span class="js-year"></span> · <a href="#" data-el="Απόρρητο" data-en="Privacy">Απόρρητο</a></div>
+  <div class="note" id="demo-note" hidden data-el="Δείγμα: φωτογραφίες από το Unsplash, τιμές και ωράριο ενδεικτικά." data-en="Sample: photos from Unsplash, prices and hours are placeholders.">Δείγμα: φωτογραφίες από το Unsplash, τιμές και ωράριο ενδεικτικά.</div>
 </div></footer>
 
-<div class="sticky-book"><a class="btn btn-main js-book" href="#" data-el="Κλείσε ώρα" data-en="Book a slot">Κλείσε ώρα</a></div>
+<div class="sticky-book"><a class="btn btn-red js-book" href="#" data-el="Κλείσε ραντεβού" data-en="Book a chair">Κλείσε ραντεβού</a></div>
 
 <div class="bk" id="bk" hidden>
   <div class="bk-backdrop" data-close></div>
   <div class="bk-sheet" role="dialog" aria-modal="true" aria-labelledby="bk-title">
-    <div class="bk-head"><b class="groovy" data-cfg="name">Angel</b><div class="bk-progress" id="bk-progress"></div><button class="bk-x" data-close aria-label="Close">×</button></div>
+    <div class="bk-head"><span class="logo script" data-cfg="name">Angel</span><div class="bk-progress" id="bk-progress"></div><button class="bk-x" data-close aria-label="Close">×</button></div>
     <div class="bk-body" id="bk-body"></div>
-    <div class="bk-foot"><button class="btn btn-ghost" id="bk-back"></button><button class="btn btn-main" id="bk-next"></button></div>
+    <div class="bk-foot"><button class="btn btn-paper" id="bk-back"></button><button class="btn btn-red" id="bk-next"></button></div>
   </div>
 </div>
 
@@ -391,11 +397,11 @@ const CONFIG = {
     document.querySelectorAll('[data-cfg="name"]').forEach(el => el.textContent = C.name);
 
     $("board-rows").innerHTML = C.services.map(s =>
-      `<div class="row"><span class="nm">${esc(s[lang])}</span><span class="min">${s.min}′</span><span class="dots"></span><span class="eur">€${s.price}</span></div>`).join("");
+      `<div class="row"><span class="nm">${esc(s[lang])}</span><span class="min">${s.min}′</span><span class="dots"></span><span class="eur"><span class="cur">€</span>${s.price}</span></div>`).join("");
 
     $("team-grid").innerHTML = C.team.map((m, i) => `
-      <div class="member">
-        <div class="face"><span>${esc(m.name[lang][0])}</span></div>
+      <div class="member" data-n="${i + 1}">
+        ${m.photo ? `<div class="face"><img src="${esc(m.photo)}" alt="${esc(m.name[lang])}"></div>` : ""}
         <div class="info"><h3>${esc(m.name[lang])}</h3><p>${esc(m.role[lang])}</p>
           <a class="js-book" data-barber="${i}" href="#">${t.with} ${esc((m.acc || m.name)[lang])} →</a></div>
       </div>`).join("");
@@ -606,6 +612,10 @@ const CONFIG = {
   render(lang);
 }
 
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  document.getElementById("ribbon-text").textContent = b.dataset.lang === "en" ? "BARBERSHOP · PORTO RAFTI" : "ΚΟΥΡΕΙΟ · ΠΟΡΤΟ ΡΑΦΤΗ";
+}));
+try { if ((localStorage.getItem("lang") || "el") === "en") document.getElementById("ribbon-text").textContent = "BARBERSHOP · PORTO RAFTI"; } catch (e) {}
 </script>
 </body>
 </html>
