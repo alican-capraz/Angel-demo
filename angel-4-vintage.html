@@ -72,7 +72,8 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper)
 .row .nm{grid-area:nm;font-stretch:62.5%;font-weight:900;font-size:clamp(24px,3vw,32px);text-transform:uppercase;line-height:1.05}
 .row .min{grid-area:min;color:var(--muted);font-style:italic;font-size:15px}
 .row .dots{display:none}
-.row .eur{grid-area:eur;width:78px;height:78px;border-radius:50%;background:var(--red);color:var(--paper2);display:grid;place-items:center;font-stretch:62.5%;font-weight:900;font-size:30px;transform:rotate(-8deg);box-shadow:3px 3px 0 var(--ink)}
+.row .eur{grid-area:eur;width:78px;height:78px;border-radius:50%;background:var(--red);color:var(--paper2);display:flex;align-items:center;justify-content:center;gap:1px;font-stretch:62.5%;font-weight:900;font-size:30px;line-height:1;white-space:nowrap;transform:rotate(-8deg);box-shadow:3px 3px 0 var(--ink)}
+.row .cur{font-size:.62em;transform:translateY(-.25em)}
 .flash .after{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:28px}
 .flash .after small{color:var(--muted);font-style:italic}
 
@@ -620,7 +621,6 @@ document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click
 }));
 try { if ((localStorage.getItem("lang") || "el") === "en") document.getElementById("ribbon-text").textContent = "BARBERSHOP · PORTO RAFTI"; } catch (e) {}
 </script>
-
 
 <!--ADMIN--><style>:root{--adm-accent:#b3261e}</style>
 <script>
