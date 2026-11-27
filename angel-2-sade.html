@@ -691,6 +691,7 @@ const CONFIG = {
 
 
 
+
 <!--ADMIN--><style>:root{--adm-accent:#1d4fc4}</style>
 <script>
 /* Angel demo yönetim paneli: site içinde açılan pencere. Müşteri tarafıyla aynı demo verisini kullanır. */
@@ -815,9 +816,9 @@ const CONFIG = {
     if (ev.id.startsWith("s|")) { const c = load(KEY_C); c.push(ev.id.slice(2)); save(KEY_C, c); }
     else { const all = load(KEY_B); all.splice(+ev.id.split("|")[1], 1); save(KEY_B, all); }
   }
-  function freeStarts(bi, k, dur) {
+  function freeStarts(bi, k, dur, exId) {
     const h = hoursOf(bi, k); if (!h) return [];
-    const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null, ev = apptsFor(bi, k), out = [];
+    const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null, ev = apptsFor(bi, k).filter(e => e.id !== exId), out = [];
     for (let t = toMin(h[0]); t + dur <= toMin(h[1]); t += 15) {
       if (br && t < br[1] && br[0] < t + dur) continue;
       if (ev.some(e => t < e.end && e.start < t + dur)) continue;
@@ -832,14 +833,14 @@ const CONFIG = {
           closed: "Το κατάστημα είναι κλειστό αυτή την ημέρα.", brk: "Διάλειμμα", login: "Σύνδεση", user: "Όνομα χρήστη", pass: "Κωδικός",
           loginSub: "Πίνακας διαχείρισης ραντεβού", demoLogin: "Demo: δεκτός οποιοσδήποτε κωδικός", detail: "Ραντεβού", customer: "Πελάτης",
           phone: "Τηλέφωνο", service: "Υπηρεσία", barber: "Barber", when: "Ώρα", price: "Τιμή", source: "Προέλευση", online: "Online",
-          shop: "Από το κατάστημα", cancel: "Ακύρωση ραντεβού", sure: "Σίγουρα; Πάτησε ξανά", close: "Κλείσιμο", newTitle: "Νέο ραντεβού",
+          shop: "Από το κατάστημα", cancel: "Ακύρωση ραντεβού", sure: "Σίγουρα; Πάτησε ξανά", close: "Κλείσιμο", newTitle: "Νέο ραντεβού", edit: "Επεξεργασία", editTitle: "Επεξεργασία ραντεβού",
           name: "Ονοματεπώνυμο", time: "Ώρα", date: "Ημέρα", saveBtn: "Αποθήκευση", noFree: "Δεν υπάρχει ελεύθερη ώρα", search: "Αναζήτηση πελάτη…",
           none: "Κανένα ραντεβού", note: "Demo διαχείρισης: οι αλλαγές μένουν μόνο σε αυτή τη συσκευή.", allB: "Όλοι" },
     en: { title: "Admin", day: "Day", week: "Week", list: "List", today: "Today", add: "+ New appointment", appts: "appointments",
           closed: "The shop is closed on this day.", brk: "Break", login: "Sign in", user: "Username", pass: "Password",
           loginSub: "Appointment management", demoLogin: "Demo: any password works", detail: "Appointment", customer: "Customer",
           phone: "Phone", service: "Service", barber: "Barber", when: "Time", price: "Price", source: "Source", online: "Online",
-          shop: "Walk-in / phone", cancel: "Cancel appointment", sure: "Sure? Tap again", close: "Close", newTitle: "New appointment",
+          shop: "Walk-in / phone", cancel: "Cancel appointment", sure: "Sure? Tap again", close: "Close", newTitle: "New appointment", edit: "Edit", editTitle: "Edit appointment",
           name: "Full name", time: "Time", date: "Day", saveBtn: "Save", noFree: "No free time", search: "Search customer…",
           none: "No appointments", note: "Admin demo: changes stay on this device only.", allB: "All" }
   };
@@ -996,7 +997,8 @@ const CONFIG = {
       <dt>${t("when")}</dt><dd>${dfmt(ev.date, { weekday: "long", day: "numeric", month: "long" })} · ${fmt(ev.start)}–${fmt(ev.end)}</dd>
       <dt>${t("price")}</dt><dd>€${sv.price}</dd>
       ${ev.src ? `<dt>${t("source")}</dt><dd>${ev.src === "online" ? t("online") : t("shop")}</dd>` : ""}</dl>`,
-      `<button class="adm-btn danger" id="adm-cancel">${t("cancel")}</button><button class="adm-btn" id="adm-close">${t("close")}</button>`);
+      `<button class="adm-btn pri" id="adm-edit">${t("edit")}</button><button class="adm-btn danger" id="adm-cancel">${t("cancel")}</button><button class="adm-btn" id="adm-close">${t("close")}</button>`);
+    $("adm-edit").onclick = () => newForm(ev.bi, ev.date, ev.start, ev);
     let armed = false;
     $("adm-cancel").onclick = e => {
       if (!armed) { armed = true; e.target.classList.add("sure"); e.target.textContent = t("sure"); return; }
@@ -1004,30 +1006,34 @@ const CONFIG = {
     };
     $("adm-close").onclick = () => { $("adm-drawer").hidden = true; };
   }
-  function newForm(bi, k, startPref) {
-    const opts = (b, s) => freeStarts(b, k, C.services[s].min);
-    drawer(t("newTitle"), `
-      <label>${t("date")}<input value="${dfmt(k, { weekday: "long", day: "numeric", month: "long" })}" disabled></label>
+  function newForm(bi, k, startPref, edit) {
+    const today = ymd(new Date());
+    const days = Array.from({ length: 28 }, (_, i) => addDays(today, i));
+    if (!days.includes(k)) days.unshift(k);
+    const opts = (b, s, d) => freeStarts(b, d, C.services[s].min, edit ? edit.id : undefined);
+    drawer(edit ? t("editTitle") : t("newTitle"), `
+      <label>${t("date")}<select id="nf-d">${days.map(d => `<option value="${d}" ${d === k ? "selected" : ""}>${dfmt(d, { weekday: "long", day: "numeric", month: "long" })}</option>`).join("")}</select></label>
       <label>${t("barber")}<select id="nf-b">${C.team.map((m, i) => `<option value="${i}" ${i === bi ? "selected" : ""}>${esc(m.name[L()])}</option>`).join("")}</select></label>
-      <label>${t("service")}<select id="nf-s">${C.services.map((s, i) => `<option value="${i}">${esc(s[L()])} · ${s.min}′ · €${s.price}</option>`).join("")}</select></label>
+      <label>${t("service")}<select id="nf-s">${C.services.map((s, i) => `<option value="${i}" ${edit && edit.svc === i ? "selected" : ""}>${esc(s[L()])} · ${s.min}′ · €${s.price}</option>`).join("")}</select></label>
       <label>${t("time")}<select id="nf-t"></select></label>
-      <label>${t("name")}<input id="nf-n" autocomplete="off"></label>
-      <label>${t("phone")}<input id="nf-p" type="tel" inputmode="tel" placeholder="69xxxxxxxx"></label>`,
+      <label>${t("name")}<input id="nf-n" autocomplete="off" value="${edit ? esc(edit.name) : ""}"></label>
+      <label>${t("phone")}<input id="nf-p" type="tel" inputmode="tel" placeholder="69xxxxxxxx" value="${edit ? esc(edit.phone) : ""}"></label>`,
       `<button class="adm-btn pri" id="nf-save" disabled>${t("saveBtn")}</button><button class="adm-btn" id="nf-close">${t("close")}</button>`);
     const fillTimes = () => {
-      const b = +$("nf-b").value, s = +$("nf-s").value, fs = opts(b, s);
+      const b = +$("nf-b").value, s = +$("nf-s").value, fs = opts(b, s, $("nf-d").value);
       $("nf-t").innerHTML = fs.length ? fs.map(m => `<option value="${m}">${fmt(m)}</option>`).join("") : `<option value="">${t("noFree")}</option>`;
       if (startPref != null) { const best = fs.find(m => m >= startPref); if (best != null) $("nf-t").value = String(best); }
       valid();
     };
     const valid = () => { $("nf-save").disabled = !($("nf-t").value && $("nf-n").value.trim().length >= 2); };
-    $("nf-b").onchange = fillTimes; $("nf-s").onchange = fillTimes; $("nf-n").oninput = valid;
+    $("nf-b").onchange = fillTimes; $("nf-s").onchange = fillTimes; $("nf-d").onchange = fillTimes; $("nf-n").oninput = valid;
     fillTimes();
     $("nf-close").onclick = () => { $("adm-drawer").hidden = true; };
     $("nf-save").onclick = () => {
-      const b = +$("nf-b").value, s = +$("nf-s").value, m = +$("nf-t").value;
-      const all = load(KEY_B); all.push({ bi: b, date: k, start: m, end: m + C.services[s].min, svc: s, name: $("nf-n").value.trim(), phone: $("nf-p").value.trim(), src: "admin" });
-      save(KEY_B, all); $("adm-drawer").hidden = true; V.date = k; draw();
+      const b = +$("nf-b").value, s = +$("nf-s").value, m = +$("nf-t").value, d = $("nf-d").value;
+      if (edit) cancel(edit);
+      const all = load(KEY_B); all.push({ bi: b, date: d, start: m, end: m + C.services[s].min, svc: s, name: $("nf-n").value.trim(), phone: $("nf-p").value.trim(), src: edit ? (edit.src || "admin") : "admin" });
+      save(KEY_B, all); $("adm-drawer").hidden = true; V.date = d; draw();
     };
   }
 
