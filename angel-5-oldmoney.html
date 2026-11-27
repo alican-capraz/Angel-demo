@@ -452,19 +452,21 @@ const CONFIG = {
   function hashStr(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
   function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed);
     x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
-  let booked = [];
-  try { booked = JSON.parse(localStorage.getItem("angel_demo_bookings") || "[]"); } catch (e) {}
-  const saveBooked = () => { try { localStorage.setItem("angel_demo_bookings", JSON.stringify(booked)); } catch (e) {} };
+  let bookedMem = [];
+  const loadBooked = () => { try { return JSON.parse(localStorage.getItem("angel_demo_bookings") || "[]"); } catch (e) { return bookedMem; } };
+  const saveBooked = v => { bookedMem = v; try { localStorage.setItem("angel_demo_bookings", JSON.stringify(v)); } catch (e) {} };
+  const cancelledSet = () => { try { return new Set(JSON.parse(localStorage.getItem("angel_demo_cancelled") || "[]")); } catch (e) { return new Set(); } };
   function seededBusy(bi, dateStr) {
     const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
     const r = rng(hashStr(bi + "|" + dateStr)); const out = [];
     for (let t = toMin(h[0]); t < toMin(h[1]); t += 30) if (r() < 0.36) out.push([t, t + (r() < 0.5 ? 30 : 45)]);
-    return out;
+    const cx = cancelledSet();
+    return out.filter(e => !cx.has(bi + "|" + dateStr + "|" + e[0]));
   }
   function slotsFor(bi, dateStr, dur) {
     const h = C.team[bi].hours[new Date(dateStr + "T12:00:00").getDay()]; if (!h) return [];
     const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null;
-    const busy = seededBusy(bi, dateStr).concat(booked.filter(b => b.bi === bi && b.date === dateStr).map(b => [b.start, b.end]));
+    const busy = seededBusy(bi, dateStr).concat(loadBooked().filter(b => b.bi === bi && b.date === dateStr).map(b => [b.start, b.end]));
     const now = new Date(), isToday = ymd(now) === dateStr, nowMin = now.getHours() * 60 + now.getMinutes() + 30;
     const out = [];
     for (let t = toMin(h[0]); t + dur <= toMin(h[1]); t += 15) {
@@ -555,7 +557,8 @@ const CONFIG = {
     const dur = C.services[S.svc].min;
     const bi = candidates().find(i => slotsFor(i, S.date, dur).includes(S.time));
     if (bi == null) { S.step = 2; S.time = null; S.error = T[LANG].taken; drawBk(); return; }
-    S.assigned = bi; booked.push({ bi, date: S.date, start: S.time, end: S.time + dur }); saveBooked();
+    S.assigned = bi; const all = loadBooked();
+    all.push({ bi, date: S.date, start: S.time, end: S.time + dur, svc: S.svc, name: S.name.trim(), phone: S.phone.trim(), src: "online" }); saveBooked(all);
     S.step = 4; drawBk();
   }
   body.addEventListener("click", e => {
@@ -595,5 +598,362 @@ const CONFIG = {
 }
 
 </script>
+
+
+<!--ADMIN--><style>:root{--adm-accent:#141414}</style>
+<script>
+/* Angel demo yönetim paneli: site içinde açılan pencere. Müşteri tarafıyla aynı demo verisini kullanır. */
+(() => {
+  const C = CONFIG;
+  const css = `
+  .adm-link{opacity:.75;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .adm{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(15,17,20,.55);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1d2125}
+  .adm[hidden]{display:none}
+  .adm *{box-sizing:border-box;min-width:0}
+  .adm h3,.adm h4{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:700;text-transform:none;letter-spacing:normal;font-stretch:normal;line-height:1.2;color:#111;text-shadow:none}
+  .adm-body{--colw:140px}
+  .adm-win{position:relative;background:#fff;width:min(1180px,96vw);height:min(860px,94vh);border-radius:12px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .adm-top{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid #e6e8eb;flex-wrap:wrap}
+  .adm-top b{font-size:17px}.adm-top .sub{color:#6b7280;font-size:13px}
+  .adm-tabs{display:flex;gap:4px;margin-left:auto;background:#f2f3f5;border-radius:8px;padding:3px}
+  .adm-tabs button{border:0;background:none;padding:7px 12px;border-radius:6px;font:600 14px system-ui;color:#4b5563;cursor:pointer}
+  .adm-tabs button.on{background:#fff;color:#111;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+  .adm-x{border:0;background:#f2f3f5;width:36px;height:36px;border-radius:8px;font-size:20px;cursor:pointer;color:#374151}
+  .adm-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #e6e8eb;flex-wrap:wrap}
+  .adm-bar .adm-nav{display:flex;gap:4px}
+  .adm-bar button,.adm-bar select{border:1px solid #d6d9de;background:#fff;border-radius:7px;min-height:36px;padding:0 11px;font:600 14px system-ui;color:#1d2125;cursor:pointer}
+  .adm-bar .title{font-weight:700;font-size:16px;margin-left:6px}
+  .adm-bar .stats{color:#6b7280;font-size:13px;margin-left:auto}
+  .adm-bar .new{background:var(--adm-accent);border-color:var(--adm-accent);color:#fff}
+  .adm-body{flex:1;overflow:auto;position:relative;background:#fafbfc}
+  .adm-grid{display:grid;min-width:max-content;position:relative}
+  .adm-hd{position:sticky;top:0;z-index:3;background:#fff;border-bottom:1px solid #e6e8eb;padding:8px 6px;font-weight:700;font-size:13px;text-align:center;white-space:nowrap}
+  .adm-hd small{display:block;font-weight:500;color:#6b7280}
+  .adm-hd.today{color:var(--adm-accent)}
+  .adm-times{position:relative;border-right:1px solid #e6e8eb;background:#fff}
+  .adm-times span{position:absolute;right:6px;font-size:11px;color:#6b7280;transform:translateY(-50%)}
+  .adm-times span:first-child{transform:none}
+  .adm-col{position:relative;border-right:1px solid #eef0f2;background-image:repeating-linear-gradient(#fff 0,#fff calc(var(--h) - 1px),#eef0f2 calc(var(--h) - 1px),#eef0f2 var(--h));cursor:copy}
+  .adm-off{position:absolute;left:0;right:0;background:repeating-linear-gradient(135deg,#f1f2f4 0 6px,#e9ebee 6px 12px);pointer-events:none}
+  .adm-brk{position:absolute;left:0;right:0;background:repeating-linear-gradient(135deg,#fff7e0 0 6px,#fdf0c8 6px 12px);font-size:11px;color:#8a6d1d;padding:2px 6px;pointer-events:none}
+  .adm-ev{position:absolute;left:3px;right:3px;border-radius:6px;padding:3px 6px;font-size:12px;line-height:1.25;overflow:hidden;cursor:pointer;border-left:4px solid;z-index:1}
+  .adm-ev b{display:block;font-size:12px}
+  .adm-ev.s0{background:#e7efff;border-color:#3b6fd8}.adm-ev.s1{background:#ffe9df;border-color:#d9622b}.adm-ev.s2{background:#e5f4e6;border-color:#3f8a45}.adm-ev.s3{background:#f3e8ff;border-color:#8b55d6}
+  .adm-ev.new{box-shadow:0 0 0 2px var(--adm-accent)}
+  .adm-ev .tag{display:inline-block;margin-left:4px;font-size:10px;font-weight:700;background:var(--adm-accent);color:#fff;border-radius:4px;padding:0 4px}
+  .adm-now{position:absolute;left:0;right:0;border-top:2px solid #e11d48;z-index:2;pointer-events:none}
+  .adm-empty{padding:40px;text-align:center;color:#6b7280}
+  .adm-list{max-width:860px;margin:0 auto;padding:16px}
+  .adm-list input{width:100%;min-height:42px;border:1px solid #d6d9de;border-radius:8px;padding:0 12px;font:15px system-ui;margin-bottom:12px}
+  .adm-day{margin-bottom:16px;background:#fff;border:1px solid #e6e8eb;border-radius:10px;overflow:hidden}
+  .adm-day h4{margin:0;padding:9px 12px;background:#f6f7f9;font-size:14px;display:flex;justify-content:space-between}
+  .adm-row{display:grid;grid-template-columns:62px 1fr 1fr auto;gap:10px;padding:9px 12px;border-top:1px solid #eef0f2;cursor:pointer;align-items:center}
+  .adm-row:hover{background:#fafbfc}
+  .adm-row .t{font-weight:700;font-variant-numeric:tabular-nums}.adm-row .m{color:#6b7280;font-size:13px}
+  .adm-pill{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px;background:#eef0f2;color:#374151;white-space:nowrap}
+  .adm-pill.on{background:var(--adm-accent);color:#fff}
+  .adm-drawer{position:absolute;top:0;right:0;bottom:0;width:min(380px,100%);background:#fff;border-left:1px solid #e6e8eb;box-shadow:-12px 0 30px rgba(0,0,0,.08);z-index:5;display:flex;flex-direction:column}
+  .adm-drawer[hidden]{display:none}
+  .adm-drawer .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e6e8eb;font-weight:700;font-size:16px}
+  .adm-drawer .db{padding:16px;overflow:auto;flex:1}
+  .adm-drawer dl{display:grid;grid-template-columns:110px 1fr;gap:8px 10px;margin:0}
+  .adm-drawer dt{color:#6b7280}.adm-drawer dd{margin:0;font-weight:600}
+  .adm-drawer label{display:block;margin-bottom:10px;font-size:13px;color:#6b7280}
+  .adm-drawer input,.adm-drawer select{display:block;width:100%;min-height:42px;margin-top:4px;border:1px solid #d6d9de;border-radius:8px;padding:0 10px;font:15px system-ui;color:#111;background:#fff}
+  .adm-drawer .df{display:flex;gap:8px;padding:12px 16px;border-top:1px solid #e6e8eb}
+  .adm-btn{flex:1;min-height:44px;border-radius:8px;border:1px solid #d6d9de;background:#fff;font:700 14px system-ui;cursor:pointer;color:#1d2125}
+  .adm-btn.pri{background:var(--adm-accent);border-color:var(--adm-accent);color:#fff}
+  .adm-btn.danger{background:#fff;border-color:#e11d48;color:#e11d48}.adm-btn.danger.sure{background:#e11d48;color:#fff}
+  .adm-btn:disabled{opacity:.45;cursor:not-allowed}
+  .adm-login{display:grid;place-items:center;height:100%;padding:20px}
+  .adm-login form{width:min(360px,100%);background:#fff;border:1px solid #e6e8eb;border-radius:12px;padding:24px}
+  .adm-login h3{margin:0 0 4px;font-size:22px}.adm-login p{margin:0 0 16px;color:#6b7280;font-size:14px}
+  .adm-login label{display:block;font-size:13px;color:#6b7280;margin-bottom:12px}
+  .adm-login input{display:block;width:100%;min-height:44px;margin-top:4px;border:1px solid #d6d9de;border-radius:8px;padding:0 12px;font:15px system-ui}
+  .adm-login .adm-btn{width:100%;margin-top:6px}
+  .adm-login small{display:block;margin-top:12px;color:#9ca3af;font-size:12px;text-align:center}
+  .adm-note{font-size:12px;color:#9ca3af;padding:6px 14px;border-top:1px solid #e6e8eb;background:#fff}
+  @media (max-width:760px){
+    .adm-win{width:100vw;height:100%;max-height:100dvh;border-radius:0}
+    .adm-tabs{order:3;margin-left:0;width:100%}.adm-tabs button{flex:1}
+    .adm-bar .stats{width:100%;margin-left:0}
+    .adm-row{grid-template-columns:54px 1fr auto}.adm-row .adm-svc{display:none}
+    .adm-body{--colw:104px}
+    .adm-ev{font-size:11px;padding:2px 4px}.adm-ev b{font-size:11px}
+    .adm-login{place-items:start center;padding-top:40px}
+  }`;
+  const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+
+  /* ---------- veri (müşteri tarafıyla aynı algoritma) ---------- */
+  const KEY_B = "angel_demo_bookings", KEY_C = "angel_demo_cancelled", mem = {};
+  const load = k => { try { return JSON.parse(localStorage.getItem(k) || "[]"); } catch (e) { return mem[k] || []; } };
+  const save = (k, v) => { mem[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const pad = n => String(n).padStart(2, "0");
+  const toMin = s => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
+  const fmt = m => pad(Math.floor(m / 60)) + ":" + pad(m % 60);
+  const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const addDays = (k, n) => { const d = new Date(k + "T12:00:00"); d.setDate(d.getDate() + n); return ymd(d); };
+  const dow = k => new Date(k + "T12:00:00").getDay();
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  function hashStr(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
+  const NAMES = ["Γιάννης Παπαδάκης","Νίκος Κωνσταντίνου","Δημήτρης Αλεξίου","Κώστας Μαυρίδης","Γιώργος Σταθόπουλος","Παναγιώτης Λάμπρου",
+    "Χρήστος Βασιλείου","Αλέξανδρος Τσακίρης","Στέλιος Ρήγας","Μιχάλης Ζαχαρίου","Θανάσης Οικονόμου","Βασίλης Καραγιάννης","Λευτέρης Νικολάου","Άρης Δημητρίου"];
+  const hoursOf = (bi, k) => C.team[bi].hours[dow(k)] || null;
+
+  function apptsFor(bi, k) {
+    const h = hoursOf(bi, k); const out = [];
+    if (h) {
+      const r = rng(hashStr(bi + "|" + k)), cx = new Set(load(KEY_C));
+      const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null; let lastEnd = 0;
+      for (let t = toMin(h[0]); t < toMin(h[1]); t += 30) if (r() < 0.36) {
+        const end = t + (r() < 0.5 ? 30 : 45);
+        if (t < lastEnd || end > toMin(h[1]) || (br && t < br[1] && br[0] < end) || cx.has(bi + "|" + k + "|" + t)) continue;
+        const q = rng(hashStr("n|" + bi + "|" + k + "|" + t));
+        const svc = end - t === 45 ? 1 : (q() < 0.8 ? 0 : (C.services.length > 3 ? 3 : 0));
+        out.push({ id: "s|" + bi + "|" + k + "|" + t, bi, date: k, start: t, end, svc, name: NAMES[Math.floor(q() * NAMES.length)],
+                   phone: "69" + String(10000000 + Math.floor(q() * 89999999)), src: "" });
+        lastEnd = end;
+      }
+    }
+    load(KEY_B).forEach((b, i) => { if (b.bi === bi && b.date === k) out.push(Object.assign({ svc: 0, name: "—", phone: "", src: "online" }, b, { id: "b|" + i })); });
+    return out.sort((a, b) => a.start - b.start);
+  }
+  function cancel(ev) {
+    if (ev.id.startsWith("s|")) { const c = load(KEY_C); c.push(ev.id.slice(2)); save(KEY_C, c); }
+    else { const all = load(KEY_B); all.splice(+ev.id.split("|")[1], 1); save(KEY_B, all); }
+  }
+  function freeStarts(bi, k, dur) {
+    const h = hoursOf(bi, k); if (!h) return [];
+    const br = h[2] ? [toMin(h[2][0]), toMin(h[2][1])] : null, ev = apptsFor(bi, k), out = [];
+    for (let t = toMin(h[0]); t + dur <= toMin(h[1]); t += 15) {
+      if (br && t < br[1] && br[0] < t + dur) continue;
+      if (ev.some(e => t < e.end && e.start < t + dur)) continue;
+      out.push(t);
+    }
+    return out;
+  }
+
+  /* ---------- metinler ---------- */
+  const TX = {
+    el: { title: "Διαχείριση", day: "Ημέρα", week: "Εβδομάδα", list: "Λίστα", today: "Σήμερα", add: "+ Νέο ραντεβού", appts: "ραντεβού",
+          closed: "Το κατάστημα είναι κλειστό αυτή την ημέρα.", brk: "Διάλειμμα", login: "Σύνδεση", user: "Όνομα χρήστη", pass: "Κωδικός",
+          loginSub: "Πίνακας διαχείρισης ραντεβού", demoLogin: "Demo: δεκτός οποιοσδήποτε κωδικός", detail: "Ραντεβού", customer: "Πελάτης",
+          phone: "Τηλέφωνο", service: "Υπηρεσία", barber: "Barber", when: "Ώρα", price: "Τιμή", source: "Προέλευση", online: "Online",
+          shop: "Από το κατάστημα", cancel: "Ακύρωση ραντεβού", sure: "Σίγουρα; Πάτησε ξανά", close: "Κλείσιμο", newTitle: "Νέο ραντεβού",
+          name: "Ονοματεπώνυμο", time: "Ώρα", date: "Ημέρα", saveBtn: "Αποθήκευση", noFree: "Δεν υπάρχει ελεύθερη ώρα", search: "Αναζήτηση πελάτη…",
+          none: "Κανένα ραντεβού", note: "Demo διαχείρισης: οι αλλαγές μένουν μόνο σε αυτή τη συσκευή.", allB: "Όλοι" },
+    en: { title: "Admin", day: "Day", week: "Week", list: "List", today: "Today", add: "+ New appointment", appts: "appointments",
+          closed: "The shop is closed on this day.", brk: "Break", login: "Sign in", user: "Username", pass: "Password",
+          loginSub: "Appointment management", demoLogin: "Demo: any password works", detail: "Appointment", customer: "Customer",
+          phone: "Phone", service: "Service", barber: "Barber", when: "Time", price: "Price", source: "Source", online: "Online",
+          shop: "Walk-in / phone", cancel: "Cancel appointment", sure: "Sure? Tap again", close: "Close", newTitle: "New appointment",
+          name: "Full name", time: "Time", date: "Day", saveBtn: "Save", noFree: "No free time", search: "Search customer…",
+          none: "No appointments", note: "Admin demo: changes stay on this device only.", allB: "All" }
+  };
+  const L = () => document.documentElement.lang === "en" ? "en" : "el";
+  const t = k => TX[L()][k];
+  const loc = () => L() === "el" ? "el-GR" : "en-GB";
+  const dfmt = (k, o) => new Intl.DateTimeFormat(loc(), o).format(new Date(k + "T12:00:00"));
+
+  /* ---------- arayüz ---------- */
+  const root = document.createElement("div");
+  root.className = "adm"; root.hidden = true; root.setAttribute("role", "dialog"); root.setAttribute("aria-modal", "true");
+  root.innerHTML = `<div class="adm-win">
+    <div class="adm-top"><b>${esc(C.name)}</b><span class="sub" id="adm-sub"></span>
+      <div class="adm-tabs" id="adm-tabs"></div><button class="adm-x" id="adm-x" aria-label="Close">×</button></div>
+    <div class="adm-bar" id="adm-bar"></div>
+    <div class="adm-body" id="adm-body"></div>
+    <div class="adm-drawer" id="adm-drawer" hidden></div>
+    <div class="adm-note" id="adm-note"></div></div>`;
+  document.body.appendChild(root);
+  const $ = id => root.querySelector("#" + id);
+  const V = { view: "day", date: ymd(new Date()), wb: 0, q: "", authed: false };
+  try { V.authed = sessionStorage.getItem("angel_adm") === "1"; } catch (e) {}
+
+  function open() { root.hidden = false; document.body.style.overflow = "hidden"; draw(); }
+  function close() { root.hidden = true; document.body.style.overflow = ""; $("adm-drawer").hidden = true;
+    if (location.hash === "#admin") history.replaceState(null, "", location.pathname + location.search); }
+  $("adm-x").onclick = close;
+  root.addEventListener("click", e => { if (e.target === root) close(); });
+  document.addEventListener("keydown", e => { if (!root.hidden && e.key === "Escape") { if (!$("adm-drawer").hidden) $("adm-drawer").hidden = true; else close(); } });
+
+  function draw() {
+    $("adm-sub").textContent = t("title"); $("adm-note").textContent = t("note");
+    if (!V.authed) { $("adm-tabs").innerHTML = ""; $("adm-bar").innerHTML = ""; $("adm-bar").style.display = "none"; return drawLogin(); }
+    $("adm-bar").style.display = "";
+    $("adm-tabs").innerHTML = ["day", "week", "list"].map(v => `<button data-v="${v}" class="${V.view === v ? "on" : ""}">${t(v)}</button>`).join("");
+    $("adm-tabs").querySelectorAll("button").forEach(b => b.onclick = () => { V.view = b.dataset.v; draw(); });
+    drawBar();
+    if (V.view === "day") drawDay(); else if (V.view === "week") drawWeek(); else drawList();
+  }
+
+  function drawLogin() {
+    $("adm-body").innerHTML = `<div class="adm-login"><form id="adm-lf"><h3>${esc(C.name)}</h3><p>${t("loginSub")}</p>
+      <label>${t("user")}<input value="aggelos" autocomplete="username"></label>
+      <label>${t("pass")}<input type="password" value="••••••••" autocomplete="current-password"></label>
+      <button class="adm-btn pri" type="submit">${t("login")}</button><small>${t("demoLogin")}</small></form></div>`;
+    $("adm-lf").onsubmit = e => { e.preventDefault(); V.authed = true; try { sessionStorage.setItem("angel_adm", "1"); } catch (x) {} draw(); };
+  }
+
+  function weekStart(k) { const d = dow(k); return addDays(k, d === 0 ? -6 : 1 - d); }
+  function drawBar() {
+    const step = V.view === "week" ? 7 : 1;
+    let title, stats = "";
+    if (V.view === "week") { const s = weekStart(V.date); title = dfmt(s, { day: "numeric", month: "short" }) + " – " + dfmt(addDays(s, 6), { day: "numeric", month: "short", year: "numeric" }); }
+    else title = dfmt(V.date, { weekday: "long", day: "numeric", month: "long" });
+    if (V.view === "day") {
+      const ev = C.team.flatMap((_, i) => apptsFor(i, V.date));
+      const sum = ev.reduce((a, e) => a + (C.services[e.svc] ? C.services[e.svc].price : 0), 0);
+      stats = `${ev.length} ${t("appts")} · €${sum}`;
+    }
+    $("adm-bar").innerHTML = `<div class="adm-nav"><button id="adm-prev" aria-label="Previous">‹</button><button id="adm-today">${t("today")}</button><button id="adm-next" aria-label="Next">›</button></div>
+      <span class="title">${title}</span>
+      ${V.view === "week" ? `<select id="adm-wb">${C.team.map((m, i) => `<option value="${i}" ${V.wb === i ? "selected" : ""}>${esc(m.name[L()])}</option>`).join("")}</select>` : ""}
+      ${V.view !== "list" ? `<span class="stats">${stats}</span><button class="new" id="adm-new">${t("add")}</button>` : `<span class="stats"></span>`}`;
+    $("adm-prev").onclick = () => { V.date = addDays(V.date, -step); draw(); };
+    $("adm-next").onclick = () => { V.date = addDays(V.date, step); draw(); };
+    $("adm-today").onclick = () => { V.date = ymd(new Date()); draw(); };
+    if ($("adm-wb")) $("adm-wb").onchange = e => { V.wb = +e.target.value; draw(); };
+    if ($("adm-new")) $("adm-new").onclick = () => newForm(V.view === "week" ? V.wb : 0, V.date, null);
+  }
+
+  const PX = 1.15, ROW = 15 * PX;
+  function range(pairs) {
+    const hs = pairs.map(([bi, k]) => hoursOf(bi, k)).filter(Boolean);
+    if (!hs.length) return null;
+    return [Math.floor(Math.min(...hs.map(h => toMin(h[0]))) / 60) * 60, Math.ceil(Math.max(...hs.map(h => toMin(h[1]))) / 60) * 60];
+  }
+  function timeCol(r0, r1) {
+    let s = ""; for (let m = r0; m <= r1; m += 60) s += `<span style="top:${(m - r0) * PX}px">${fmt(m)}</span>`;
+    return `<div class="adm-times" style="height:${(r1 - r0) * PX}px">${s}</div>`;
+  }
+  function colHTML(bi, k, r0, r1) {
+    const h = hoursOf(bi, k); let s = "";
+    if (!h) s += `<div class="adm-off" style="top:0;height:${(r1 - r0) * PX}px"></div>`;
+    else {
+      if (toMin(h[0]) > r0) s += `<div class="adm-off" style="top:0;height:${(toMin(h[0]) - r0) * PX}px"></div>`;
+      if (toMin(h[1]) < r1) s += `<div class="adm-off" style="top:${(toMin(h[1]) - r0) * PX}px;height:${(r1 - toMin(h[1])) * PX}px"></div>`;
+      if (h[2]) s += `<div class="adm-brk" style="top:${(toMin(h[2][0]) - r0) * PX}px;height:${(toMin(h[2][1]) - toMin(h[2][0])) * PX}px">${t("brk")}</div>`;
+      apptsFor(bi, k).forEach(e => {
+        const sv = C.services[e.svc] || C.services[0];
+        s += `<div class="adm-ev s${e.svc % 4} ${e.src ? "new" : ""}" data-id="${esc(e.id)}" data-bi="${bi}" data-k="${k}" style="top:${(e.start - r0) * PX + 1}px;height:${(e.end - e.start) * PX - 2}px">
+          <b>${fmt(e.start)} ${esc(e.name)}${e.src ? `<span class="tag">${e.src === "online" ? "Online" : "+"}</span>` : ""}</b>${esc(sv[L()])}</div>`;
+      });
+    }
+    if (k === ymd(new Date())) { const n = new Date(), nm = n.getHours() * 60 + n.getMinutes(); if (nm > r0 && nm < r1) s += `<div class="adm-now" style="top:${(nm - r0) * PX}px"></div>`; }
+    return `<div class="adm-col" data-bi="${bi}" data-k="${k}" style="--h:${ROW}px;height:${(r1 - r0) * PX}px">${s}</div>`;
+  }
+  function wireGrid(r0) {
+    $("adm-body").querySelectorAll(".adm-ev").forEach(el => el.onclick = e => {
+      e.stopPropagation(); const ev = apptsFor(+el.dataset.bi, el.dataset.k).find(x => x.id === el.dataset.id); if (ev) detail(ev);
+    });
+    $("adm-body").querySelectorAll(".adm-col").forEach(col => col.onclick = e => {
+      const y = e.clientY - col.getBoundingClientRect().top, m = Math.floor((r0 + y / PX) / 15) * 15;
+      newForm(+col.dataset.bi, col.dataset.k, m);
+    });
+  }
+  function drawDay() {
+    const k = V.date, r = range(C.team.map((_, i) => [i, k]));
+    if (!r) { $("adm-body").innerHTML = `<div class="adm-empty">${t("closed")}</div>`; return; }
+    const w = "minmax(var(--colw),1fr)";
+    $("adm-body").innerHTML = `<div class="adm-grid" style="grid-template-columns:52px repeat(${C.team.length},${w})">
+      <div class="adm-hd"></div>${C.team.map((m, i) => `<div class="adm-hd">${esc(m.name[L()])}<small>${apptsFor(i, k).length} ${t("appts")}</small></div>`).join("")}
+      ${timeCol(r[0], r[1])}${C.team.map((_, i) => colHTML(i, k, r[0], r[1])).join("")}</div>`;
+    wireGrid(r[0]);
+  }
+  function drawWeek() {
+    const s = weekStart(V.date), ks = Array.from({ length: 7 }, (_, i) => addDays(s, i)), bi = V.wb;
+    const r = range(ks.map(k => [bi, k])) || [600, 1200], today = ymd(new Date());
+    $("adm-body").innerHTML = `<div class="adm-grid" style="grid-template-columns:52px repeat(7,minmax(110px,1fr))">
+      <div class="adm-hd"></div>${ks.map(k => `<div class="adm-hd ${k === today ? "today" : ""}">${dfmt(k, { weekday: "short" })}<small>${dfmt(k, { day: "numeric", month: "numeric" })}</small></div>`).join("")}
+      ${timeCol(r[0], r[1])}${ks.map(k => colHTML(bi, k, r[0], r[1])).join("")}</div>`;
+    wireGrid(r[0]);
+  }
+  function drawList() {
+    const ks = Array.from({ length: 14 }, (_, i) => addDays(V.date, i)), q = V.q.trim().toLowerCase();
+    let html = `<div class="adm-list"><input id="adm-q" placeholder="${t("search")}" value="${esc(V.q)}">`;
+    ks.forEach(k => {
+      const ev = C.team.flatMap((_, i) => apptsFor(i, k)).filter(e => !q || e.name.toLowerCase().includes(q)).sort((a, b) => a.start - b.start || a.bi - b.bi);
+      if (!ev.length && q) return;
+      html += `<div class="adm-day"><h4><span>${dfmt(k, { weekday: "long", day: "numeric", month: "long" })}</span><span>${ev.length}</span></h4>` +
+        (ev.length ? ev.map(e => `<div class="adm-row" data-id="${esc(e.id)}" data-bi="${e.bi}" data-k="${k}"><span class="t">${fmt(e.start)}</span>
+          <span>${esc(e.name)}<span class="m"> · ${esc(C.team[e.bi].name[L()])}</span></span><span class="m adm-svc">${esc((C.services[e.svc] || C.services[0])[L()])}</span>
+          <span class="adm-pill ${e.src ? "on" : ""}">${e.src === "online" ? "Online" : e.src === "admin" ? "+" : "€" + (C.services[e.svc] || C.services[0]).price}</span></div>`).join("")
+          : `<div class="adm-row" style="cursor:default"><span class="m">${t("none")}</span></div>`) + `</div>`;
+    });
+    $("adm-body").innerHTML = html + "</div>";
+    const qi = $("adm-q"); qi.oninput = () => { V.q = qi.value; const p = qi.selectionStart; drawList(); const n = $("adm-q"); n.focus(); n.setSelectionRange(p, p); };
+    $("adm-body").querySelectorAll(".adm-row[data-id]").forEach(r => r.onclick = () => {
+      const ev = apptsFor(+r.dataset.bi, r.dataset.k).find(x => x.id === r.dataset.id); if (ev) detail(ev);
+    });
+  }
+
+  function drawer(title, body, foot) {
+    const d = $("adm-drawer"); d.hidden = false;
+    d.innerHTML = `<div class="dh"><span>${title}</span><button class="adm-x" id="adm-dx" aria-label="Close">×</button></div><div class="db">${body}</div><div class="df">${foot}</div>`;
+    $("adm-dx").onclick = () => { d.hidden = true; };
+  }
+  function detail(ev) {
+    const sv = C.services[ev.svc] || C.services[0];
+    drawer(t("detail"), `<dl>
+      <dt>${t("customer")}</dt><dd>${esc(ev.name)}</dd>
+      <dt>${t("phone")}</dt><dd>${ev.phone ? `<a href="tel:${esc(ev.phone)}">${esc(ev.phone)}</a>` : "—"}</dd>
+      <dt>${t("service")}</dt><dd>${esc(sv[L()])} (${sv.min}′)</dd>
+      <dt>${t("barber")}</dt><dd>${esc(C.team[ev.bi].name[L()])}</dd>
+      <dt>${t("when")}</dt><dd>${dfmt(ev.date, { weekday: "long", day: "numeric", month: "long" })} · ${fmt(ev.start)}–${fmt(ev.end)}</dd>
+      <dt>${t("price")}</dt><dd>€${sv.price}</dd>
+      ${ev.src ? `<dt>${t("source")}</dt><dd>${ev.src === "online" ? t("online") : t("shop")}</dd>` : ""}</dl>`,
+      `<button class="adm-btn danger" id="adm-cancel">${t("cancel")}</button><button class="adm-btn" id="adm-close">${t("close")}</button>`);
+    let armed = false;
+    $("adm-cancel").onclick = e => {
+      if (!armed) { armed = true; e.target.classList.add("sure"); e.target.textContent = t("sure"); return; }
+      cancel(ev); $("adm-drawer").hidden = true; draw();
+    };
+    $("adm-close").onclick = () => { $("adm-drawer").hidden = true; };
+  }
+  function newForm(bi, k, startPref) {
+    const opts = (b, s) => freeStarts(b, k, C.services[s].min);
+    drawer(t("newTitle"), `
+      <label>${t("date")}<input value="${dfmt(k, { weekday: "long", day: "numeric", month: "long" })}" disabled></label>
+      <label>${t("barber")}<select id="nf-b">${C.team.map((m, i) => `<option value="${i}" ${i === bi ? "selected" : ""}>${esc(m.name[L()])}</option>`).join("")}</select></label>
+      <label>${t("service")}<select id="nf-s">${C.services.map((s, i) => `<option value="${i}">${esc(s[L()])} · ${s.min}′ · €${s.price}</option>`).join("")}</select></label>
+      <label>${t("time")}<select id="nf-t"></select></label>
+      <label>${t("name")}<input id="nf-n" autocomplete="off"></label>
+      <label>${t("phone")}<input id="nf-p" type="tel" inputmode="tel" placeholder="69xxxxxxxx"></label>`,
+      `<button class="adm-btn pri" id="nf-save" disabled>${t("saveBtn")}</button><button class="adm-btn" id="nf-close">${t("close")}</button>`);
+    const fillTimes = () => {
+      const b = +$("nf-b").value, s = +$("nf-s").value, fs = opts(b, s);
+      $("nf-t").innerHTML = fs.length ? fs.map(m => `<option value="${m}">${fmt(m)}</option>`).join("") : `<option value="">${t("noFree")}</option>`;
+      if (startPref != null) { const best = fs.find(m => m >= startPref); if (best != null) $("nf-t").value = String(best); }
+      valid();
+    };
+    const valid = () => { $("nf-save").disabled = !($("nf-t").value && $("nf-n").value.trim().length >= 2); };
+    $("nf-b").onchange = fillTimes; $("nf-s").onchange = fillTimes; $("nf-n").oninput = valid;
+    fillTimes();
+    $("nf-close").onclick = () => { $("adm-drawer").hidden = true; };
+    $("nf-save").onclick = () => {
+      const b = +$("nf-b").value, s = +$("nf-s").value, m = +$("nf-t").value;
+      const all = load(KEY_B); all.push({ bi: b, date: k, start: m, end: m + C.services[s].min, svc: s, name: $("nf-n").value.trim(), phone: $("nf-p").value.trim(), src: "admin" });
+      save(KEY_B, all); $("adm-drawer").hidden = true; V.date = k; draw();
+    };
+  }
+
+  /* ---------- giriş noktası: altbilgide link + #admin ---------- */
+  const foot = document.querySelector("footer .foot, footer .wrap, footer");
+  if (foot) {
+    const a = document.createElement("a"); a.href = "#admin"; a.className = "adm-link";
+    const setTxt = () => { a.textContent = L() === "en" ? "Admin" : "Διαχείριση"; };
+    setTxt(); new MutationObserver(setTxt).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    const wrapEl = document.createElement("div"); wrapEl.style.cssText = "margin-top:8px;font-size:13px"; wrapEl.appendChild(a); foot.appendChild(wrapEl);
+    a.addEventListener("click", e => { e.preventDefault(); open(); });
+  }
+  if (location.hash === "#admin") open();
+  window.addEventListener("hashchange", () => { if (location.hash === "#admin") open(); });
+  new MutationObserver(() => { if (!root.hidden) draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+})();
+
+</script><!--/ADMIN-->
 </body>
 </html>
